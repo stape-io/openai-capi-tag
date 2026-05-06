@@ -1,5 +1,7 @@
 homepage: 'https://stape.io/'
 documentation: 'https://github.com/stape-io/openai-capi-tag'
 versions:
+  - sha: 305e50888d28cd0cf420e020abf22c984890a438
+    changeNotes: Adjust API schema and parameters according to the latest documentation.
   - sha: 685d654e088782e593f014b68699b0a01da51d9f
     changeNotes: Initial release.

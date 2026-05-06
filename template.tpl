@@ -187,6 +187,10 @@ ___TEMPLATE_PARAMETERS___
           {
             "value": "email",
             "displayValue": "Email"
+          },
+          {
+            "value": "other",
+            "displayValue": "Other"
           }
         ],
         "simpleValueType": true,
@@ -329,6 +333,11 @@ ___TEMPLATE_PARAMETERS___
     "groupStyle": "ZIPPY_OPEN_ON_PARAM",
     "subParams": [
       {
+        "type": "LABEL",
+        "name": "serverEventDataParametersLabel",
+        "displayName": "Check these help pages \u003ca href\u003d\"https://developers.openai.com/ads/conversions-api\"\u003e[1]\u003c/a\u003e and \u003ca href\u003d\"https://developers.openai.com/ads/supported-events\"\u003e[2]\u003c/a\u003e for a description of each \u003ci\u003eServer Event Data Parameters\u003c/i\u003e and their expected type and value.\u003cbr/\u003e\u003cbr/\u003e"
+      },
+      {
         "type": "SELECT",
         "name": "optOut",
         "displayName": "Opt Out",
@@ -356,7 +365,7 @@ ___TEMPLATE_PARAMETERS___
       },
       {
         "type": "SIMPLE_TABLE",
-        "name": "serverEventDataList",
+        "name": "serverEventDataParametersList",
         "simpleTableColumns": [
           {
             "defaultValue": "",
@@ -408,6 +417,11 @@ ___TEMPLATE_PARAMETERS___
     "displayName": "User Data Parameters",
     "groupStyle": "ZIPPY_OPEN_ON_PARAM",
     "subParams": [
+      {
+        "type": "LABEL",
+        "name": "userDataParametersLabel",
+        "displayName": "Check these help pages \u003ca href\u003d\"https://developers.openai.com/ads/conversions-api\"\u003e[1]\u003c/a\u003e and \u003ca href\u003d\"https://developers.openai.com/ads/supported-events\"\u003e[2]\u003c/a\u003e for a description of each \u003ci\u003eUser Data Parameters\u003c/i\u003e and their expected type and value.\u003cbr/\u003e\u003cbr/\u003e"
+      },
       {
         "type": "CHECKBOX",
         "name": "autoMapUserDataParameters",
@@ -491,11 +505,16 @@ ___TEMPLATE_PARAMETERS___
     "groupStyle": "ZIPPY_OPEN_ON_PARAM",
     "subParams": [
       {
+        "type": "LABEL",
+        "name": "eventParametersLabel",
+        "displayName": "Check these help pages \u003ca href\u003d\"https://developers.openai.com/ads/conversions-api\"\u003e[1]\u003c/a\u003e and \u003ca href\u003d\"https://developers.openai.com/ads/supported-events\"\u003e[2]\u003c/a\u003e for a description of each \u003ci\u003eEvent Parameters\u003c/i\u003e and their expected type and value.\u003cbr/\u003e\u003cbr/\u003e"
+      },
+      {
         "type": "CHECKBOX",
         "name": "autoMapEventParameters",
         "checkboxText": "Automap Event Parameters",
         "simpleValueType": true,
-        "help": "If enabled, the tag will attempt to automatically map parameters from your event data.\n\u003cbr/\u003e\u003cbr/\u003e\nAny value you manually enter in a field below will always override the auto-mapped value.\n\u003cbr/\u003e\u003cbr/\u003e\nDefault mappings:\n\u003cul\u003e\n\u003cli\u003eAmount: \n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eeventData.value\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eSum of eventData.items Price * Quantity\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eCurrency: \n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eeventData.currency\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eCurrency from eventData.items\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eItems: \u003ci\u003eeventData.items\u003c/i\u003e (\u003ci\u003eitem_id\u003c/i\u003e, \u003ci\u003eitem_name\u003c/i\u003e, \u003ci\u003econtent_type\u003c/i\u003e, \u003ci\u003eamount\u003c/i\u003e and \u003ci\u003equantity\u003c/i\u003e)\u003c/li\u003e\n\u003c/ul\u003e",
+        "help": "If enabled, the tag will attempt to automatically map parameters from your event data.\n\u003cbr/\u003e\u003cbr/\u003e\nAny value you manually enter in a field below will always override the auto-mapped value.\n\u003cbr/\u003e\u003cbr/\u003e\nDefault mappings:\n\u003cul\u003e\n\u003cli\u003eAmount (the tag always considers the auto-mapped value to be in the currency regular unit and it converts to the lowest unit according to the currency): \n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eeventData.value\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eSum of eventData.items Price * Quantity\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eCurrency: \n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eeventData.currency\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eCurrency from eventData.items\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eItems: \u003ci\u003eeventData.items\u003c/i\u003e (\u003ci\u003eitem_id\u003c/i\u003e, \u003ci\u003eitem_name\u003c/i\u003e, \u003ci\u003econtent_type\u003c/i\u003e, \u003ci\u003eamount\u003c/i\u003e and \u003ci\u003equantity\u003c/i\u003e)\u003c/li\u003e\n\u003c/ul\u003e",
         "defaultValue": true,
         "subParams": [
           {
@@ -533,7 +552,11 @@ ___TEMPLATE_PARAMETERS___
             "selectItems": [
               {
                 "value": "amount",
-                "displayValue": "Amount"
+                "displayValue": "Amount (in the currency\u0027s lowest unit)"
+              },
+              {
+                "value": "amount_regular_unit",
+                "displayValue": "Amount (in the currency\u0027s regular unit)"
               },
               {
                 "value": "currency",
@@ -559,7 +582,7 @@ ___TEMPLATE_PARAMETERS___
         ],
         "newRowButtonText": "Add Parameter",
         "displayName": "Event Parameters",
-        "help": "\u003cb\u003eCurrency\u003c/b\u003e is required if \u003cb\u003eAmount\u003c/b\u003e is used.\n\u003cbr/\u003e\u003cbr/\u003e\n\u003cb\u003eContents\u003c/b\u003e expects an array of content objects. Each object can have the properties: \u003cb\u003eid\u003c/b\u003e, \u003cb\u003ename\u003c/b\u003e, \u003cb\u003eamount\u003c/b\u003e, \u003cb\u003ecurrency\u003c/b\u003e (required if \u003ci\u003eamount\u003c/i\u003e is present in the content object and \u003c/i\u003ecurrency\u003c/i\u003e is not present in top level field), \u003cb\u003equantity\u003c/b\u003e and \u003cb\u003econtent_type\u003c/b\u003e (required)."
+        "help": "Only use one of the available Amount parameters. If both are set, \u003cb\u003eAmount (in the currency\u0027s lowest unit)\u003c/b\u003e will have preference.\n\u003cbr/\u003e\n\u003cb\u003eAmount (in the currency\u0027s lowest unit)\u003c/b\u003e must be an integer in the currency\u0027s lowest denomination (e.g. cents). Example: \u003ci\u003e12999\u003c/i\u003e for \u003ci\u003e$129.99\u003c/i\u003e.\n\u003cbr/\u003e\n\u003cb\u003eAmount (in the currency\u0027s regular unit)\u003c/b\u003e must be a number in the currency\u0027s regular denomination. Example: \u003ci\u003e129.99\u003c/i\u003e for \u003ci\u003e$129.99\u003c/i\u003e.\n\u003cbr/\u003e\u003cbr/\u003e\n\u003cb\u003eCurrency\u003c/b\u003e is required if \u003cb\u003eAmount\u003c/b\u003e is used.\n\u003cbr/\u003e\u003cbr/\u003e\n\u003cb\u003eContents\u003c/b\u003e expects an array of content objects. Each object can have the properties: \u003cb\u003eid\u003c/b\u003e, \u003cb\u003ename\u003c/b\u003e, \u003cb\u003eamount\u003c/b\u003e, \u003cb\u003ecurrency\u003c/b\u003e (required if \u003ci\u003eamount\u003c/i\u003e is present in the content object and \u003ci\u003ecurrency\u003c/i\u003e is not present in top level field), \u003cb\u003equantity\u003c/b\u003e and \u003cb\u003econtent_type\u003c/b\u003e (required)."
       }
     ]
   },
@@ -728,7 +751,7 @@ if (invalidOrMissingFields) {
   log({
     Name: 'OpenAIEventsAPITag',
     Type: 'Message',
-    EventName: mappedData.events[0].event_type,
+    EventName: mappedData.events[0].type,
     Message: '🛑 [ERROR] Request was not sent.',
     Reason: invalidOrMissingFields
   });
@@ -764,7 +787,7 @@ function setCookies(data, mappedData) {
 function addServerEventData(data, eventData, event) {
   const eventNameInfo = getEventNameInfo(data, eventData);
   const eventName = eventNameInfo.eventName;
-  event.event_type = eventNameInfo.eventName;
+  event.type = eventNameInfo.eventName;
   if (eventName === 'custom') event.custom_event_name = eventNameInfo.customEventName;
 
   event.action_source = data.actionSource;
@@ -782,8 +805,8 @@ function addServerEventData(data, eventData, event) {
     if (clickId) event.oppref = clickId;
   }
 
-  if (data.serverEventDataList) {
-    data.serverEventDataList.forEach((d) => (event[d.name] = d.value));
+  if (data.serverEventDataParametersList) {
+    data.serverEventDataParametersList.forEach((d) => (event[d.name] = d.value));
   }
 
   return event;
@@ -916,13 +939,13 @@ function getEventParametersType(eventName) {
 
 function addEventParameters(data, eventData, event) {
   const eventParameters = {
-    type: getEventParametersType(event.event_type)
+    type: getEventParametersType(event.type)
   };
 
   if (isUIFieldTrue(data.autoMapEventParameters)) {
-    let currencyFromItems;
     let valueFromItems;
     let items;
+    let currency = eventData.currency;
 
     if (getType(eventData.items) === 'array' && eventData.items.length) items = eventData.items;
     else if (
@@ -936,7 +959,7 @@ function addEventParameters(data, eventData, event) {
     if (getType(items) === 'array' && items.length) {
       eventParameters.contents = [];
       valueFromItems = 0;
-      currencyFromItems = items[0].currency;
+      if (!currency && items[0].currency) currency = items[0].currency;
       const itemIdKey = data.itemIdKey ? data.itemIdKey : 'item_id';
       items.forEach((i) => {
         const item = {};
@@ -944,7 +967,8 @@ function addEventParameters(data, eventData, event) {
         if (i.item_name) item.name = makeString(i.item_name);
         if (isValidValue(i.quantity)) item.quantity = makeInteger(i.quantity);
         if (isValidValue(i.price)) {
-          item.amount = roundValue(i.price);
+          // It considers the value from eventData is in regular unit.
+          item.amount = convertCurrencyValueToMinorUnit(i.price, currency);
           if (isValidValue(item.amount)) {
             valueFromItems += (item.quantity || 1) * item.amount;
           }
@@ -954,21 +978,42 @@ function addEventParameters(data, eventData, event) {
       });
     }
 
-    if (isValidValue(eventData.value)) {
-      eventParameters.amount = roundValue(eventData.value);
-    } else if (isValidValue(valueFromItems)) {
-      eventParameters.amount = roundValue(valueFromItems);
-    }
+    if (currency) eventParameters.currency = currency;
 
-    const currency = eventData.currency || currencyFromItems;
-    if (currency || isValidValue(eventParameters.amount)) eventParameters.currency = currency;
+    if (isValidValue(eventData.value)) {
+      // It considers the value from eventData is in regular unit.
+      eventParameters.amount = convertCurrencyValueToMinorUnit(
+        eventData.value,
+        eventParameters.currency
+      );
+    } else if (isValidValue(valueFromItems)) {
+      // Already converted to minor unit.
+      eventParameters.amount = valueFromItems;
+    }
   }
 
   if (data.eventParametersList) {
+    let amountIsRegularUnit = false;
+    let amountMinorSetByList = false;
     data.eventParametersList.forEach((d) => {
-      if (d.name === 'amount' && isValidValue(d.value)) d.value = roundValue(d.value);
-      eventParameters[d.name] = d.value;
+      let name = d.name;
+      if (name === 'amount_regular_unit') {
+        if (amountMinorSetByList) return;
+        amountIsRegularUnit = true;
+        name = 'amount';
+      } else if (name === 'amount') {
+        amountIsRegularUnit = false;
+        amountMinorSetByList = true;
+      }
+      eventParameters[name] = d.value;
     });
+
+    if (amountIsRegularUnit && isValidValue(eventParameters.amount)) {
+      eventParameters.amount = convertCurrencyValueToMinorUnit(
+        eventParameters.amount,
+        eventParameters.currency
+      );
+    }
   }
 
   event.data = eventParameters;
@@ -1063,6 +1108,9 @@ function validateMappedData(data, mappedData) {
 
   if (!event.action_source) return 'Action Source is required.';
 
+  if (event.action_source === 'web' && !event.source_url)
+    return 'Source URL is required when Action Source is web.';
+
   if (!event.timestamp_ms) return 'Timestamp is required.';
 
   if (
@@ -1084,12 +1132,7 @@ function validateMappedData(data, mappedData) {
 }
 
 function generateRequestBaseUrl(pixelId) {
-  return (
-    'https://bzr.openai.com/' +
-    API_VERSION +
-    '/events?data_source_type=pixel&data_source_id=' +
-    encodeUriComponent(pixelId)
-  );
+  return 'https://bzr.openai.com/' + API_VERSION + '/events?pid=' + encodeUriComponent(pixelId);
 }
 
 function generateRequestOptions(data) {
@@ -1109,7 +1152,7 @@ function sendRequest(data, mappedData) {
   const requestUrl = generateRequestBaseUrl(pixelId);
   const requestOptions = generateRequestOptions(data);
 
-  const eventName = mappedData.events[0].event_type;
+  const eventName = mappedData.events[0].type;
   log({
     Name: 'OpenAIEventsAPITag',
     Type: 'Request',
@@ -1193,6 +1236,25 @@ function isValidValue(value) {
 function roundValue(value) {
   if (!value) return value;
   return Math.round(makeNumber(value) * 100) / 100;
+}
+
+function convertCurrencyValueToMinorUnit(value, currency) {
+  if (!value) return value;
+
+  // prettier-ignore
+  const zeroDecimalCurrencies = [
+    'BIF', 'CLP', 'DJF', 'GNF', 'IDR', 'ISK',
+    'JPY', 'KMF', 'KRW', 'MGA', 'PYG', 'RWF',
+    'UGX', 'VND', 'VUV', 'XAF', 'XOF', 'XPF'
+  ];
+  const threeDecimalCurrencies = ['BHD', 'IQD', 'JOD', 'KWD', 'LYD', 'OMR', 'TND'];
+  const upperCurrency = currency ? makeString(currency).toUpperCase() : '';
+
+  let multiplier = 100; // default: 2 decimal places (BRL, USD, EUR, GBP, etc.)
+  if (zeroDecimalCurrencies.indexOf(upperCurrency) !== -1) multiplier = 1;
+  else if (threeDecimalCurrencies.indexOf(upperCurrency) !== -1) multiplier = 1000;
+
+  return makeInteger(roundValue(value * multiplier));
 }
 
 function hasProps(obj) {
@@ -1729,7 +1791,7 @@ scenarios:
 
       mock('sendHttpRequest', (url, options, body) => {
         const parsed = JSON.parse(body);
-        assertThat(parsed.events[0].event_type).isEqualTo(eventName);
+        assertThat(parsed.events[0].type).isEqualTo(eventName);
         assertThat(parsed.events[0].custom_event_name).isUndefined();
         return Promise.create((resolve) => resolve({ statusCode: 200 }));
       });
@@ -1748,7 +1810,7 @@ scenarios:
 
     mock('sendHttpRequest', (url, options, body) => {
       const parsed = JSON.parse(body);
-      assertThat(parsed.events[0].event_type).isEqualTo('custom');
+      assertThat(parsed.events[0].type).isEqualTo('custom');
       assertThat(parsed.events[0].custom_event_name).isEqualTo('my_custom_event');
       return Promise.create((resolve) => resolve({ statusCode: 200 }));
     });
@@ -1781,7 +1843,7 @@ scenarios:
 
       mock('sendHttpRequest', (url, options, body) => {
         const parsed = JSON.parse(body);
-        assertThat(parsed.events[0].event_type).isEqualTo(scenario.expected);
+        assertThat(parsed.events[0].type).isEqualTo(scenario.expected);
         assertThat(parsed.events[0].custom_event_name).isUndefined();
         return Promise.create((resolve) => resolve({ statusCode: 200 }));
       });
@@ -1805,7 +1867,7 @@ scenarios:
 
     mock('sendHttpRequest', (url, options, body) => {
       const parsed = JSON.parse(body);
-      assertThat(parsed.events[0].event_type).isEqualTo('custom');
+      assertThat(parsed.events[0].type).isEqualTo('custom');
       assertThat(parsed.events[0].custom_event_name).isEqualTo('unknown_ga4_event');
       return Promise.create((resolve) => resolve({ statusCode: 200 }));
     });
@@ -1848,7 +1910,7 @@ scenarios:
 - name: '[Server Event Data] Auto-maps timestamp_ms source_url and event id from event_id'
   code: |-
     mockData.autoMapServerEventDataParameters = true;
-    mockData.serverEventDataList = undefined;
+    mockData.serverEventDataParametersList = undefined;
 
     mock('getAllEventData', () => ({
       event_name: 'page_view',
@@ -1893,11 +1955,11 @@ scenarios:
       assertApi('gtmOnSuccess').wasCalled();
       assertApi('gtmOnFailure').wasNotCalled();
     });
-- name: '[Server Event Data] Manual serverEventDataList entries override auto-mapped
-    values'
+- name: '[Server Event Data] Manual serverEventDataParametersList entries override
+    auto-mapped values'
   code: |-
     mockData.autoMapServerEventDataParameters = true;
-    mockData.serverEventDataList = [
+    mockData.serverEventDataParametersList = [
       { name: 'timestamp_ms', value: 9999 },
       { name: 'source_url',   value: 'https://manual.example.com' },
       { name: 'id',           value: 'manual-event-id' }
@@ -2395,7 +2457,7 @@ scenarios:
 
     mock('sendHttpRequest', (url, options, body) => {
       const parsed = JSON.parse(body);
-      assertThat(parsed.events[0].data.amount).isEqualTo(99.99);
+      assertThat(parsed.events[0].data.amount).isEqualTo(9999);
       assertThat(parsed.events[0].data.currency).isEqualTo('USD');
       return Promise.create((resolve) => resolve({ statusCode: 200 }));
     });
@@ -2426,13 +2488,13 @@ scenarios:
     mock('sendHttpRequest', (url, options, body) => {
       const parsed = JSON.parse(body);
       const data = parsed.events[0].data;
-      // amount = 10*2 + 5*3 = 35
-      assertThat(data.amount).isEqualTo(35);
+      // amount = 10*2 + 5*3 = 35 (3500 in minor unit)
+      assertThat(data.amount).isEqualTo(3500);
       assertThat(data.contents).hasLength(2);
       assertThat(data.contents[0].id).isEqualTo('SKU_001');
       assertThat(data.contents[0].name).isEqualTo('Product A');
       assertThat(data.contents[0].quantity).isEqualTo(2);
-      assertThat(data.contents[0].amount).isEqualTo(10);
+      assertThat(data.contents[0].amount).isEqualTo(1000);
       assertThat(data.contents[0].content_type).isEqualTo('product');
       assertThat(data.contents[1].content_type).isEqualTo('digital');
       return Promise.create((resolve) => resolve({ statusCode: 200 }));
@@ -2490,7 +2552,7 @@ scenarios:
     mock('sendHttpRequest', (url, options, body) => {
       const parsed = JSON.parse(body);
       // value from eventData wins over items sum
-      assertThat(parsed.events[0].data.amount).isEqualTo(999);
+      assertThat(parsed.events[0].data.amount).isEqualTo(99900);
       return Promise.create((resolve) => resolve({ statusCode: 200 }));
     });
 
@@ -2505,13 +2567,13 @@ scenarios:
   code: |-
     mockData.autoMapEventParameters = false;
     mockData.eventParametersList = [
-      { name: 'amount',   value: 150.555 },
+      { name: 'amount_regular_unit',   value: 150.555 },
       { name: 'currency', value: 'EUR' }
     ];
 
     mock('sendHttpRequest', (url, options, body) => {
       const parsed = JSON.parse(body);
-      assertThat(parsed.events[0].data.amount).isEqualTo(150.56);
+      assertThat(parsed.events[0].data.amount).isEqualTo(15056);
       assertThat(parsed.events[0].data.currency).isEqualTo('EUR');
       return Promise.create((resolve) => resolve({ statusCode: 200 }));
     });
@@ -2566,8 +2628,8 @@ scenarios:
     mock('sendHttpRequest', (url, options, body) => {
       const parsed = JSON.parse(body);
       const evData = parsed.events[0].data;
-      // Only the first item contributes (50 * 1 = 50)
-      assertThat(evData.amount).isEqualTo(50);
+      // Only the first item contributes (50 * 1 = 50) (5000 in minor unit)
+      assertThat(evData.amount).isEqualTo(5000);
       assertThat(evData.contents).hasLength(2);
       assertThat(evData.contents[1].amount).isUndefined();
       return Promise.create((resolve) => resolve({ statusCode: 200 }));
@@ -2579,6 +2641,37 @@ scenarios:
       assertApi('gtmOnSuccess').wasCalled();
       assertApi('gtmOnFailure').wasNotCalled();
     });
+- name: '[Event Parameters] amount is passed as-is and amount_regular_unit is converted
+    and renamed to amount'
+  code: |-
+    [
+          {
+            params: [{ name: 'amount', value: 1299 }, { name: 'currency', value: 'USD' }],
+            expectedAmount: 1299
+          },
+          {
+            params: [{ name: 'amount_regular_unit', value: 12.99 }, { name: 'currency', value: 'USD' }],
+            expectedAmount: 1299
+          }
+        ].forEach((scenario) => {
+          mockData.autoMapEventParameters = false;
+          mockData.eventParametersList = scenario.params;
+
+          mock('sendHttpRequest', (url, options, body) => {
+            const parsed = JSON.parse(body);
+            const evData = parsed.events[0].data;
+            assertThat(evData.amount).isEqualTo(scenario.expectedAmount);
+            assertThat(evData.amount_regular_unit).isUndefined();
+            return Promise.create((resolve) => resolve({ statusCode: 200 }));
+          });
+
+          runCode(mockData);
+
+          callLater(() => {
+            assertApi('gtmOnSuccess').wasCalled();
+            assertApi('gtmOnFailure').wasNotCalled();
+          });
+        });
 - name: '[Validation] Calls gtmOnFailure when pixelId is missing'
   code: |-
     mockData.pixelId = undefined;
@@ -2601,11 +2694,26 @@ scenarios:
       assertApi('gtmOnSuccess').wasNotCalled();
       assertApi('gtmOnFailure').wasCalled();
     });
+- name: '[Validation] Calls gtmOnFailure when action_source is web and source_url
+    is missing'
+  code: |-
+    mockData.actionSource = 'web';
+    mockData.serverEventDataParametersList = [
+      { name: 'source_url',   value: '' }
+    ];
+
+    runCode(mockData);
+
+    callLater(() => {
+      assertApi('sendHttpRequest').wasNotCalled();
+      assertApi('gtmOnSuccess').wasNotCalled();
+      assertApi('gtmOnFailure').wasCalled();
+    });
 - name: '[Validation] Calls gtmOnFailure when timestamp_ms is absent (auto-mapping
     off and no manual entry)'
   code: |-
     mockData.autoMapServerEventDataParameters = false;
-    mockData.serverEventDataList = undefined;
+    mockData.serverEventDataParametersList = undefined;
 
     runCode(mockData);
 
@@ -2683,7 +2791,7 @@ scenarios:
     mockData.apiKey = 'my-api-key-xyz';
 
     mock('sendHttpRequest', (url, options, body) => {
-      assertThat(url).isEqualTo('https://bzr.openai.com/v1/events?data_source_type=pixel&data_source_id=my-pixel-id-123');
+      assertThat(url).isEqualTo('https://bzr.openai.com/v1/events?pid=my-pixel-id-123');
       assertThat(options.method).isEqualTo('POST');
       assertThat(options.headers['Content-Type']).isEqualTo('application/json');
       assertThat(options.headers['Authorization']).isEqualTo('Bearer my-api-key-xyz');
@@ -2734,7 +2842,7 @@ scenarios:
       assertThat(parsed.validate_only).isEqualTo(false);
       assertThat(parsed.events).isArray();
       assertThat(parsed.events).hasLength(1);
-      assertThat(parsed.events[0].event_type).isEqualTo('page_viewed');
+      assertThat(parsed.events[0].type).isEqualTo('page_viewed');
       assertThat(parsed.events[0].timestamp_ms).isEqualTo(NOW_MILISECONDS);
       assertThat(parsed.events[0].user.ip_address).isEqualTo('1.2.3.4');
       return Promise.create((resolve) => resolve({ statusCode: 200 }));
@@ -2910,7 +3018,7 @@ setup: |-
     cookieHttpOnly: false,
     cookieExpiration: 30,
     autoMapServerEventDataParameters: true,
-    serverEventDataList: undefined,
+    serverEventDataParametersList: undefined,
     autoMapUserDataParameters: false,
     userDataParametersList: undefined,
     autoMapEventParameters: false,
@@ -2925,6 +3033,13 @@ setup: |-
 
 
 ___NOTES___
+
+2026-05-06 - Change Notes:
+  - Fix API schema compliance: rename event field `event_type` → `type` and fix endpoint URL to use `pid=` query parameter
+  - Add `convertCurrencyValueToMinorUnit()` to correctly convert major-unit prices to the integer minor unit required by the API (e.g. 12.99 → 1299); applied to all auto-mapped and manual amount fields
+  - Add `amount_regular_unit` parameter to `eventParametersList` as a major-unit input that is auto-converted; existing `amount` parameter remains a minor-unit pass-through
+  - Add validation that rejects requests when `action_source` is `web` and `source_url` is missing; rename `serverEventDataList` to `serverEventDataParametersList`
+  - Update unit tests and UI help text to reflect all of the above changes
 
 2026-04-23 - Change Notes:
   - Initial release.
