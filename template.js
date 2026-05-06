@@ -37,7 +37,7 @@ if (invalidOrMissingFields) {
   log({
     Name: 'OpenAIEventsAPITag',
     Type: 'Message',
-    EventName: mappedData.events[0].event_type,
+    EventName: mappedData.events[0].type,
     Message: '🛑 [ERROR] Request was not sent.',
     Reason: invalidOrMissingFields
   });
@@ -73,7 +73,7 @@ function setCookies(data, mappedData) {
 function addServerEventData(data, eventData, event) {
   const eventNameInfo = getEventNameInfo(data, eventData);
   const eventName = eventNameInfo.eventName;
-  event.event_type = eventNameInfo.eventName;
+  event.type = eventNameInfo.eventName;
   if (eventName === 'custom') event.custom_event_name = eventNameInfo.customEventName;
 
   event.action_source = data.actionSource;
@@ -91,8 +91,8 @@ function addServerEventData(data, eventData, event) {
     if (clickId) event.oppref = clickId;
   }
 
-  if (data.serverEventDataList) {
-    data.serverEventDataList.forEach((d) => (event[d.name] = d.value));
+  if (data.serverEventDataParametersList) {
+    data.serverEventDataParametersList.forEach((d) => (event[d.name] = d.value));
   }
 
   return event;
@@ -225,13 +225,13 @@ function getEventParametersType(eventName) {
 
 function addEventParameters(data, eventData, event) {
   const eventParameters = {
-    type: getEventParametersType(event.event_type)
+    type: getEventParametersType(event.type)
   };
 
   if (isUIFieldTrue(data.autoMapEventParameters)) {
-    let currencyFromItems;
     let valueFromItems;
     let items;
+    let currency = eventData.currency;
 
     if (getType(eventData.items) === 'array' && eventData.items.length) items = eventData.items;
     else if (
@@ -245,7 +245,7 @@ function addEventParameters(data, eventData, event) {
     if (getType(items) === 'array' && items.length) {
       eventParameters.contents = [];
       valueFromItems = 0;
-      currencyFromItems = items[0].currency;
+      if (!currency && items[0].currency) currency = items[0].currency;
       const itemIdKey = data.itemIdKey ? data.itemIdKey : 'item_id';
       items.forEach((i) => {
         const item = {};
@@ -253,7 +253,8 @@ function addEventParameters(data, eventData, event) {
         if (i.item_name) item.name = makeString(i.item_name);
         if (isValidValue(i.quantity)) item.quantity = makeInteger(i.quantity);
         if (isValidValue(i.price)) {
-          item.amount = roundValue(i.price);
+          // It considers the value from eventData is in regular unit.
+          item.amount = convertCurrencyValueToMinorUnit(i.price, currency);
           if (isValidValue(item.amount)) {
             valueFromItems += (item.quantity || 1) * item.amount;
           }
@@ -263,21 +264,42 @@ function addEventParameters(data, eventData, event) {
       });
     }
 
-    if (isValidValue(eventData.value)) {
-      eventParameters.amount = roundValue(eventData.value);
-    } else if (isValidValue(valueFromItems)) {
-      eventParameters.amount = roundValue(valueFromItems);
-    }
+    if (currency) eventParameters.currency = currency;
 
-    const currency = eventData.currency || currencyFromItems;
-    if (currency || isValidValue(eventParameters.amount)) eventParameters.currency = currency;
+    if (isValidValue(eventData.value)) {
+      // It considers the value from eventData is in regular unit.
+      eventParameters.amount = convertCurrencyValueToMinorUnit(
+        eventData.value,
+        eventParameters.currency
+      );
+    } else if (isValidValue(valueFromItems)) {
+      // Already converted to minor unit.
+      eventParameters.amount = valueFromItems;
+    }
   }
 
   if (data.eventParametersList) {
+    let amountIsRegularUnit = false;
+    let amountMinorSetByList = false;
     data.eventParametersList.forEach((d) => {
-      if (d.name === 'amount' && isValidValue(d.value)) d.value = roundValue(d.value);
-      eventParameters[d.name] = d.value;
+      let name = d.name;
+      if (name === 'amount_regular_unit') {
+        if (amountMinorSetByList) return;
+        amountIsRegularUnit = true;
+        name = 'amount';
+      } else if (name === 'amount') {
+        amountIsRegularUnit = false;
+        amountMinorSetByList = true;
+      }
+      eventParameters[name] = d.value;
     });
+
+    if (amountIsRegularUnit && isValidValue(eventParameters.amount)) {
+      eventParameters.amount = convertCurrencyValueToMinorUnit(
+        eventParameters.amount,
+        eventParameters.currency
+      );
+    }
   }
 
   event.data = eventParameters;
@@ -372,6 +394,9 @@ function validateMappedData(data, mappedData) {
 
   if (!event.action_source) return 'Action Source is required.';
 
+  if (event.action_source === 'web' && !event.source_url)
+    return 'Source URL is required when Action Source is web.';
+
   if (!event.timestamp_ms) return 'Timestamp is required.';
 
   if (
@@ -393,12 +418,7 @@ function validateMappedData(data, mappedData) {
 }
 
 function generateRequestBaseUrl(pixelId) {
-  return (
-    'https://bzr.openai.com/' +
-    API_VERSION +
-    '/events?data_source_type=pixel&data_source_id=' +
-    encodeUriComponent(pixelId)
-  );
+  return 'https://bzr.openai.com/' + API_VERSION + '/events?pid=' + encodeUriComponent(pixelId);
 }
 
 function generateRequestOptions(data) {
@@ -418,7 +438,7 @@ function sendRequest(data, mappedData) {
   const requestUrl = generateRequestBaseUrl(pixelId);
   const requestOptions = generateRequestOptions(data);
 
-  const eventName = mappedData.events[0].event_type;
+  const eventName = mappedData.events[0].type;
   log({
     Name: 'OpenAIEventsAPITag',
     Type: 'Request',
@@ -502,6 +522,25 @@ function isValidValue(value) {
 function roundValue(value) {
   if (!value) return value;
   return Math.round(makeNumber(value) * 100) / 100;
+}
+
+function convertCurrencyValueToMinorUnit(value, currency) {
+  if (!value) return value;
+
+  // prettier-ignore
+  const zeroDecimalCurrencies = [
+    'BIF', 'CLP', 'DJF', 'GNF', 'IDR', 'ISK',
+    'JPY', 'KMF', 'KRW', 'MGA', 'PYG', 'RWF',
+    'UGX', 'VND', 'VUV', 'XAF', 'XOF', 'XPF'
+  ];
+  const threeDecimalCurrencies = ['BHD', 'IQD', 'JOD', 'KWD', 'LYD', 'OMR', 'TND'];
+  const upperCurrency = currency ? makeString(currency).toUpperCase() : '';
+
+  let multiplier = 100; // default: 2 decimal places (BRL, USD, EUR, GBP, etc.)
+  if (zeroDecimalCurrencies.indexOf(upperCurrency) !== -1) multiplier = 1;
+  else if (threeDecimalCurrencies.indexOf(upperCurrency) !== -1) multiplier = 1000;
+
+  return makeInteger(roundValue(value * multiplier));
 }
 
 function hasProps(obj) {
