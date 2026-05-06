@@ -1,6 +1,6 @@
 # OpenAI Ads Events API Tag for Google Tag Manager Server-Side
 
-The **OpenAI Ads Events API Tag** for Google Tag Manager Server-Side allows you to send conversion event data from your server container directly to the **OpenAI Ads Events API**. This server-to-server integration provides a more reliable and privacy-compliant way to track conversions for OpenAI (ChatGPT) ad campaigns compared to pixel-only setups.
+The **OpenAI Ads Events API Tag** for Google Tag Manager Server-Side allows you to send conversion event data from your server container directly to the **[OpenAI Ads Events API](https://developers.openai.com/ads/conversions-api)**. This server-to-server integration provides a more reliable and privacy-compliant way to track conversions for OpenAI (ChatGPT) ad campaigns compared to pixel-only setups.
 
 ## Features
 
@@ -137,6 +137,11 @@ The tag automatically hashes the following fields using SHA-256 before sending: 
 
 > **Note:** `Currency` is required when `Amount` is used. Each item in `Contents` must have `content_type` defined.
 
+## Useful Resources
+
+- [OpenAI Docs: OpenAI Ads Conversions API](https://developers.openai.com/ads/conversions-api)
+- [OpenAI Docs: Supported Events](https://developers.openai.com/ads/supported-events)
+  
 ## Open Source
 
 The **OpenAI Ads Events API Tag for GTM Server-Side** is developed and maintained by the [Stape Team](https://stape.io/) under the Apache 2.0 license.
