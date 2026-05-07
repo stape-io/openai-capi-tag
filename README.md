@@ -1,10 +1,10 @@
-# OpenAI Ads Events API Tag for Google Tag Manager Server-Side
+# OpenAI Ads Conversions API Tag for Google Tag Manager Server-Side
 
-The **OpenAI Ads Events API Tag** for Google Tag Manager Server-Side allows you to send conversion event data from your server container directly to the **[OpenAI Ads Events API](https://developers.openai.com/ads/conversions-api)**. This server-to-server integration provides a more reliable and privacy-compliant way to track conversions for OpenAI (ChatGPT) ad campaigns compared to pixel-only setups.
+The **OpenAI Ads Conversions API Tag** for Google Tag Manager Server-Side allows you to send conversion event data from your server container directly to the **[OpenAI Ads Conversions API](https://developers.openai.com/ads/conversions-api)**. This server-to-server integration provides a more reliable and privacy-compliant way to track conversions for OpenAI (ChatGPT) ad campaigns compared to pixel-only setups.
 
 ## Features
 
-- **Server-to-Server Events**: Sends conversion data directly from the GTM Server Container to the OpenAI Ads Events API.
+- **Server-to-Server Events**: Sends conversion data directly from the GTM Server Container to the OpenAI Ads Conversions API.
 - **Flexible Event Mapping**: Supports standard OpenAI event types, inherits and maps from GA4 event names automatically, or sends fully custom event names.
 - **Automatic Data Mapping**: Intelligently maps parameters from incoming GTM event data for server event data, user identifiers, and event parameters.
 - **Click ID Cookie Management**: Automatically reads and sets the `__oppref` (Click ID) cookie server-side to improve attribution.
@@ -23,7 +23,7 @@ The **OpenAI Ads Events API Tag** for Google Tag Manager Server-Side allows you 
    - Select the downloaded `template.tpl` file and click **Save**.
 3. **Create a New Tag**:
    - Go to **Tags** and click **New**.
-   - Select the newly imported **"OpenAI Ads Events API by Stape"** template.
+   - Select the newly imported **"OpenAI Ads Conversions API by Stape"** template.
 
 ## Tag Configuration
 
@@ -53,11 +53,11 @@ The **OpenAI Ads Events API Tag** for Google Tag Manager Server-Side allows you 
 | `subscription_created` |
 | `trial_started` |
 
-#### GA4 → Events API Event Name Mapping (Inherit from client)
+#### GA4 → Conversions API Event Name Mapping (Inherit from client)
 
 When using **Inherit from client**, the following GA4 event names are mapped:
 
-| GA4 Event Name | OpenAI Events API Event Type |
+| GA4 Event Name | OpenAI Conversions API Event Type |
 | :--- | :--- |
 | `page_view` | `page_viewed` |
 | `view_item` | `contents_viewed` |
@@ -141,10 +141,10 @@ The tag automatically hashes the following fields using SHA-256 before sending: 
 
 - [OpenAI Docs: OpenAI Ads Conversions API](https://developers.openai.com/ads/conversions-api)
 - [OpenAI Docs: Supported Events](https://developers.openai.com/ads/supported-events)
-  
+
 ## Open Source
 
-The **OpenAI Ads Events API Tag for GTM Server-Side** is developed and maintained by the [Stape Team](https://stape.io/) under the Apache 2.0 license.
+The **OpenAI Ads Conversions API Tag for GTM Server-Side** is developed and maintained by the [Stape Team](https://stape.io/) under the Apache 2.0 license.
 
 ### GTM Gallery Status
 🔴 Not listed

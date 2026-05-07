@@ -13,7 +13,7 @@ ___INFO___
   "id": "cvt_temp_public_id",
   "version": 1,
   "securityGroups": [],
-  "displayName": "OpenAI Ads Events API by Stape",
+  "displayName": "OpenAI Ads Conversions API by Stape",
   "categories": [
     "ADVERTISING",
     "MARKETING",
@@ -24,7 +24,7 @@ ___INFO___
     "displayName": "stape.io",
     "thumbnail": "data:image/png;base64,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\u003d\u003d"
   },
-  "description": "Tag that sends events from the GA4/Data Client to OpenAI (ChatGPT) Ads Events API.",
+  "description": "Tag that sends events from the GA4/Data Client to OpenAI (ChatGPT) Ads Conversions API.",
   "containerContexts": [
     "SERVER"
   ]
@@ -108,7 +108,7 @@ ___TEMPLATE_PARAMETERS___
             "value": "inherit",
             "subParams": [],
             "displayValue": "Inherit from client",
-            "help": "If the request follows the \u003cb\u003eGoogle Analytics 4 (GA4)\u003c/b\u003e schema, the following mappings will be applied to convert GA4 \u003ci\u003eEvent Names\u003c/i\u003e into the Events API \u003ci\u003eEvent Name\u003c/i\u003e equivalent:\n\u003cbr/\u003e\u003cbr/\u003e \n\u003cul\u003e\n\u003cli\u003e\u003ci\u003epage_view\u003c/i\u003e → \u003ci\u003epage_viewed\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eview_item\u003c/i\u003e → \u003ci\u003econtents_viewed\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eadd_to_cart\u003c/i\u003e → \u003ci\u003eitems_added\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003ebegin_checkout\u003c/i\u003e → \u003ci\u003echeckout_started\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003epurchase\u003c/i\u003e → \u003ci\u003eorder_created\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003egenerate_lead\u003c/i\u003e → \u003ci\u003elead_created\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003esign_up\u003c/i\u003e → \u003ci\u003eregistration_completed\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cbr/\u003e\nPlease note that it provides partial event mapping. Not all GA4 events can be mapped to Events API Event Name."
+            "help": "If the request follows the \u003cb\u003eGoogle Analytics 4 (GA4)\u003c/b\u003e schema, the following mappings will be applied to convert GA4 \u003ci\u003eEvent Names\u003c/i\u003e into the Conversions API \u003ci\u003eEvent Name\u003c/i\u003e equivalent:\n\u003cbr/\u003e\u003cbr/\u003e \n\u003cul\u003e\n\u003cli\u003e\u003ci\u003epage_view\u003c/i\u003e → \u003ci\u003epage_viewed\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eview_item\u003c/i\u003e → \u003ci\u003econtents_viewed\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eadd_to_cart\u003c/i\u003e → \u003ci\u003eitems_added\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003ebegin_checkout\u003c/i\u003e → \u003ci\u003echeckout_started\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003epurchase\u003c/i\u003e → \u003ci\u003eorder_created\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003egenerate_lead\u003c/i\u003e → \u003ci\u003elead_created\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003esign_up\u003c/i\u003e → \u003ci\u003eregistration_completed\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cbr/\u003e\nPlease note that it provides partial event mapping. Not all GA4 events can be mapped to Conversions API Event Name."
           },
           {
             "value": "custom",
@@ -3033,6 +3033,9 @@ setup: |-
 
 
 ___NOTES___
+
+2026-05-07 - Change Notes:
+  - Standardize tag name across UI fields and help texts.
 
 2026-05-06 - Change Notes:
   - Fix API schema compliance: rename event field `event_type` → `type` and fix endpoint URL to use `pid=` query parameter
