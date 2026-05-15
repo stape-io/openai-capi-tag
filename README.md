@@ -147,4 +147,4 @@ The tag automatically hashes the following fields using SHA-256 before sending: 
 The **OpenAI Ads Conversions API Tag for GTM Server-Side** is developed and maintained by the [Stape Team](https://stape.io/) under the Apache 2.0 license.
 
 ### GTM Gallery Status
-🔴 Not listed
+🟢 [Listed](https://tagmanager.google.com/gallery/#/owners/stape-io/templates/openai-capi-tag)
