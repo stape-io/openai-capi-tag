@@ -14,8 +14,8 @@ The **OpenAI Ads Conversions API Tag** for Google Tag Manager Server-Side allows
 
 ## Installation
 
-1. **Download the Template**:
-   - Download the `template.tpl` file from this repository.
+1. **Import the template from the GTM Template Gallery**:
+   - Add the **OpenAI Ads Conversions API by Stape** tag to your GTM container from the [GTM Template Gallery](https://tagmanager.google.com/gallery/#/owners/stape-io/templates/openai-capi-tag).
 2. **Import to GTM Server Container**:
    - In your GTM Server Container, navigate to the **Templates** section.
    - Click **New** under the **Tag Templates** section.
