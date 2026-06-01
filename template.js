@@ -390,6 +390,8 @@ function validateMappedData(data, mappedData) {
 
   if (!data.pixelId) return 'Pixel ID is required.';
 
+  if (!event.id) return 'Event ID is required.';
+
   if (!event.action_source) return 'Action Source is required.';
 
   if (event.action_source === 'web' && !event.source_url)

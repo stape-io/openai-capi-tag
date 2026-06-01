@@ -1,6 +1,8 @@
 homepage: 'https://stape.io/'
 documentation: 'https://github.com/stape-io/openai-capi-tag'
 versions:
+  - sha: 972a2d320c86d2ec75675cb605bd1291be313261
+    changeNotes: Logging removal.
   - sha: 5191f6d759e20cd8b2e1d55423b31751f986ae2c
     changeNotes: Logging removal.
   - sha: f0af8784cf42126efd78dca70977135dfe9323f7
