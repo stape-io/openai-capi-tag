@@ -1009,6 +1009,8 @@ function validateMappedData(data, mappedData) {
 
   if (!data.pixelId) return 'Pixel ID is required.';
 
+  if (!event.id) return 'Event ID is required.';
+
   if (!event.action_source) return 'Action Source is required.';
 
   if (event.action_source === 'web' && !event.source_url)
@@ -1483,7 +1485,7 @@ scenarios:
       { 'x-ga-gcs': 'G110' },
       { consent_state: { ad_storage: true } }
     ].forEach((eventDataOverride) => {
-      const eventDataBase = { event_name: 'page_view', page_location: 'https://example.com' };
+      const eventDataBase = { event_name: 'page_view', page_location: 'https://example.com', event_id: '123abc' };
       for (const key in eventDataOverride) eventDataBase[key] = eventDataOverride[key];
       mock('getAllEventData', () => eventDataBase);
 
@@ -1557,6 +1559,7 @@ scenarios:
 
     mappings.forEach((scenario) => {
       mock('getAllEventData', () => ({
+        event_id: '123abc',
         event_name: scenario.ga4,
         page_location: 'https://example.com'
       }));
@@ -1581,6 +1584,7 @@ scenarios:
     mockData.eventNameSetup = 'inherit';
 
     mock('getAllEventData', () => ({
+      event_id: '123abc',
       event_name: 'unknown_ga4_event',
       page_location: 'https://example.com'
     }));
@@ -1737,7 +1741,7 @@ scenarios:
         expected: 'from-ed-nopfx'
       }
     ].forEach((scenario) => {
-      const eventDataBase = { event_name: 'page_view', page_location: scenario.pageLocation };
+      const eventDataBase = { event_name: 'page_view', page_location: scenario.pageLocation, event_id: '123abc' };
       for (const key in scenario.eventDataExtra) eventDataBase[key] = scenario.eventDataExtra[key];
       mock('getAllEventData', () => eventDataBase);
 
@@ -1765,6 +1769,7 @@ scenarios:
     mockData.autoMapServerEventDataParameters = true;
 
     mock('getAllEventData', () => ({
+      event_id: '123abc',
       event_name: 'page_view',
       page_location: 'https://example.com/?oppref=my-click-id'
     }));
@@ -1793,6 +1798,7 @@ scenarios:
     mockData.autoMapServerEventDataParameters = true;
 
     mock('getAllEventData', () => ({
+      event_id: '123abc',
       event_name: 'page_view',
       page_location: 'https://example.com/?oppref=my-click-id'
     }));
@@ -1820,6 +1826,7 @@ scenarios:
     mockData.autoMapServerEventDataParameters = true;
 
     mock('getAllEventData', () => ({
+      event_id: '123abc',
       event_name: 'page_view',
       page_location: 'https://example.com/?oppref=click-id'
     }));
@@ -1852,6 +1859,7 @@ scenarios:
     mockData.autoMapServerEventDataParameters = true;
 
     mock('getAllEventData', () => ({
+      event_id: '123abc',
       event_name: 'page_view',
       page_location: 'https://example.com/'
     }));
@@ -1882,7 +1890,7 @@ scenarios:
       { eventDataExtra: { user_data: { email_address: 'ud-addr@example.com' } },          description: 'from user_data.email_address' },
       { eventDataExtra: { user_data: { sha256_email_address: 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3' } }, description: 'from user_data.sha256_email_address' }
     ].forEach((scenario) => {
-      const eventDataBase = { event_name: 'page_view', page_location: 'https://example.com' };
+      const eventDataBase = { event_name: 'page_view', page_location: 'https://example.com', event_id: '123abc' };
       for (const key in scenario.eventDataExtra) eventDataBase[key] = scenario.eventDataExtra[key];
       mock('getAllEventData', () => eventDataBase);
 
@@ -1912,7 +1920,7 @@ scenarios:
       { eventDataExtra: { user_data: { phone_number: '09012345678' } },        description: 'from user_data.phone_number' },
       { eventDataExtra: { user_data: { sha256_phone_number: '09012345678' } }, description: 'from user_data.sha256_phone_number' }
     ].forEach((scenario) => {
-      const eventDataBase = { event_name: 'page_view', page_location: 'https://example.com' };
+      const eventDataBase = { event_name: 'page_view', page_location: 'https://example.com', event_id: '123abc' };
       for (const key in scenario.eventDataExtra) eventDataBase[key] = scenario.eventDataExtra[key];
       mock('getAllEventData', () => eventDataBase);
 
@@ -1949,6 +1957,7 @@ scenarios:
       }
     ].forEach((scenario) => {
       mock('getAllEventData', () => ({
+        event_id: '123abc',
         event_name: 'page_view',
         page_location: 'https://example.com',
         user_id: scenario.userId
@@ -1975,6 +1984,7 @@ scenarios:
     mockData.userDataParametersList = undefined;
 
     mock('getAllEventData', () => ({
+      event_id: '123abc',
       event_name: 'page_view',
       page_location: 'https://example.com',
       user_data: {
@@ -2003,6 +2013,7 @@ scenarios:
     mockData.userDataParametersList = undefined;
 
     mock('getAllEventData', () => ({
+      event_id: '123abc',
       event_name: 'page_view',
       page_location: 'https://example.com',
       ip_override: '203.0.113.1',
@@ -2113,7 +2124,7 @@ scenarios:
         field: 'phone_number_sha256'
       }
     ].forEach((scenario) => {
-      const eventDataBase = { event_name: 'page_view', page_location: 'https://example.com' };
+      const eventDataBase = { event_name: 'page_view', page_location: 'https://example.com', event_id: '123abc' };
       for (const key in scenario.eventDataExtra) eventDataBase[key] = scenario.eventDataExtra[key];
       mock('getAllEventData', () => eventDataBase);
 
@@ -2169,6 +2180,7 @@ scenarios:
     mockData.eventParametersList = undefined;
 
     mock('getAllEventData', () => ({
+      event_id: '123abc',
       event_name: 'purchase',
       page_location: 'https://example.com',
       value: 99.99,
@@ -2197,6 +2209,7 @@ scenarios:
     mockData.eventParametersList = undefined;
 
     mock('getAllEventData', () => ({
+      event_id: '123abc',
       event_name: 'purchase',
       page_location: 'https://example.com',
       items: [
@@ -2233,6 +2246,7 @@ scenarios:
     mockData.eventParametersList = undefined;
 
     mock('getAllEventData', () => ({
+      event_id: '123abc',
       event_name: 'purchase',
       page_location: 'https://example.com',
       ecommerce: {
@@ -2262,6 +2276,7 @@ scenarios:
     mockData.eventParametersList = undefined;
 
     mock('getAllEventData', () => ({
+      event_id: '123abc',
       event_name: 'purchase',
       page_location: 'https://example.com',
       value: 999,
@@ -2311,6 +2326,7 @@ scenarios:
     mockData.itemIdKey = 'sku';
 
     mock('getAllEventData', () => ({
+      event_id: '123abc',
       event_name: 'purchase',
       page_location: 'https://example.com',
       currency: 'USD',
@@ -2337,6 +2353,7 @@ scenarios:
     mockData.eventParametersList = undefined;
 
     mock('getAllEventData', () => ({
+      event_id: '123abc',
       event_name: 'purchase',
       page_location: 'https://example.com',
       items: [
@@ -2637,6 +2654,7 @@ scenarios:
     mockData.autoMapServerEventDataParameters = true;
 
     mock('getAllEventData', () => ({
+      event_id: '123abc',
       event_name: 'page_view',
       page_location: 'https://example.com/?oppref=click-id'
     }));
@@ -2667,6 +2685,7 @@ scenarios:
     mockData.autoMapServerEventDataParameters = true;
 
     mock('getAllEventData', () => ({
+      event_id: '123abc',
       event_name: 'page_view',
       page_location: 'https://custom.mysite.com/?oppref=click-id'
     }));
@@ -2709,6 +2728,7 @@ setup: |-
   mock('computeEffectiveTldPlusOne', () => 'example.com');
 
   mock('getAllEventData', () => ({
+    event_id: '123abc',
     event_name: 'page_view',
     page_location: 'https://example.com'
   }));
@@ -2754,6 +2774,10 @@ setup: |-
 
 ___NOTES___
 
+2026-06-01 - Change Notes:
+  - Enforce API payload integrity by requiring an Event ID during mapped data validation, preventing requests without the required `events[0].id` value
+  - Update unit test fixtures to include `event_id` across mocked event data so existing mapping and fallback scenarios continue validating against the stricter requirement
+
 2026-05-25 Change Notes:
  - Logging removal.
 
@@ -2771,4 +2795,3 @@ ___NOTES___
   - Initial release.
 
 Created on 3/9/2026, 5:48:10 PM
-
