@@ -10,7 +10,6 @@ The **OpenAI Ads Conversions API Tag** for Google Tag Manager Server-Side allows
 - **Click ID Cookie Management**: Automatically reads and sets the `__oppref` (Click ID) cookie server-side to improve attribution.
 - **PII Hashing**: Automatically hashes email addresses, phone numbers, and address fields using SHA-256 before sending. Pre-hashed values are accepted and will not be re-hashed.
 - **Consent Mode Support**: Integrates with Google Consent Mode, checking for `ad_storage` consent before sending data.
-- **Advanced Logging**: Provides options for logging to the GTM console for debugging and persistent logging to BigQuery for monitoring.
 
 ## Installation
 
