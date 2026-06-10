@@ -1,5 +1,4 @@
 const computeEffectiveTldPlusOne = require('computeEffectiveTldPlusOne');
-const createRegex = require('createRegex');
 const encodeUriComponent = require('encodeUriComponent');
 const getAllEventData = require('getAllEventData');
 const getCookieValues = require('getCookieValues');
@@ -112,25 +111,6 @@ function getEmailAddressFromEventData(eventData) {
   return;
 }
 
-function getPhoneNumberFromEventData(eventData) {
-  const eventDataUserData = eventData.user_data || {};
-
-  const phone =
-    eventData.phone ||
-    eventData.phone_number ||
-    eventDataUserData.phone ||
-    eventDataUserData.phone_number ||
-    eventDataUserData.sha256_phone ||
-    eventDataUserData.sha256_phone_number;
-
-  const phoneType = getType(phone);
-
-  if (phoneType === 'string') return phone;
-  else if (phoneType === 'array' || phoneType === 'object') return phone[0];
-
-  return;
-}
-
 function getAddressFromEventData(eventData) {
   const eventDataUserData = eventData.user_data || {};
 
@@ -175,19 +155,15 @@ function addUserData(data, eventData, event) {
     const email = getEmailAddressFromEventData(eventData);
     if (email) userData.email_sha256 = email;
 
-    const phone = getPhoneNumberFromEventData(eventData);
-    if (phone) userData.phone_number_sha256 = phone;
-
     const externalId = eventData.user_id;
     if (externalId) {
-      userData[isHashed(externalId) ? 'external_id_sha256' : 'external_id'] =
-        makeString(externalId);
+      userData.external_id_sha256 = makeString(externalId);
     }
 
     const address = getAddressFromEventData(eventData);
-    if (address.city) userData.city_sha256 = address.city;
-    if (address.postalCode) userData.zip_code_sha256 = address.postalCode;
-    if (address.country) userData.country_sha256 = address.country;
+    if (address.city) userData.city = address.city;
+    if (address.postalCode) userData.zip_code = address.postalCode;
+    if (address.country) userData.country = address.country;
 
     if (eventData.ip_override) userData.ip_address = eventData.ip_override;
 
@@ -195,7 +171,19 @@ function addUserData(data, eventData, event) {
   }
 
   if (data.userDataParametersList) {
-    data.userDataParametersList.forEach((d) => (userData[d.name] = d.value));
+    data.userDataParametersList.forEach((d) => {
+      let name = d.name;
+      // Even after UI removal, the 'data' object might still contain it if the user doesn't force update the tag.
+      if (name === 'phone_number_sha256') return;
+      else if (['city_sha256', 'zip_code_sha256', 'country_sha256'].indexOf(name) !== -1) {
+        // Backward compatibility after OpenAI remove _sha256 requirement, but the template UI still contains it.
+        name = name.replace('_sha256', '');
+      } else if (name === 'external_id') {
+        // Backward compatibility after OpenAI remove _sha256 requirement, but the template UI still contains it.
+        name = 'external_id_sha256';
+      }
+      userData[name] = d.value;
+    });
   }
 
   event.user = userData;
@@ -305,18 +293,6 @@ function addEventParameters(data, eventData, event) {
   return event;
 }
 
-function normalizePhoneNumber(phoneNumber) {
-  if (!phoneNumber) return phoneNumber;
-
-  const nonDigitsRegex = createRegex('[^0-9]', 'g');
-  phoneNumber = makeString(phoneNumber).trim();
-  phoneNumber = phoneNumber.replace(nonDigitsRegex, '');
-
-  if (!phoneNumber) return phoneNumber;
-
-  return '+' + phoneNumber;
-}
-
 function hashDataIfNeeded(event) {
   const userData = event.user;
   const hasUserData = hasProps(userData);
@@ -324,21 +300,12 @@ function hashDataIfNeeded(event) {
   if (hasUserData) {
     const userDataKeysToHash = {
       email_sha256: true,
-      phone_number_sha256: true,
-      external_id_sha256: true,
-      city_sha256: true,
-      zip_code_sha256: true,
-      country_sha256: true
-    };
-
-    const userDataKeysNormalizer = {
-      phone_number_sha256: normalizePhoneNumber
+      external_id_sha256: true
     };
 
     Object.keys(userDataKeysToHash).forEach((key) => {
       let value = userData[key];
       if (!value || isHashed(value)) return;
-      if (userDataKeysNormalizer[key]) value = userDataKeysNormalizer[key](value);
       userData[key] = hashData(value);
     });
   }

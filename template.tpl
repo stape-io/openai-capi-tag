@@ -427,7 +427,7 @@ ___TEMPLATE_PARAMETERS___
         "name": "autoMapUserDataParameters",
         "checkboxText": "Automap User Data Parameters",
         "simpleValueType": true,
-        "help": "If enabled, the tag will attempt to automatically map parameters from the Event Data.\n\u003cbr/\u003e\u003cbr/\u003e\nAny value you manually enter in a field below will always override the auto-mapped value.\n\u003cbr/\u003e\u003cbr/\u003e\nDefault mappings:\n\u003cul\u003e\n\u003cli\u003eEmail:\n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eeventData.email\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.email_address\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.email\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.email_address\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.sha256_email_address\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003ePhone:\n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eeventData.phone\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.phone_number\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.phone\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.phone_number\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.sha256_phone_number\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eCity: \u003ci\u003e eventData.user_data.address.city\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eZIP Code: \u003ci\u003eeventData.user_data.address.postal_code\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eCountry: \u003ci\u003eeventData.user_data.address.country\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eExternal ID / External ID (SHA256 Hashed): \u003ci\u003eeventData.user_id\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eIP Address: \u003ci\u003eeventData.ip_override\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eUser Agent: \u003ci\u003eeventData.user_agent\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e",
+        "help": "If enabled, the tag will attempt to automatically map parameters from the Event Data.\n\u003cbr/\u003e\u003cbr/\u003e\nAny value you manually enter in a field below will always override the auto-mapped value.\n\u003cbr/\u003e\u003cbr/\u003e\nDefault mappings:\n\u003cul\u003e\n\u003cli\u003eEmail:\n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eeventData.email\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.email_address\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.email\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.email_address\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.sha256_email_address\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eExternal ID SHA256 Hashed: \u003ci\u003eeventData.user_id\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eCity: \u003ci\u003e eventData.user_data.address.city\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eZIP Code: \u003ci\u003eeventData.user_data.address.postal_code\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eCountry: \u003ci\u003eeventData.user_data.address.country\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eIP Address: \u003ci\u003eeventData.ip_override\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eUser Agent: \u003ci\u003eeventData.user_agent\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e",
         "defaultValue": true
       },
       {
@@ -451,16 +451,12 @@ ___TEMPLATE_PARAMETERS___
                 "displayValue": "Email Address"
               },
               {
-                "value": "phone_number_sha256",
-                "displayValue": "Phone Number"
-              },
-              {
                 "value": "external_id",
-                "displayValue": "External ID"
+                "displayValue": "External ID (deprecated, use \"External ID SHA256 Hashed\" instead)"
               },
               {
                 "value": "external_id_sha256",
-                "displayValue": "External ID (SHA256 Hashed)"
+                "displayValue": "External ID SHA256 Hashed"
               },
               {
                 "value": "city_sha256",
@@ -493,7 +489,7 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "newRowButtonText": "Add Parameter",
-        "help": "The tag will automatically hash parameters that need it, pre-hashed data is also accepted. Parameters that require hashing:\n\u003cbr/\u003e\n\u003cul\u003e\n\u003cli\u003eEmail Address\u003c/li\u003e\n\u003cli\u003ePhone Number\u003c/li\u003e\n\u003cli\u003eExternal ID (SHA256 Hashed)\u003c/li\u003e\n\u003cli\u003eCity\u003c/li\u003e\n\u003cli\u003eZIP Code\u003c/li\u003e\n\u003cli\u003eCountry\u003c/li\u003e\n\u003c/ul\u003e\n\u003cbr/\u003e\nMake sure to normalize their values prior to hashing when passing already hashed values.",
+        "help": "The tag will automatically hash parameters that need it, pre-hashed data is also accepted. Parameters that require hashing:\n\u003cbr/\u003e\n\u003cul\u003e\n\u003cli\u003eEmail Address\u003c/li\u003e\n\u003cli\u003eExternal ID SHA256 Hashed\u003c/li\u003e\n\u003c/ul\u003e\n\u003cbr/\u003e\nMake sure to normalize their values prior to hashing when passing already hashed values.",
         "displayName": "User Identifiers Parameters"
       }
     ]
@@ -618,7 +614,6 @@ ___TEMPLATE_PARAMETERS___
 ___SANDBOXED_JS_FOR_SERVER___
 
 const computeEffectiveTldPlusOne = require('computeEffectiveTldPlusOne');
-const createRegex = require('createRegex');
 const encodeUriComponent = require('encodeUriComponent');
 const getAllEventData = require('getAllEventData');
 const getCookieValues = require('getCookieValues');
@@ -731,25 +726,6 @@ function getEmailAddressFromEventData(eventData) {
   return;
 }
 
-function getPhoneNumberFromEventData(eventData) {
-  const eventDataUserData = eventData.user_data || {};
-
-  const phone =
-    eventData.phone ||
-    eventData.phone_number ||
-    eventDataUserData.phone ||
-    eventDataUserData.phone_number ||
-    eventDataUserData.sha256_phone ||
-    eventDataUserData.sha256_phone_number;
-
-  const phoneType = getType(phone);
-
-  if (phoneType === 'string') return phone;
-  else if (phoneType === 'array' || phoneType === 'object') return phone[0];
-
-  return;
-}
-
 function getAddressFromEventData(eventData) {
   const eventDataUserData = eventData.user_data || {};
 
@@ -794,19 +770,15 @@ function addUserData(data, eventData, event) {
     const email = getEmailAddressFromEventData(eventData);
     if (email) userData.email_sha256 = email;
 
-    const phone = getPhoneNumberFromEventData(eventData);
-    if (phone) userData.phone_number_sha256 = phone;
-
     const externalId = eventData.user_id;
     if (externalId) {
-      userData[isHashed(externalId) ? 'external_id_sha256' : 'external_id'] =
-        makeString(externalId);
+      userData.external_id_sha256 = makeString(externalId);
     }
 
     const address = getAddressFromEventData(eventData);
-    if (address.city) userData.city_sha256 = address.city;
-    if (address.postalCode) userData.zip_code_sha256 = address.postalCode;
-    if (address.country) userData.country_sha256 = address.country;
+    if (address.city) userData.city = address.city;
+    if (address.postalCode) userData.zip_code = address.postalCode;
+    if (address.country) userData.country = address.country;
 
     if (eventData.ip_override) userData.ip_address = eventData.ip_override;
 
@@ -814,7 +786,19 @@ function addUserData(data, eventData, event) {
   }
 
   if (data.userDataParametersList) {
-    data.userDataParametersList.forEach((d) => (userData[d.name] = d.value));
+    data.userDataParametersList.forEach((d) => {
+      let name = d.name;
+      // Even after UI removal, the 'data' object might still contain it if the user doesn't force update the tag.
+      if (name === 'phone_number_sha256') return;
+      else if (['city_sha256', 'zip_code_sha256', 'country_sha256'].indexOf(name) !== -1) {
+        // Backward compatibility after OpenAI remove _sha256 requirement, but the template UI still contains it.
+        name = name.replace('_sha256', '');
+      } else if (name === 'external_id') {
+        // Backward compatibility after OpenAI remove _sha256 requirement, but the template UI still contains it.
+        name = 'external_id_sha256';
+      }
+      userData[name] = d.value;
+    });
   }
 
   event.user = userData;
@@ -924,18 +908,6 @@ function addEventParameters(data, eventData, event) {
   return event;
 }
 
-function normalizePhoneNumber(phoneNumber) {
-  if (!phoneNumber) return phoneNumber;
-
-  const nonDigitsRegex = createRegex('[^0-9]', 'g');
-  phoneNumber = makeString(phoneNumber).trim();
-  phoneNumber = phoneNumber.replace(nonDigitsRegex, '');
-
-  if (!phoneNumber) return phoneNumber;
-
-  return '+' + phoneNumber;
-}
-
 function hashDataIfNeeded(event) {
   const userData = event.user;
   const hasUserData = hasProps(userData);
@@ -943,21 +915,12 @@ function hashDataIfNeeded(event) {
   if (hasUserData) {
     const userDataKeysToHash = {
       email_sha256: true,
-      phone_number_sha256: true,
-      external_id_sha256: true,
-      city_sha256: true,
-      zip_code_sha256: true,
-      country_sha256: true
-    };
-
-    const userDataKeysNormalizer = {
-      phone_number_sha256: normalizePhoneNumber
+      external_id_sha256: true
     };
 
     Object.keys(userDataKeysToHash).forEach((key) => {
       let value = userData[key];
       if (!value || isHashed(value)) return;
-      if (userDataKeysNormalizer[key]) value = userDataKeysNormalizer[key](value);
       userData[key] = hashData(value);
     });
   }
@@ -1907,36 +1870,6 @@ scenarios:
         assertApi('gtmOnFailure').wasNotCalled();
       });
     });
-- name: '[User Data] Phone is auto-mapped and stored in phone_number_sha256 from multiple
-    sources'
-  code: |-
-    mockData.autoMapUserDataParameters = true;
-    mockData.userDataParametersList = undefined;
-
-    [
-      { eventDataExtra: { phone: '09012345678' },                              description: 'from eventData.phone' },
-      { eventDataExtra: { phone_number: '09012345678' },                       description: 'from eventData.phone_number' },
-      { eventDataExtra: { user_data: { phone: '09012345678' } },               description: 'from user_data.phone' },
-      { eventDataExtra: { user_data: { phone_number: '09012345678' } },        description: 'from user_data.phone_number' },
-      { eventDataExtra: { user_data: { sha256_phone_number: '09012345678' } }, description: 'from user_data.sha256_phone_number' }
-    ].forEach((scenario) => {
-      const eventDataBase = { event_name: 'page_view', page_location: 'https://example.com', event_id: '123abc' };
-      for (const key in scenario.eventDataExtra) eventDataBase[key] = scenario.eventDataExtra[key];
-      mock('getAllEventData', () => eventDataBase);
-
-      mock('sendHttpRequest', (url, options, body) => {
-        const parsed = JSON.parse(body);
-        assertThat(parsed.events[0].user.phone_number_sha256).isDefined();
-        return Promise.create((resolve) => resolve({ statusCode: 200 }));
-      });
-
-      runCode(mockData);
-
-      callLater(() => {
-        assertApi('gtmOnSuccess').wasCalled();
-        assertApi('gtmOnFailure').wasNotCalled();
-      });
-    });
 - name: '[User Data] external_id key depends on whether user_id is already hashed'
   code: |-
     mockData.autoMapUserDataParameters = true;
@@ -1947,8 +1880,8 @@ scenarios:
     [
       {
         userId: 'plain-user-123',
-        expectKey: 'external_id',
-        notExpectKey: 'external_id_sha256'
+        expectKey: 'external_id_sha256',
+        notExpectKey: 'external_id'
       },
       {
         userId: alreadyHashed,
@@ -1995,9 +1928,9 @@ scenarios:
     mock('sendHttpRequest', (url, options, body) => {
       const parsed = JSON.parse(body);
       const user = parsed.events[0].user;
-      assertThat(user.city_sha256).isDefined();
-      assertThat(user.zip_code_sha256).isDefined();
-      assertThat(user.country_sha256).isDefined();
+      assertThat(user.city).isDefined();
+      assertThat(user.zip_code).isDefined();
+      assertThat(user.country).isDefined();
       return Promise.create((resolve) => resolve({ statusCode: 200 }));
     });
 
@@ -2050,17 +1983,10 @@ scenarios:
         assertFn: (user) => assertThat(user.email_sha256).isEqualTo(alreadyHashed)
       },
       {
-        params: [{ name: 'phone_number_sha256', value: '090-1234-5678' }],
+        params: [{ name: 'city', value: 'New York' }],
         assertFn: (user) => {
-          assertThat(user.phone_number_sha256).isNotEqualTo('090-1234-5678');
-          assertThat(user.phone_number_sha256.match('^[A-Fa-f0-9]{64}$')).isNotNull();
-        }
-      },
-      {
-        params: [{ name: 'city_sha256', value: 'New York' }],
-        assertFn: (user) => {
-          assertThat(user.city_sha256).isNotEqualTo('New York');
-          assertThat(user.city_sha256.match('^[A-Fa-f0-9]{64}$')).isNotNull();
+          assertThat(user.city).isEqualTo('New York');
+          assertThat(user.city.match('^[A-Fa-f0-9]{64}$')).isNull();
         }
       }
     ].forEach((scenario) => {
@@ -2086,7 +2012,6 @@ scenarios:
     const hash64 = 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3';
     mockData.userDataParametersList = [
       { name: 'email_sha256',        value: hash64 },
-      { name: 'phone_number_sha256', value: hash64 },
       { name: 'external_id',         value: 'user-abc' },
       { name: 'ip_address',          value: '1.2.3.4' },
       { name: 'user_agent',          value: 'TestAgent/1.0' }
@@ -2096,8 +2021,8 @@ scenarios:
       const parsed = JSON.parse(body);
       const user = parsed.events[0].user;
       assertThat(user.email_sha256).isEqualTo(hash64);
-      assertThat(user.phone_number_sha256).isEqualTo(hash64);
-      assertThat(user.external_id).isEqualTo('user-abc');
+      assertThat(user.external_id_sha256).isNotEqualTo('user-abc');
+      assertThat(user.external_id_sha256).isDefined();
       assertThat(user.ip_address).isEqualTo('1.2.3.4');
       assertThat(user.user_agent).isEqualTo('TestAgent/1.0');
       return Promise.create((resolve) => resolve({ statusCode: 200 }));
@@ -2109,7 +2034,7 @@ scenarios:
       assertApi('gtmOnSuccess').wasCalled();
       assertApi('gtmOnFailure').wasNotCalled();
     });
-- name: '[User Data] Email and phone from array sources return first element'
+- name: '[User Data] Email from array source return first element'
   code: |-
     mockData.autoMapUserDataParameters = true;
     mockData.userDataParametersList = undefined;
@@ -2118,10 +2043,6 @@ scenarios:
       {
         eventDataExtra: { user_data: { email: ['arr@example.com', 'other@example.com'] } },
         field: 'email_sha256'
-      },
-      {
-        eventDataExtra: { user_data: { phone: ['+15551234567', '+15559999999'] } },
-        field: 'phone_number_sha256'
       }
     ].forEach((scenario) => {
       const eventDataBase = { event_name: 'page_view', page_location: 'https://example.com', event_id: '123abc' };
@@ -2763,16 +2684,16 @@ setup: |-
     userDataParametersList: undefined,
     autoMapEventParameters: false,
     eventParametersList: undefined,
-    adStorageConsent: 'optional',
-    logType: 'always',
-    bigQueryLogType: 'no',
-    logBigQueryProjectId: undefined,
-    logBigQueryDatasetId: undefined,
-    logBigQueryTableId: undefined
+    adStorageConsent: 'optional'
   };
 
 
 ___NOTES___
+
+2026-06-10 - Change Notes:
+  - Remove phone number support: `phone_number_sha256` is no longer accepted by the OpenAI API; the UI option, auto-mapping, normalization, and hashing logic for phone numbers have all been removed
+  - Replace hashed geographic fields with plain values: `city`, `zip_code`, and `country` are now sent as raw strings instead of SHA-256 hashes, matching the updated OpenAI API schema; existing tag configurations using the old `_sha256` field names are automatically translated for backward compatibility
+  - Deprecate plain `external_id`: auto-mapping now always routes `user_id` to `external_id_sha256`; manually configured `external_id` entries are silently remapped to `external_id_sha256` for backward compatibility
 
 2026-06-01 - Change Notes:
   - Enforce API payload integrity by requiring an Event ID during mapped data validation, preventing requests without the required `events[0].id` value
@@ -2795,3 +2716,4 @@ ___NOTES___
   - Initial release.
 
 Created on 3/9/2026, 5:48:10 PM
+
