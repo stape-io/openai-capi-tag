@@ -8,7 +8,7 @@ The **OpenAI Ads Conversions API Tag** for Google Tag Manager Server-Side allows
 - **Flexible Event Mapping**: Supports standard OpenAI event types, inherits and maps from GA4 event names automatically, or sends fully custom event names.
 - **Automatic Data Mapping**: Intelligently maps parameters from incoming GTM event data for server event data, user identifiers, and event parameters.
 - **Click ID Cookie Management**: Automatically reads and sets the `__oppref` (Click ID) cookie server-side to improve attribution.
-- **PII Hashing**: Automatically hashes email addresses, phone numbers, and address fields using SHA-256 before sending. Pre-hashed values are accepted and will not be re-hashed.
+- **PII Hashing**: Automatically hashes email addresses and User IDs using SHA-256 before sending. Pre-hashed values are accepted and will not be re-hashed.
 - **Consent Mode Support**: Integrates with Google Consent Mode, checking for `ad_storage` consent before sending data.
 
 ## Installation
@@ -108,23 +108,22 @@ The Click ID (`oppref`) is sourced in the following priority order:
 
 | Parameter | Description |
 | :--- | :--- |
-| **Automap User Data Parameters** | If enabled, automatically maps Email, Phone, City, ZIP Code, Country, External ID, IP Address, and User Agent from the Event Data. |
-| **User Identifiers Parameters** | Manually specify user identifiers. Supported fields: `Email Address`, `Phone Number`, `External ID`, `External ID (SHA256 Hashed)`, `City`, `ZIP Code`, `Country`, `IP Address`, `User Agent`. |
+| **Automap User Data Parameters** | If enabled, automatically maps Email, City, ZIP Code, Country, External ID, IP Address, and User Agent from the Event Data. |
+| **User Identifiers Parameters** | Manually specify user identifiers. Supported fields: `Email Address`, `External ID`, `External ID SHA256 Hashed`, `City`, `ZIP Code`, `Country`, `IP Address`, `User Agent`. |
 
 **Auto-mapping sources:**
 
 | Field | Event Data Sources |
 | :--- | :--- |
 | Email | `email`, `email_address`, `user_data.email`, `user_data.email_address`, `user_data.sha256_email_address` |
-| Phone | `phone`, `phone_number`, `user_data.phone`, `user_data.phone_number`, `user_data.sha256_phone_number` |
+| External ID | `user_id` |
 | City | `user_data.address.city` |
 | ZIP Code | `user_data.address.postal_code` |
 | Country | `user_data.address.country` |
-| External ID | `user_id` |
 | IP Address | `ip_override` |
 | User Agent | `user_agent` |
 
-The tag automatically hashes the following fields using SHA-256 before sending: Email, Phone, External ID (SHA256), City, ZIP Code, Country. Pre-hashed values (64-character hex strings) are detected and will not be re-hashed.
+The tag automatically hashes the following fields using SHA-256 before sending: Email, External ID (SHA256), City, ZIP Code, Country. Pre-hashed values (64-character hex strings) are detected and will not be re-hashed.
 
 ### Event Parameters
 
