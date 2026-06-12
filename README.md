@@ -137,6 +137,7 @@ The tag automatically hashes the following fields using SHA-256 before sending: 
 
 ## Useful Resources
 
+- [Advertising in ChatGPT: how to track ChatGPT Ads’ performance](https://stape.io/blog/chatgpt-ads-tracking)
 - [OpenAI Docs: OpenAI Ads Conversions API](https://developers.openai.com/ads/conversions-api)
 - [OpenAI Docs: Supported Events](https://developers.openai.com/ads/supported-events)
 
