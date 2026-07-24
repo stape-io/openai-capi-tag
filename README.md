@@ -30,7 +30,7 @@ The **OpenAI Ads Conversions API Tag** for Google Tag Manager Server-Side allows
 
 | Parameter | Description |
 | :--- | :--- |
-| **Event Name Setup Method** | Choose `Standard` to select a predefined event type, `Inherit from client` to automatically map from GA4 event names, or `Custom` to enter a custom event name. |
+| **Event Name Setup Method** | Choose `Standard` to select a predefined event type, `Inherit from client` to automatically map from GA4 event names, or `Custom` to enter a custom event name. Regardless of the method chosen, the resulting event name is always checked against the Standard Event Types list below: if it matches, the event is sent as that Standard Event; if it doesn't, the event is sent as a Custom Event (`custom_event_name` set to that value). |
 | **Pixel ID** | Your OpenAI Pixel ID from your ad account. |
 | **API Key** | Your OpenAI API Key, provided by the OpenAI Account team. |
 | **Action Source** | Where the event occurred: `Web`, `Mobile App`, `Offline`, `Physical Store`, `Phone Call`, or `Email`. |
@@ -42,6 +42,8 @@ The **OpenAI Ads Conversions API Tag** for Google Tag Manager Server-Side allows
 | Event Name |
 | :--- |
 | `page_viewed` |
+| `app_installed` |
+| `app_opened` |
 | `appointment_scheduled` |
 | `checkout_started` |
 | `contents_viewed` |
@@ -51,6 +53,8 @@ The **OpenAI Ads Conversions API Tag** for Google Tag Manager Server-Side allows
 | `registration_completed` |
 | `subscription_created` |
 | `trial_started` |
+
+This list applies no matter which **Event Name Setup Method** is used: whenever the resolved event name (from `Standard`, `Inherit from client`, or `Custom`) matches one of the names above, the event is sent as that Standard Event; otherwise, it is sent as a Custom Event with `custom_event_name` set to the resolved name.
 
 #### GA4 → Conversions API Event Name Mapping (Inherit from client)
 
@@ -65,13 +69,14 @@ When using **Inherit from client**, the following GA4 event names are mapped:
 | `purchase` | `order_created` |
 | `generate_lead` | `lead_created` |
 | `sign_up` | `registration_completed` |
+| Any other GA4 event that matches a Standard Event Type | that Standard Event Type |
 | Any other GA4 event | `custom` (with `custom_event_name` set) |
 
 #### Custom Event Name Requirements
 
 - Maximum 64 characters
 - Accepted characters: lowercase alphanumeric, `_`, and `-`
-- Cannot overlap with Standard Event Names
+- If the entered name matches a Standard Event Type, it is sent as that Standard Event instead of a Custom Event
 
 ### Click ID Cookie Settings
 
