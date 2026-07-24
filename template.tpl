@@ -56,6 +56,14 @@ ___TEMPLATE_PARAMETERS___
                     "displayValue": "page_viewed"
                   },
                   {
+                    "value": "app_installed",
+                    "displayValue": "app_installed"
+                  },
+                  {
+                    "value": "app_opened",
+                    "displayValue": "app_opened"
+                  },
+                  {
                     "value": "appointment_scheduled",
                     "displayValue": "appointment_scheduled"
                   },
@@ -100,15 +108,17 @@ ___TEMPLATE_PARAMETERS___
                     "type": "NON_EMPTY"
                   }
                 ],
-                "alwaysInSummary": true
+                "alwaysInSummary": true,
+                "macrosInSelect": true
               }
-            ]
+            ],
+            "help": "The selected \u003ci\u003eEvent Name\u003c/i\u003e will be sent as a Standard Event.\n\u003cbr/\u003e\u003cbr/\u003e\nIf a variable is used and it resolves to a value that is not one of the Standard Event Names, the event will be sent as a Custom Event instead, using that resolved value as the \u003ci\u003eCustom Event Name\u003c/i\u003e."
           },
           {
             "value": "inherit",
             "subParams": [],
             "displayValue": "Inherit from client",
-            "help": "If the request follows the \u003cb\u003eGoogle Analytics 4 (GA4)\u003c/b\u003e schema, the following mappings will be applied to convert GA4 \u003ci\u003eEvent Names\u003c/i\u003e into the Conversions API \u003ci\u003eEvent Name\u003c/i\u003e equivalent:\n\u003cbr/\u003e\u003cbr/\u003e \n\u003cul\u003e\n\u003cli\u003e\u003ci\u003epage_view\u003c/i\u003e → \u003ci\u003epage_viewed\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eview_item\u003c/i\u003e → \u003ci\u003econtents_viewed\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eadd_to_cart\u003c/i\u003e → \u003ci\u003eitems_added\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003ebegin_checkout\u003c/i\u003e → \u003ci\u003echeckout_started\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003epurchase\u003c/i\u003e → \u003ci\u003eorder_created\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003egenerate_lead\u003c/i\u003e → \u003ci\u003elead_created\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003esign_up\u003c/i\u003e → \u003ci\u003eregistration_completed\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cbr/\u003e\nPlease note that it provides partial event mapping. Not all GA4 events can be mapped to Conversions API Event Name."
+            "help": "If the request follows the \u003cb\u003eGoogle Analytics 4 (GA4)\u003c/b\u003e schema, the following mappings will be applied to convert GA4 \u003ci\u003eEvent Names\u003c/i\u003e into the Conversions API \u003ci\u003eEvent Name\u003c/i\u003e equivalent:\n\u003cbr/\u003e\u003cbr/\u003e \n\u003cul\u003e\n\u003cli\u003e\u003ci\u003epage_view\u003c/i\u003e → \u003ci\u003epage_viewed\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eview_item\u003c/i\u003e → \u003ci\u003econtents_viewed\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eadd_to_cart\u003c/i\u003e → \u003ci\u003eitems_added\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003ebegin_checkout\u003c/i\u003e → \u003ci\u003echeckout_started\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003epurchase\u003c/i\u003e → \u003ci\u003eorder_created\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003egenerate_lead\u003c/i\u003e → \u003ci\u003elead_created\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003esign_up\u003c/i\u003e → \u003ci\u003eregistration_completed\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cbr/\u003e\nPlease note that it provides partial event mapping. Not all GA4 events can be mapped to Conversions API Event Name.\n\u003cbr/\u003e\u003cbr/\u003e\nAfter mapping, if the resulting event name matches a Standard Event Name, it will be sent as that Standard Event; otherwise, it will be sent as a Custom Event using that event name."
           },
           {
             "value": "custom",
@@ -126,7 +136,7 @@ ___TEMPLATE_PARAMETERS___
               }
             ],
             "displayValue": "Custom",
-            "help": "The custom event name cannot overlap with Standard Event Names.\n\u003cbr/\u003e\nRequirements: \n\u003cul\u003e\n\u003cli\u003eCharacters limit: 64\u003c/li\u003e\n\u003cli\u003eAccepted characters: lowercase alphanumeric, \"_\" and \"-\"\u003c/li\u003e\n\u003c/ul\u003e"
+            "help": "If the entered \u003ci\u003eEvent Name\u003c/i\u003e matches a Standard Event Name, it will be sent as that Standard Event instead of a Custom Event.\n\u003cbr/\u003e\nRequirements: \n\u003cul\u003e\n\u003cli\u003eCharacters limit: 64\u003c/li\u003e\n\u003cli\u003eAccepted characters: lowercase alphanumeric, \"_\" and \"-\"\u003c/li\u003e\n\u003c/ul\u003e"
           }
         ],
         "simpleValueType": true,
@@ -238,7 +248,15 @@ ___TEMPLATE_PARAMETERS___
         "checkboxText": "Set Click ID cookie",
         "simpleValueType": true,
         "defaultValue": true,
-        "help": "If \u003cb\u003efalse\u003c/b\u003e, and if an existing Click ID is found on the sources below, it will still be sent in the request but not stored as a cookie.\n\u003cbr/\u003e\u003cbr/\u003e\nIf \u003cb\u003etrue\u003c/b\u003e, the Click ID will be sent in the request and stored as the \u003ci\u003e__oppref\u003c/i\u003e cookie by server GTM.\n\u003cbr/\u003e\u003cbr/\u003e\nThe Click ID is, in this order, sourced from:\n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eUser Identifiers Parameters\u003c/i\u003e section\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eoppref \u003c/i\u003e URL parameter\u003c/li\u003e\n\u003cli\u003e\u003ci\u003e__oppref\u003c/i\u003e cookie\u003c/li\u003e\n\u003cli\u003e\u003ci\u003ecommon_cookie.__oppref\u003c/i\u003e Event Data parameter\u003c/li\u003e\n\u003cli\u003e\u003ci\u003e__oppref\u003c/i\u003e Event Data parameter\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eoppref\u003c/i\u003e Event Data parameter\u003c/li\u003e\n\u003c/ul\u003e"
+        "help": "If \u003cb\u003efalse\u003c/b\u003e, and if an existing Click ID is found on the sources below, it will still be sent in the request but not stored as a cookie.\n\u003cbr/\u003e\u003cbr/\u003e\nIf \u003cb\u003etrue\u003c/b\u003e, the Click ID will be sent in the request and stored as the \u003ci\u003e__oppref\u003c/i\u003e cookie by server GTM.\n\u003cbr/\u003e\u003cbr/\u003e\nThe Click ID is, in this order, sourced from:\n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eServer Event Data Parameters\u003c/i\u003e section\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eoppref \u003c/i\u003e URL parameter\u003c/li\u003e\n\u003cli\u003e\u003ci\u003e__oppref\u003c/i\u003e cookie\u003c/li\u003e\n\u003cli\u003e\u003ci\u003ecommon_cookie.__oppref\u003c/i\u003e Event Data parameter\u003c/li\u003e\n\u003cli\u003e\u003ci\u003e__oppref\u003c/i\u003e Event Data parameter\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eoppref\u003c/i\u003e Event Data parameter\u003c/li\u003e\n\u003c/ul\u003e"
+      },
+      {
+        "type": "CHECKBOX",
+        "name": "setBrowserIdCookie",
+        "checkboxText": "Set Browser ID cookie",
+        "simpleValueType": true,
+        "defaultValue": true,
+        "help": "If \u003cb\u003efalse\u003c/b\u003e, and if an existing Browser ID is found on the sources below, it will still be sent in the request but not stored as a cookie.\n\u003cbr/\u003e\u003cbr/\u003e\nIf \u003cb\u003etrue\u003c/b\u003e, the Browser ID will be sent in the request and stored as the \u003ci\u003e__obref\u003c/i\u003e cookie by server GTM.\n\u003cbr/\u003e\u003cbr/\u003e\nThe Browser ID is, in this order, sourced from:\n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eUser Identifiers Parameters\u003c/i\u003e section\u003c/li\u003e\n\u003cli\u003e\u003ci\u003e__obref\u003c/i\u003e cookie\u003c/li\u003e\n\u003cli\u003e\u003ci\u003ecommon_cookie.__obref\u003c/i\u003e Event Data parameter\u003c/li\u003e\n\u003cli\u003e\u003ci\u003e__obref\u003c/i\u003e Event Data parameter\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eobref\u003c/i\u003e Event Data parameter\u003c/li\u003e\n\u003c/ul\u003e"
       },
       {
         "type": "GROUP",
@@ -305,7 +323,7 @@ ___TEMPLATE_PARAMETERS___
           {
             "type": "TEXT",
             "name": "cookieExpiration",
-            "displayName": "Cookie Expiration",
+            "displayName": "Click ID Cookie Expiration",
             "simpleValueType": true,
             "valueUnit": "days",
             "defaultValue": 30,
@@ -313,12 +331,44 @@ ___TEMPLATE_PARAMETERS___
               {
                 "type": "NON_EMPTY"
               }
+            ],
+            "enablingConditions": [
+              {
+                "paramName": "setClickIdCookie",
+                "paramValue": true,
+                "type": "EQUALS"
+              }
+            ]
+          },
+          {
+            "type": "TEXT",
+            "name": "cookieExpirationBrowserId",
+            "displayName": "Browser ID Cookie Expiration",
+            "simpleValueType": true,
+            "valueUnit": "days",
+            "defaultValue": 365,
+            "valueValidators": [
+              {
+                "type": "NON_EMPTY"
+              }
+            ],
+            "enablingConditions": [
+              {
+                "paramName": "setBrowserIdCookie",
+                "paramValue": true,
+                "type": "EQUALS"
+              }
             ]
           }
         ],
         "enablingConditions": [
           {
             "paramName": "setClickIdCookie",
+            "paramValue": true,
+            "type": "EQUALS"
+          },
+          {
+            "paramName": "setBrowserIdCookie",
             "paramValue": true,
             "type": "EQUALS"
           }
@@ -427,7 +477,7 @@ ___TEMPLATE_PARAMETERS___
         "name": "autoMapUserDataParameters",
         "checkboxText": "Automap User Data Parameters",
         "simpleValueType": true,
-        "help": "If enabled, the tag will attempt to automatically map parameters from the Event Data.\n\u003cbr/\u003e\u003cbr/\u003e\nAny value you manually enter in a field below will always override the auto-mapped value.\n\u003cbr/\u003e\u003cbr/\u003e\nDefault mappings:\n\u003cul\u003e\n\u003cli\u003eEmail:\n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eeventData.email\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.email_address\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.email\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.email_address\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.sha256_email_address\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eExternal ID SHA256 Hashed: \u003ci\u003eeventData.user_id\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eCity: \u003ci\u003e eventData.user_data.address.city\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eZIP Code: \u003ci\u003eeventData.user_data.address.postal_code\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eCountry: \u003ci\u003eeventData.user_data.address.country\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eIP Address: \u003ci\u003eeventData.ip_override\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eUser Agent: \u003ci\u003eeventData.user_agent\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e",
+        "help": "If enabled, the tag will attempt to automatically map parameters from the Event Data.\n\u003cbr/\u003e\u003cbr/\u003e\nAny value you manually enter in a field below will always override the auto-mapped value.\n\u003cbr/\u003e\u003cbr/\u003e\nDefault mappings:\n\u003cul\u003e\n\u003cli\u003eEmail:\n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eeventData.email\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.email_address\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.email\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.email_address\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.sha256_email_address\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eExternal ID SHA256 Hashed: \u003ci\u003eeventData.user_id\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eCity: \u003ci\u003e eventData.user_data.address.city\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eZIP Code: \u003ci\u003eeventData.user_data.address.postal_code\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eCountry: \u003ci\u003eeventData.user_data.address.country\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eIP Address: \u003ci\u003eeventData.ip_override\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eUser Agent: \u003ci\u003eeventData.user_agent\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eBrowser ID:\n\u003cul\u003e\n\u003cli\u003e\u003ci\u003e__obref\u003c/i\u003e cookie\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.common_cookie.__obref\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.__obref\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.obref\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e",
         "defaultValue": true
       },
       {
@@ -477,6 +527,10 @@ ___TEMPLATE_PARAMETERS___
               {
                 "value": "user_agent",
                 "displayValue": "User Agent"
+              },
+              {
+                "value": "obref",
+                "displayValue": "Browser ID (\u0027__obref\u0027 Cookie)"
               }
             ]
           },
@@ -615,6 +669,7 @@ ___SANDBOXED_JS_FOR_SERVER___
 
 const computeEffectiveTldPlusOne = require('computeEffectiveTldPlusOne');
 const encodeUriComponent = require('encodeUriComponent');
+const generateRandom = require('generateRandom');
 const getAllEventData = require('getAllEventData');
 const getCookieValues = require('getCookieValues');
 const getEventData = require('getEventData');
@@ -673,12 +728,17 @@ function setCookies(data, mappedData) {
     samesite: data.cookieSameSite || 'Lax',
     path: '/',
     secure: true,
-    httpOnly: !!data.cookieHttpOnly,
-    'max-age': 60 * 60 * 24 * makeInteger(data.cookieExpiration || 30)
+    httpOnly: !!data.cookieHttpOnly
   };
 
   if (data.setClickIdCookie && mappedData.events[0].oppref) {
+    cookieOptions['max-age'] = 60 * 60 * 24 * makeInteger(data.cookieExpiration || 30);
     setCookie('__oppref', mappedData.events[0].oppref, cookieOptions, false);
+  }
+
+  if (data.setBrowserIdCookie && mappedData.events[0].user.obref) {
+    cookieOptions['max-age'] = 60 * 60 * 24 * makeInteger(data.cookieExpirationBrowserId || 365);
+    setCookie('__obref', mappedData.events[0].user.obref, cookieOptions, false);
   }
 }
 
@@ -763,6 +823,18 @@ function getClickId(eventData, clickIdName) {
   if (clickId) return clickId;
 }
 
+function getBrowserId(data, eventData) {
+  const browserId =
+    getCookieValues('__obref')[0] ||
+    (eventData.common_cookie || {})['__obref'] ||
+    eventData.__obref ||
+    eventData.obref;
+
+  if (browserId) return browserId;
+
+  if (data.setBrowserIdCookie) return generateUUID();
+}
+
 function addUserData(data, eventData, event) {
   const userData = {};
 
@@ -783,6 +855,9 @@ function addUserData(data, eventData, event) {
     if (eventData.ip_override) userData.ip_address = eventData.ip_override;
 
     if (eventData.user_agent) userData.user_agent = eventData.user_agent;
+
+    const browserId = getBrowserId(data, eventData);
+    if (browserId) userData.obref = browserId;
   }
 
   if (data.userDataParametersList) {
@@ -814,6 +889,8 @@ function getEventParametersType(eventName) {
     items_added: 'contents',
     order_created: 'contents',
     page_viewed: 'contents',
+    app_installed: 'customer_action',
+    app_opened: 'customer_action',
     appointment_scheduled: 'customer_action',
     lead_created: 'customer_action',
     registration_completed: 'customer_action',
@@ -929,6 +1006,27 @@ function hashDataIfNeeded(event) {
 }
 
 function getEventNameInfo(data, eventData) {
+  const STANDARD_EVENT_NAMES = [
+    'page_viewed',
+    'app_installed',
+    'app_opened',
+    'appointment_scheduled',
+    'checkout_started',
+    'contents_viewed',
+    'items_added',
+    'lead_created',
+    'order_created',
+    'registration_completed',
+    'subscription_created',
+    'trial_started'
+  ];
+
+  const toEventNameInfo = (eventName) => {
+    return STANDARD_EVENT_NAMES.indexOf(eventName) !== -1
+      ? { eventName: eventName }
+      : { eventName: 'custom', customEventName: eventName };
+  };
+
   if (data.eventNameSetup === 'inherit') {
     const eventName = eventData.event_name;
     const gaToEventName = {
@@ -941,15 +1039,12 @@ function getEventNameInfo(data, eventData) {
       view_item: 'contents_viewed'
     };
 
-    if (gaToEventName[eventName]) {
-      return { eventName: gaToEventName[eventName] };
-    }
-    return { eventName: 'custom', customEventName: eventName };
+    return toEventNameInfo(gaToEventName[eventName] || eventName);
   }
 
-  return data.eventNameSetup === 'standard'
-    ? { eventName: data.eventNameStandard }
-    : { eventName: 'custom', customEventName: data.eventNameCustom };
+  return toEventNameInfo(
+    data.eventNameSetup === 'standard' ? data.eventNameStandard : data.eventNameCustom
+  );
 }
 
 function mapEvent(data, eventData) {
@@ -980,6 +1075,9 @@ function validateMappedData(data, mappedData) {
     return 'Source URL is required when Action Source is web.';
 
   if (!event.timestamp_ms) return 'Timestamp is required.';
+
+  if (!event.type || (event.type === 'custom' && !event.custom_event_name))
+    return 'Event Name is required.';
 
   if (
     getType(event.data.contents) === 'array' &&
@@ -1075,6 +1173,26 @@ function isValidValue(value) {
 function roundValue(value) {
   if (!value) return value;
   return Math.round(makeNumber(value) * 100) / 100;
+}
+
+function random() {
+  return generateRandom(1000000000000000, 10000000000000000) / 10000000000000000;
+}
+
+function generateUUID() {
+  function s(n) {
+    return h((random() * (1 << (n << 2))) ^ getTimestampMillis()).slice(-n);
+  }
+  function h(n) {
+    return (n | 0).toString(16);
+  }
+  return [
+    s(4) + s(4),
+    s(4),
+    '4' + s(3),
+    h(8 | (random() * 4)) + s(3),
+    getTimestampMillis().toString(16).slice(-10) + s(2)
+  ].join('-');
 }
 
 function convertCurrencyValueToMinorUnit(value, currency) {
@@ -1323,6 +1441,10 @@ ___SERVER_PERMISSIONS___
               {
                 "type": 1,
                 "string": "__oppref"
+              },
+              {
+                "type": 1,
+                "string": "__obref"
               }
             ]
           }
@@ -1374,6 +1496,53 @@ ___SERVER_PERMISSIONS___
                   {
                     "type": 1,
                     "string": "__oppref"
+                  },
+                  {
+                    "type": 1,
+                    "string": "*"
+                  },
+                  {
+                    "type": 1,
+                    "string": "*"
+                  },
+                  {
+                    "type": 1,
+                    "string": "any"
+                  },
+                  {
+                    "type": 1,
+                    "string": "any"
+                  }
+                ]
+              },
+              {
+                "type": 3,
+                "mapKey": [
+                  {
+                    "type": 1,
+                    "string": "name"
+                  },
+                  {
+                    "type": 1,
+                    "string": "domain"
+                  },
+                  {
+                    "type": 1,
+                    "string": "path"
+                  },
+                  {
+                    "type": 1,
+                    "string": "secure"
+                  },
+                  {
+                    "type": 1,
+                    "string": "session"
+                  }
+                ],
+                "mapValue": [
+                  {
+                    "type": 1,
+                    "string": "__obref"
                   },
                   {
                     "type": 1,
@@ -1506,6 +1675,25 @@ scenarios:
       assertApi('gtmOnSuccess').wasCalled();
       assertApi('gtmOnFailure').wasNotCalled();
     });
+- name: '[Event Name] Custom mode falls back to standard type when the custom name
+    matches a standard event name'
+  code: |-
+    mockData.eventNameSetup = 'custom';
+    mockData.eventNameCustom = 'order_created';
+
+    mock('sendHttpRequest', (url, options, body) => {
+      const parsed = JSON.parse(body);
+      assertThat(parsed.events[0].type).isEqualTo('order_created');
+      assertThat(parsed.events[0].custom_event_name).isUndefined();
+      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+    });
+
+    runCode(mockData);
+
+    callLater(() => {
+      assertApi('gtmOnSuccess').wasCalled();
+      assertApi('gtmOnFailure').wasNotCalled();
+    });
 - name: '[Event Name] Inherit mode maps GA4 event names to OpenAI equivalents'
   code: |-
     mockData.eventNameSetup = 'inherit';
@@ -1556,6 +1744,30 @@ scenarios:
       const parsed = JSON.parse(body);
       assertThat(parsed.events[0].type).isEqualTo('custom');
       assertThat(parsed.events[0].custom_event_name).isEqualTo('unknown_ga4_event');
+      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+    });
+
+    runCode(mockData);
+
+    callLater(() => {
+      assertApi('gtmOnSuccess').wasCalled();
+      assertApi('gtmOnFailure').wasNotCalled();
+    });
+- name: '[Event Name] Inherit mode passes through a GA4 event name that is already
+    a standard event name'
+  code: |-
+    mockData.eventNameSetup = 'inherit';
+
+    mock('getAllEventData', () => ({
+      event_id: '123abc',
+      event_name: 'trial_started',
+      page_location: 'https://example.com'
+    }));
+
+    mock('sendHttpRequest', (url, options, body) => {
+      const parsed = JSON.parse(body);
+      assertThat(parsed.events[0].type).isEqualTo('trial_started');
+      assertThat(parsed.events[0].custom_event_name).isUndefined();
       return Promise.create((resolve) => resolve({ statusCode: 200 }));
     });
 
@@ -1839,6 +2051,168 @@ scenarios:
       assertApi('setCookie').wasNotCalled();
       assertApi('gtmOnSuccess').wasCalled();
       assertApi('gtmOnFailure').wasNotCalled();
+    });
+- name: '[Browser ID] obref source priority cookie over common_cookie over eventData'
+  code: |-
+    mockData.autoMapUserDataParameters = true;
+
+    [
+      {
+        cookie: ['from-cookie'],
+        eventDataExtra: { __obref: 'from-ed', obref: 'from-ed-nopfx', common_cookie: { __obref: 'from-cc' } },
+        expected: 'from-cookie'
+      },
+      {
+        cookie: [],
+        eventDataExtra: { common_cookie: { __obref: 'from-cc' }, __obref: 'from-ed', obref: 'from-ed-nopfx' },
+        expected: 'from-cc'
+      },
+      {
+        cookie: [],
+        eventDataExtra: { __obref: 'from-ed', obref: 'from-ed-nopfx' },
+        expected: 'from-ed'
+      },
+      {
+        cookie: [],
+        eventDataExtra: { obref: 'from-ed-nopfx' },
+        expected: 'from-ed-nopfx'
+      }
+    ].forEach((scenario) => {
+      const eventDataBase = { event_name: 'page_view', page_location: 'https://example.com', event_id: '123abc' };
+      for (const key in scenario.eventDataExtra) eventDataBase[key] = scenario.eventDataExtra[key];
+      mock('getAllEventData', () => eventDataBase);
+
+      mock('getCookieValues', (name) => {
+        if (name === '__obref') return scenario.cookie;
+        return [];
+      });
+
+      mock('sendHttpRequest', (url, options, body) => {
+        const parsed = JSON.parse(body);
+        assertThat(parsed.events[0].user.obref).isEqualTo(scenario.expected);
+        return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      });
+
+      runCode(mockData);
+
+      callLater(() => {
+        assertApi('gtmOnSuccess').wasCalled();
+        assertApi('gtmOnFailure').wasNotCalled();
+      });
+    });
+- name: '[Browser ID Cookie] setBrowserIdCookie behavior across cookie/auto-map scenarios'
+  code: |-
+    [
+      {
+        description: 'existing cookie + enabled -> stored as-is with default expiration',
+        setBrowserIdCookie: true,
+        autoMapUserDataParameters: true,
+        cookie: ['my-browser-id'],
+        expectCookieSet: true,
+        expectedValue: 'my-browser-id',
+        expectedMaxAgeDays: 365
+      },
+      {
+        description: 'no cookie + enabled -> a new UUID is generated and stored',
+        setBrowserIdCookie: true,
+        autoMapUserDataParameters: true,
+        cookie: [],
+        expectCookieSet: true,
+        expectedValue: 'GENERATED',
+        expectedMaxAgeDays: 365
+      },
+      {
+        description: 'existing cookie + setBrowserIdCookie false -> value is used but not stored',
+        setBrowserIdCookie: false,
+        autoMapUserDataParameters: true,
+        cookie: ['my-browser-id'],
+        expectCookieSet: false
+      },
+      {
+        description: 'no cookie + setBrowserIdCookie false -> nothing generated or stored',
+        setBrowserIdCookie: false,
+        autoMapUserDataParameters: true,
+        cookie: [],
+        expectCookieSet: false
+      },
+      {
+        description: 'autoMapUserDataParameters false -> obref never computed even if setBrowserIdCookie is true',
+        setBrowserIdCookie: true,
+        autoMapUserDataParameters: false,
+        cookie: ['my-browser-id'],
+        expectCookieSet: false
+      },
+      {
+        description: 'cookieExpirationBrowserId overrides the default 365-day max-age',
+        setBrowserIdCookie: true,
+        autoMapUserDataParameters: true,
+        cookie: ['my-browser-id'],
+        cookieExpirationBrowserId: 90,
+        expectCookieSet: true,
+        expectedValue: 'my-browser-id',
+        expectedMaxAgeDays: 90
+      },
+      {
+        description: 'cookieSameSite/cookieHttpOnly settings are forwarded to the cookie options',
+        setBrowserIdCookie: true,
+        autoMapUserDataParameters: true,
+        cookie: ['my-browser-id'],
+        cookieSameSite: 'strict',
+        cookieHttpOnly: true,
+        expectCookieSet: true,
+        expectedValue: 'my-browser-id',
+        expectedMaxAgeDays: 365,
+        expectedSameSite: 'strict',
+        expectedHttpOnly: true
+      }
+    ].forEach((scenario) => {
+      mockData.setBrowserIdCookie = scenario.setBrowserIdCookie;
+      mockData.autoMapUserDataParameters = scenario.autoMapUserDataParameters;
+      mockData.cookieExpirationBrowserId = scenario.cookieExpirationBrowserId || 365;
+      mockData.cookieSameSite = scenario.cookieSameSite || 'lax';
+      mockData.cookieHttpOnly = scenario.cookieHttpOnly || false;
+
+      mock('getAllEventData', () => ({
+        event_id: '123abc',
+        event_name: 'page_view',
+        page_location: 'https://example.com'
+      }));
+
+      mock('getCookieValues', (name) => (name === '__obref' ? scenario.cookie : []));
+
+      let capturedCookieOptions;
+      let setCookieValue;
+      mock('setCookie', (cookieName, cookieValue, cookieOptions) => {
+        if (cookieName === '__obref') {
+          setCookieValue = cookieValue;
+          capturedCookieOptions = cookieOptions;
+        }
+      });
+
+      mock('sendHttpRequest', () => {
+        return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      });
+
+      runCode(mockData);
+
+      callLater(() => {
+        if (!scenario.expectCookieSet) {
+          assertThat(setCookieValue).isUndefined();
+        } else {
+          if (scenario.expectedValue === 'GENERATED') {
+            assertThat(setCookieValue).isDefined();
+            assertThat(setCookieValue.match('^[0-9a-f-]{36}$')).isNotNull();
+          } else {
+            assertThat(setCookieValue).isEqualTo(scenario.expectedValue);
+          }
+          assertThat(capturedCookieOptions['max-age']).isEqualTo(60 * 60 * 24 * scenario.expectedMaxAgeDays);
+          assertThat(capturedCookieOptions.secure).isEqualTo(true);
+          if (scenario.expectedSameSite) assertThat(capturedCookieOptions.samesite).isEqualTo(scenario.expectedSameSite);
+          if (scenario.expectedHttpOnly) assertThat(capturedCookieOptions.httpOnly).isEqualTo(scenario.expectedHttpOnly);
+        }
+        assertApi('gtmOnSuccess').wasCalled();
+        assertApi('gtmOnFailure').wasNotCalled();
+      });
     });
 - name: '[User Data] Email is auto-mapped and stored in email_sha256 from multiple
     sources'
@@ -2330,99 +2704,97 @@ scenarios:
             assertApi('gtmOnFailure').wasNotCalled();
           });
         });
-- name: '[Validation] Calls gtmOnFailure when pixelId is missing'
+- name: '[Validation] Calls gtmOnFailure across required-field and content validation
+    scenarios'
   code: |-
-    mockData.pixelId = undefined;
+    [
+      {
+        description: 'pixelId is missing',
+        mutate: (d) => { d.pixelId = undefined; }
+      },
+      {
+        description: 'action_source is missing',
+        mutate: (d) => { d.actionSource = undefined; }
+      },
+      {
+        description: 'action_source is web and source_url is missing',
+        mutate: (d) => {
+          d.actionSource = 'web';
+          d.serverEventDataParametersList = [{ name: 'source_url', value: '' }];
+        }
+      },
+      {
+        description: 'timestamp_ms is absent (auto-mapping off and no manual entry)',
+        mutate: (d) => {
+          d.autoMapServerEventDataParameters = false;
+          d.serverEventDataParametersList = [
+            { name: 'id', value: '123abc' },
+            { name: 'source_url', value: 'https://example.com' }
+          ];
+        }
+      },
+      {
+        description: 'event type/name is missing (custom mode with no custom event name set)',
+        mutate: (d) => {
+          d.eventNameSetup = 'custom';
+          d.eventNameCustom = undefined;
+        }
+      },
+      {
+        description: 'a content item is missing content_type',
+        mutate: (d) => {
+          d.autoMapEventParameters = false;
+          d.eventParametersList = [
+            { name: 'contents', value: [{ id: 'SKU_001', amount: 10 }] },
+            { name: 'currency', value: 'USD' }
+          ];
+        }
+      },
+      {
+        description: 'amount is set but currency is missing',
+        mutate: (d) => {
+          d.autoMapEventParameters = false;
+          d.eventParametersList = [{ name: 'amount', value: 50 }];
+        }
+      },
+      {
+        description: 'item has amount but no currency at event or item level',
+        mutate: (d) => {
+          d.autoMapEventParameters = false;
+          d.eventParametersList = [
+            { name: 'contents', value: [{ id: 'SKU_001', amount: 10, content_type: 'product' }] }
+          ];
+        }
+      }
+    ].forEach((scenario) => {
+      // Reset every field any scenario could touch back to the base defaults
+      // before applying this scenario's mutation, since mockData is shared and
+      // mutations from earlier iterations would otherwise leak into this one.
+      mockData.pixelId = 'test-pixel-id-123';
+      mockData.actionSource = 'web';
+      mockData.autoMapServerEventDataParameters = true;
+      mockData.serverEventDataParametersList = undefined;
+      mockData.autoMapEventParameters = false;
+      mockData.eventParametersList = undefined;
+      mockData.eventNameSetup = 'standard';
+      mockData.eventNameStandard = 'page_viewed';
+      mockData.eventNameCustom = undefined;
 
-    runCode(mockData);
+      scenario.mutate(mockData);
 
-    callLater(() => {
-      assertApi('sendHttpRequest').wasNotCalled();
-      assertApi('gtmOnSuccess').wasNotCalled();
-      assertApi('gtmOnFailure').wasCalled();
-    });
-- name: '[Validation] Calls gtmOnFailure when action_source is missing'
-  code: |-
-    mockData.actionSource = undefined;
+      let sendHttpRequestCalled = false;
+      mock('sendHttpRequest', () => {
+        sendHttpRequestCalled = true;
+        return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      });
 
-    runCode(mockData);
+      runCode(mockData);
 
-    callLater(() => {
-      assertApi('sendHttpRequest').wasNotCalled();
-      assertApi('gtmOnSuccess').wasNotCalled();
-      assertApi('gtmOnFailure').wasCalled();
-    });
-- name: '[Validation] Calls gtmOnFailure when action_source is web and source_url
-    is missing'
-  code: |-
-    mockData.actionSource = 'web';
-    mockData.serverEventDataParametersList = [
-      { name: 'source_url',   value: '' }
-    ];
-
-    runCode(mockData);
-
-    callLater(() => {
-      assertApi('sendHttpRequest').wasNotCalled();
-      assertApi('gtmOnSuccess').wasNotCalled();
-      assertApi('gtmOnFailure').wasCalled();
-    });
-- name: '[Validation] Calls gtmOnFailure when timestamp_ms is absent (auto-mapping
-    off and no manual entry)'
-  code: |-
-    mockData.autoMapServerEventDataParameters = false;
-    mockData.serverEventDataParametersList = undefined;
-
-    runCode(mockData);
-
-    callLater(() => {
-      assertApi('sendHttpRequest').wasNotCalled();
-      assertApi('gtmOnSuccess').wasNotCalled();
-      assertApi('gtmOnFailure').wasCalled();
-    });
-- name: '[Validation] Calls gtmOnFailure when a content item is missing content_type'
-  code: |-
-    mockData.autoMapEventParameters = false;
-    mockData.eventParametersList = [
-      { name: 'contents', value: [{ id: 'SKU_001', amount: 10 }] },
-      { name: 'currency', value: 'USD' }
-    ];
-
-    runCode(mockData);
-
-    callLater(() => {
-      assertApi('sendHttpRequest').wasNotCalled();
-      assertApi('gtmOnSuccess').wasNotCalled();
-      assertApi('gtmOnFailure').wasCalled();
-    });
-- name: '[Validation] Calls gtmOnFailure when amount is set but currency is missing'
-  code: |-
-    mockData.autoMapEventParameters = false;
-    mockData.eventParametersList = [
-      { name: 'amount', value: 50 }
-    ];
-
-    runCode(mockData);
-
-    callLater(() => {
-      assertApi('sendHttpRequest').wasNotCalled();
-      assertApi('gtmOnSuccess').wasNotCalled();
-      assertApi('gtmOnFailure').wasCalled();
-    });
-- name: '[Validation] Calls gtmOnFailure when item has amount but no currency at event
-    or item level'
-  code: |-
-    mockData.autoMapEventParameters = false;
-    mockData.eventParametersList = [
-      { name: 'contents', value: [{ id: 'SKU_001', amount: 10, content_type: 'product' }] }
-    ];
-
-    runCode(mockData);
-
-    callLater(() => {
-      assertApi('sendHttpRequest').wasNotCalled();
-      assertApi('gtmOnSuccess').wasNotCalled();
-      assertApi('gtmOnFailure').wasCalled();
+      callLater(() => {
+        assertThat(sendHttpRequestCalled).isEqualTo(false);
+        assertApi('gtmOnSuccess').wasNotCalled();
+        assertApi('gtmOnFailure').wasCalled();
+      });
     });
 - name: '[Validation] Succeeds when item amount has item-level currency but no event-level
     currency'
@@ -2674,6 +3046,8 @@ setup: |-
     useOptimisticScenario: false,
     optOut: undefined,
     setClickIdCookie: false,
+    setBrowserIdCookie: false,
+    cookieExpirationBrowserId: 365,
     cookieDomain: 'auto',
     cookieSameSite: 'lax',
     cookieHttpOnly: false,
@@ -2689,6 +3063,12 @@ setup: |-
 
 
 ___NOTES___
+
+2026-07-24 - Change Notes:
+  - Add optional Browser ID cookie support: reads/generates a persistent identifier (stored as the `__obref` cookie, mirroring the existing Click ID cookie pattern) and sends it as `user.obref` to improve match rate; adds `setBrowserIdCookie` and `cookieExpirationBrowserId` fields plus the required cookie permissions
+  - Add `app_installed` and `app_opened` to the Standard Event Types list, mapped to the `customer_action` parameter type
+  - Unify event name resolution across all three Event Name Setup Methods (`Standard`, `Inherit from client`, `Custom`): any resolved name matching a Standard Event Type is now always sent as that standard event, otherwise as a custom event; update help texts and README to document this behavior
+  - Add validation requiring a resolved Event Name, rejecting requests where a custom event name is missing/blank
 
 2026-06-10 - Change Notes:
   - Remove phone number support: `phone_number_sha256` is no longer accepted by the OpenAI API; the UI option, auto-mapping, normalization, and hashing logic for phone numbers have all been removed

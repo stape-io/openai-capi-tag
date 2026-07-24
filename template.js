@@ -1,5 +1,6 @@
 const computeEffectiveTldPlusOne = require('computeEffectiveTldPlusOne');
 const encodeUriComponent = require('encodeUriComponent');
+const generateRandom = require('generateRandom');
 const getAllEventData = require('getAllEventData');
 const getCookieValues = require('getCookieValues');
 const getEventData = require('getEventData');
@@ -58,12 +59,17 @@ function setCookies(data, mappedData) {
     samesite: data.cookieSameSite || 'Lax',
     path: '/',
     secure: true,
-    httpOnly: !!data.cookieHttpOnly,
-    'max-age': 60 * 60 * 24 * makeInteger(data.cookieExpiration || 30)
+    httpOnly: !!data.cookieHttpOnly
   };
 
   if (data.setClickIdCookie && mappedData.events[0].oppref) {
+    cookieOptions['max-age'] = 60 * 60 * 24 * makeInteger(data.cookieExpiration || 30);
     setCookie('__oppref', mappedData.events[0].oppref, cookieOptions, false);
+  }
+
+  if (data.setBrowserIdCookie && mappedData.events[0].user.obref) {
+    cookieOptions['max-age'] = 60 * 60 * 24 * makeInteger(data.cookieExpirationBrowserId || 365);
+    setCookie('__obref', mappedData.events[0].user.obref, cookieOptions, false);
   }
 }
 
@@ -148,6 +154,18 @@ function getClickId(eventData, clickIdName) {
   if (clickId) return clickId;
 }
 
+function getBrowserId(data, eventData) {
+  const browserId =
+    getCookieValues('__obref')[0] ||
+    (eventData.common_cookie || {})['__obref'] ||
+    eventData.__obref ||
+    eventData.obref;
+
+  if (browserId) return browserId;
+
+  if (data.setBrowserIdCookie) return generateUUID();
+}
+
 function addUserData(data, eventData, event) {
   const userData = {};
 
@@ -168,6 +186,9 @@ function addUserData(data, eventData, event) {
     if (eventData.ip_override) userData.ip_address = eventData.ip_override;
 
     if (eventData.user_agent) userData.user_agent = eventData.user_agent;
+
+    const browserId = getBrowserId(data, eventData);
+    if (browserId) userData.obref = browserId;
   }
 
   if (data.userDataParametersList) {
@@ -199,6 +220,8 @@ function getEventParametersType(eventName) {
     items_added: 'contents',
     order_created: 'contents',
     page_viewed: 'contents',
+    app_installed: 'customer_action',
+    app_opened: 'customer_action',
     appointment_scheduled: 'customer_action',
     lead_created: 'customer_action',
     registration_completed: 'customer_action',
@@ -314,6 +337,27 @@ function hashDataIfNeeded(event) {
 }
 
 function getEventNameInfo(data, eventData) {
+  const STANDARD_EVENT_NAMES = [
+    'page_viewed',
+    'app_installed',
+    'app_opened',
+    'appointment_scheduled',
+    'checkout_started',
+    'contents_viewed',
+    'items_added',
+    'lead_created',
+    'order_created',
+    'registration_completed',
+    'subscription_created',
+    'trial_started'
+  ];
+
+  const toEventNameInfo = (eventName) => {
+    return STANDARD_EVENT_NAMES.indexOf(eventName) !== -1
+      ? { eventName: eventName }
+      : { eventName: 'custom', customEventName: eventName };
+  };
+
   if (data.eventNameSetup === 'inherit') {
     const eventName = eventData.event_name;
     const gaToEventName = {
@@ -326,15 +370,12 @@ function getEventNameInfo(data, eventData) {
       view_item: 'contents_viewed'
     };
 
-    if (gaToEventName[eventName]) {
-      return { eventName: gaToEventName[eventName] };
-    }
-    return { eventName: 'custom', customEventName: eventName };
+    return toEventNameInfo(gaToEventName[eventName] || eventName);
   }
 
-  return data.eventNameSetup === 'standard'
-    ? { eventName: data.eventNameStandard }
-    : { eventName: 'custom', customEventName: data.eventNameCustom };
+  return toEventNameInfo(
+    data.eventNameSetup === 'standard' ? data.eventNameStandard : data.eventNameCustom
+  );
 }
 
 function mapEvent(data, eventData) {
@@ -365,6 +406,9 @@ function validateMappedData(data, mappedData) {
     return 'Source URL is required when Action Source is web.';
 
   if (!event.timestamp_ms) return 'Timestamp is required.';
+
+  if (!event.type || (event.type === 'custom' && !event.custom_event_name))
+    return 'Event Name is required.';
 
   if (
     getType(event.data.contents) === 'array' &&
@@ -460,6 +504,26 @@ function isValidValue(value) {
 function roundValue(value) {
   if (!value) return value;
   return Math.round(makeNumber(value) * 100) / 100;
+}
+
+function random() {
+  return generateRandom(1000000000000000, 10000000000000000) / 10000000000000000;
+}
+
+function generateUUID() {
+  function s(n) {
+    return h((random() * (1 << (n << 2))) ^ getTimestampMillis()).slice(-n);
+  }
+  function h(n) {
+    return (n | 0).toString(16);
+  }
+  return [
+    s(4) + s(4),
+    s(4),
+    '4' + s(3),
+    h(8 | (random() * 4)) + s(3),
+    getTimestampMillis().toString(16).slice(-10) + s(2)
+  ].join('-');
 }
 
 function convertCurrencyValueToMinorUnit(value, currency) {

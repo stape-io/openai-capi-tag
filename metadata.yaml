@@ -1,6 +1,8 @@
 homepage: 'https://stape.io/'
 documentation: 'https://github.com/stape-io/openai-capi-tag'
 versions:
+  - sha: b9c6f2555388b691f82b92cb5b9e27b2fe8a8e12
+    changeNotes: Add Browser ID cookie support and unify event name fallback logic.
   - sha: e28c4f3ec63c82a44392e4ce41fc027b8fea8e77
     changeNotes: Align user data fields with updated OpenAI API schema.
   - sha: 972a2d320c86d2ec75675cb605bd1291be313261
