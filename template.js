@@ -381,6 +381,7 @@ function getEventNameInfo(data, eventData) {
 function mapEvent(data, eventData) {
   const event = {};
   const mappedData = {
+    integration_source: 'stape-sgtm',
     validate_only: isUIFieldTrue(data.validateOnly),
     events: [event]
   };
