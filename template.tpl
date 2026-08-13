@@ -1050,6 +1050,7 @@ function getEventNameInfo(data, eventData) {
 function mapEvent(data, eventData) {
   const event = {};
   const mappedData = {
+    integration_source: 'stape-sgtm',
     validate_only: isUIFieldTrue(data.validateOnly),
     events: [event]
   };
@@ -2869,6 +2870,7 @@ scenarios:
 
     mock('sendHttpRequest', (url, options, body) => {
       const parsed = JSON.parse(body);
+      assertThat(parsed.integration_source).isEqualTo('stape-sgtm');
       assertThat(parsed.validate_only).isEqualTo(false);
       assertThat(parsed.events).isArray();
       assertThat(parsed.events).hasLength(1);
@@ -3064,6 +3066,9 @@ setup: |-
 
 ___NOTES___
 
+2026-05-25 Change Notes:
+ - Add integration_source string..
+
 2026-08-06 - Change Notes:
   - Update tag icon/logo
 
@@ -3099,5 +3104,3 @@ ___NOTES___
   - Initial release.
 
 Created on 3/9/2026, 5:48:10 PM
-
-
