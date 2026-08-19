@@ -1,8 +1,10 @@
 homepage: 'https://stape.io/'
 documentation: 'https://github.com/stape-io/openai-capi-tag'
 versions:
+  - sha: 358fe1b5412ac9d5a666080201625e4772a3d7c8
+    changeNotes: Add Event Custom Parameters support for custom events.
   - sha: 5b4af49761254cc684f70164346cb6a8c332d6af
-    changeNotes: Update template icon/logos.
+    changeNotes: Add integration_source string.
   - sha: 4a69110948bca6f4e287dd17077f7c4c9a690df9
     changeNotes: Update template icon/logos.
   - sha: b9c6f2555388b691f82b92cb5b9e27b2fe8a8e12

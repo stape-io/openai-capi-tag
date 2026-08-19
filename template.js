@@ -311,6 +311,12 @@ function addEventParameters(data, eventData, event) {
     }
   }
 
+  if (data.eventCustomParametersList) {
+    data.eventCustomParametersList.forEach((d) => {
+      eventParameters[d.name] = d.value;
+    });
+  }
+
   event.data = eventParameters;
 
   return event;

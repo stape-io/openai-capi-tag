@@ -166,7 +166,7 @@ ___TEMPLATE_PARAMETERS___
             "type": "NON_EMPTY"
           }
         ],
-        "valueHint": "kiZ84ZoJyA4x********"
+        "valueHint": "sk-svcacct-im1e5A0********"
       },
       {
         "type": "SELECT",
@@ -633,6 +633,42 @@ ___TEMPLATE_PARAMETERS___
         "newRowButtonText": "Add Parameter",
         "displayName": "Event Parameters",
         "help": "Only use one of the available Amount parameters. If both are set, \u003cb\u003eAmount (in the currency\u0027s lowest unit)\u003c/b\u003e will have preference.\n\u003cbr/\u003e\n\u003cb\u003eAmount (in the currency\u0027s lowest unit)\u003c/b\u003e must be an integer in the currency\u0027s lowest denomination (e.g. cents). Example: \u003ci\u003e12999\u003c/i\u003e for \u003ci\u003e$129.99\u003c/i\u003e.\n\u003cbr/\u003e\n\u003cb\u003eAmount (in the currency\u0027s regular unit)\u003c/b\u003e must be a number in the currency\u0027s regular denomination. Example: \u003ci\u003e129.99\u003c/i\u003e for \u003ci\u003e$129.99\u003c/i\u003e.\n\u003cbr/\u003e\u003cbr/\u003e\n\u003cb\u003eCurrency\u003c/b\u003e is required if \u003cb\u003eAmount\u003c/b\u003e is used.\n\u003cbr/\u003e\u003cbr/\u003e\n\u003cb\u003eContents\u003c/b\u003e expects an array of content objects. Each object can have the properties: \u003cb\u003eid\u003c/b\u003e, \u003cb\u003ename\u003c/b\u003e, \u003cb\u003eamount\u003c/b\u003e, \u003cb\u003ecurrency\u003c/b\u003e (required if \u003ci\u003eamount\u003c/i\u003e is present in the content object and \u003ci\u003ecurrency\u003c/i\u003e is not present in top level field), \u003cb\u003equantity\u003c/b\u003e and \u003cb\u003econtent_type\u003c/b\u003e (required)."
+      },
+      {
+        "type": "SIMPLE_TABLE",
+        "name": "eventCustomParametersList",
+        "simpleTableColumns": [
+          {
+            "defaultValue": "",
+            "displayName": "Parameter Name",
+            "name": "name",
+            "type": "TEXT",
+            "isUnique": true,
+            "valueValidators": [
+              {
+                "type": "NON_EMPTY"
+              }
+            ],
+            "selectItems": []
+          },
+          {
+            "defaultValue": "",
+            "displayName": "Parameter Value",
+            "name": "value",
+            "type": "TEXT",
+            "valueValidators": []
+          }
+        ],
+        "newRowButtonText": "Add Parameter",
+        "displayName": "Event Custom Parameters",
+        "help": "Custom parameters are available only when the Event Name is a custom one. The parameters values can be strings, numbers, boolean values, objects, arrays, or null.",
+        "enablingConditions": [
+          {
+            "paramName": "eventNameSetup",
+            "paramValue": "custom",
+            "type": "EQUALS"
+          }
+        ]
       }
     ]
   },
@@ -980,6 +1016,12 @@ function addEventParameters(data, eventData, event) {
     }
   }
 
+  if (data.eventCustomParametersList) {
+    data.eventCustomParametersList.forEach((d) => {
+      eventParameters[d.name] = d.value;
+    });
+  }
+
   event.data = eventParameters;
 
   return event;
@@ -1118,7 +1160,7 @@ function sendRequest(data, mappedData) {
   const pixelId = makeString(data.pixelId).trim();
   const requestUrl = generateRequestBaseUrl(pixelId);
   const requestOptions = generateRequestOptions(data);
-
+  
   return sendHttpRequest(requestUrl, requestOptions, JSON.stringify(mappedData))
     .then((result) => {
       if (!data.useOptimisticScenario) {
@@ -2615,6 +2657,57 @@ scenarios:
       assertApi('gtmOnSuccess').wasCalled();
       assertApi('gtmOnFailure').wasNotCalled();
     });
+- name: '[Event Custom Parameters] Entries are added to the payload and override matching
+    Event Parameters keys'
+  code: |-
+    mockData.eventNameSetup = 'custom';
+    mockData.eventNameCustom = 'my_custom_event';
+    mockData.autoMapEventParameters = false;
+    mockData.eventParametersList = [
+      { name: 'currency', value: 'USD' }
+    ];
+    mockData.eventCustomParametersList = [
+      { name: 'currency', value: 'EUR' },
+      { name: 'loyalty_tier', value: 'gold' },
+      { name: 'is_first_purchase', value: true },
+      { name: 'items_count', value: 3 },
+      { name: 'metadata', value: { source: 'app' } }
+    ];
+
+    mock('sendHttpRequest', (url, options, body) => {
+      const parsed = JSON.parse(body);
+      assertThat(parsed.events[0].data.currency).isEqualTo('EUR');
+      assertThat(parsed.events[0].data.loyalty_tier).isEqualTo('gold');
+      assertThat(parsed.events[0].data.is_first_purchase).isTrue();
+      assertThat(parsed.events[0].data.items_count).isEqualTo(3);
+      assertThat(parsed.events[0].data.metadata).isEqualTo({ source: 'app' });
+      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+    });
+
+    runCode(mockData);
+
+    callLater(() => {
+      assertApi('gtmOnSuccess').wasCalled();
+      assertApi('gtmOnFailure').wasNotCalled();
+    });
+- name: '[Event Custom Parameters] Not sent when list is not provided'
+  code: |-
+    mockData.eventNameSetup = 'custom';
+    mockData.eventNameCustom = 'my_custom_event';
+    mockData.eventCustomParametersList = undefined;
+
+    mock('sendHttpRequest', (url, options, body) => {
+      const parsed = JSON.parse(body);
+      assertThat(parsed.events[0].data.loyalty_tier).isUndefined();
+      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+    });
+
+    runCode(mockData);
+
+    callLater(() => {
+      assertApi('gtmOnSuccess').wasCalled();
+      assertApi('gtmOnFailure').wasNotCalled();
+    });
 - name: '[Event Parameters] Custom itemIdKey is used as item id field when configured'
   code: |-
     mockData.autoMapEventParameters = true;
@@ -3060,14 +3153,18 @@ setup: |-
     userDataParametersList: undefined,
     autoMapEventParameters: false,
     eventParametersList: undefined,
+    eventCustomParametersList: undefined,
     adStorageConsent: 'optional'
   };
 
 
 ___NOTES___
 
-2026-05-25 Change Notes:
- - Add integration_source string..
+2026-08-19 - Change Notes:
+  - Add Event Custom Parameters support for custom events
+
+2026-08-13 - Change Notes:
+ - Add integration_source string
 
 2026-08-06 - Change Notes:
   - Update tag icon/logo
@@ -3104,3 +3201,4 @@ ___NOTES___
   - Initial release.
 
 Created on 3/9/2026, 5:48:10 PM
+
