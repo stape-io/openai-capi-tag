@@ -1,6 +1,8 @@
 homepage: 'https://stape.io/'
 documentation: 'https://github.com/stape-io/openai-capi-tag'
 versions:
+  - sha: b7fc153fd1b03d57586aca4106db72df63b0f03f
+    changeNotes: Align user data schema with OpenAI's current Conversions API (multi-value identifiers, restored phone support, first/last name, region, Android Advertising ID, and contents group_id).
   - sha: 358fe1b5412ac9d5a666080201625e4772a3d7c8
     changeNotes: Add Event Custom Parameters support for custom events.
   - sha: 5b4af49761254cc684f70164346cb6a8c332d6af
