@@ -113,28 +113,43 @@ The Click ID (`oppref`) is sourced in the following priority order:
 
 | Parameter | Description |
 | :--- | :--- |
-| **Automap User Data Parameters** | If enabled, automatically maps Email, City, ZIP Code, Country, External ID, IP Address, and User Agent from the Event Data. |
-| **User Identifiers Parameters** | Manually specify user identifiers. Supported fields: `Email Address`, `External ID`, `External ID SHA256 Hashed`, `City`, `ZIP Code`, `Country`, `IP Address`, `User Agent`. |
+| **Automap User Data Parameters** | If enabled, automatically maps Email, Phone Number, City, ZIP Code, Region, Country, First Name, Last Name, External ID, IP Address, User Agent, and Android Advertising ID from the Event Data. |
+| **User Identifiers Parameters** | Manually specify user identifiers. Supported fields: `Email Addresses`, `Phone Numbers`, `External ID`, `External IDs SHA256 Hashed`, `First Names`, `Last Names`, `Cities`, `ZIP Codes`, `Regions/States`, `Countries`, `IP Address`, `User Agent`, `Android Advertising ID (GAID)`. |
+
+Email, Phone Number, External ID, First Name, Last Name, City, ZIP Code, Region, and
+Country all accept more than one value: auto-mapping preserves every value found when
+the underlying Event Data field is an array (for example, more than one `user_data.address`
+record), and a manual entry can be bound to a variable that returns an array instead of a
+single string. `IP Address`, `User Agent`, `Browser ID`, and `Android Advertising ID`
+only ever accept a single value.
 
 **Auto-mapping sources:**
 
 | Field | Event Data Sources |
 | :--- | :--- |
 | Email | `email`, `email_address`, `user_data.email`, `user_data.email_address`, `user_data.sha256_email_address` |
+| Phone Number | `phone_number`, `user_data.phone_number` |
 | External ID | `user_id` |
+| First Name | `user_data.address.first_name` |
+| Last Name | `user_data.address.last_name` |
 | City | `user_data.address.city` |
 | ZIP Code | `user_data.address.postal_code` |
+| Region | `user_data.address.region` |
 | Country | `user_data.address.country` |
 | IP Address | `ip_override` |
 | User Agent | `user_agent` |
+| Android Advertising ID | `x-ga-resettable_device_id` (only when `x-ga-platform` is `android`; an all-zero GUID is ignored) |
 
-The tag automatically hashes the following fields using SHA-256 before sending: Email, External ID (SHA256), City, ZIP Code, Country. Pre-hashed values (64-character hex strings) are detected and will not be re-hashed.
+The tag automatically hashes the following fields using SHA-256 before sending: Email,
+Phone Number, External ID, First Name, Last Name. Pre-hashed values (64-character hex
+strings) are detected and will not be re-hashed. City, ZIP Code, Region, and Country are
+sent as plain values, not hashed.
 
 ### Event Parameters
 
 | Parameter | Description |
 | :--- | :--- |
-| **Automap Event Parameters** | If enabled, automatically maps `Amount` (from `eventData.value` or sum of `items price × quantity`), `Currency` (from `eventData.currency` or items), and `Contents` (from `eventData.items`). |
+| **Automap Event Parameters** | If enabled, automatically maps `Amount` (from `eventData.value` or sum of `items price × quantity`), `Currency` (from `eventData.currency` or items), and `Contents` (from `eventData.items`, including `item_group_id` as `group_id`). |
 | **Custom Item ID Key** | Optional. Override the item ID field key used when mapping items. Defaults to `item_id`. Useful for WooCommerce setups. |
 | **Event Parameters** | Manually specify `Amount`, `Currency`, `Contents`, and `Plan ID`. |
 

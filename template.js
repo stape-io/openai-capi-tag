@@ -1,4 +1,5 @@
 const computeEffectiveTldPlusOne = require('computeEffectiveTldPlusOne');
+const createRegex = require('createRegex');
 const encodeUriComponent = require('encodeUriComponent');
 const generateRandom = require('generateRandom');
 const getAllEventData = require('getAllEventData');
@@ -109,28 +110,36 @@ function getEmailAddressFromEventData(eventData) {
     eventDataUserData.email ||
     eventDataUserData.email_address ||
     eventDataUserData.sha256_email_address;
-  const emailType = getType(email);
 
-  if (emailType === 'string') return email;
-  else if (emailType === 'array' || emailType === 'object') return email[0];
-
-  return;
+  return toValueList(email);
 }
 
-function getAddressFromEventData(eventData) {
+function getPhoneNumbersFromEventData(eventData) {
   const eventDataUserData = eventData.user_data || {};
+  return toValueList(eventData.phone_number || eventDataUserData.phone_number);
+}
 
-  let eventDataUserDataAddress = {};
+function getAddressListFromEventData(eventData) {
+  const eventDataUserData = eventData.user_data || {};
   const addressType = getType(eventDataUserData.address);
-  if (addressType === 'object' || addressType === 'array') {
-    eventDataUserDataAddress = eventDataUserData.address[0] || eventDataUserData.address;
-  }
 
-  return {
-    city: eventDataUserDataAddress.city,
-    postalCode: eventDataUserDataAddress.postal_code,
-    country: eventDataUserDataAddress.country
-  };
+  if (addressType === 'array') return eventDataUserData.address.filter((a) => getType(a) === 'object');
+  if (addressType === 'object') return [eventDataUserData.address];
+
+  return [];
+}
+
+function getFieldListFromAddresses(addresses, fieldName) {
+  return addresses.map((address) => address[fieldName]).filter((v) => getType(v) === 'string' && v !== '');
+}
+
+function getAndroidAdvertisingIdFromEventData(eventData) {
+  const platform = eventData['x-ga-platform'];
+  const aaid = platform === 'android' ? eventData['x-ga-resettable_device_id'] : undefined;
+
+  if (getType(aaid) === 'string' && aaid !== '00000000-0000-0000-0000-000000000000') return aaid;
+
+  return undefined;
 }
 
 function parseClickIdFromUrl(eventData, clickIdName) {
@@ -167,49 +176,97 @@ function getBrowserId(data, eventData) {
 }
 
 function addUserData(data, eventData, event) {
-  const userData = {};
+  const values = {};
 
   if (isUIFieldTrue(data.autoMapUserDataParameters)) {
-    const email = getEmailAddressFromEventData(eventData);
-    if (email) userData.email_sha256 = email;
+    values.email_sha256 = getEmailAddressFromEventData(eventData);
+    values.external_id_sha256 = toValueList(eventData.user_id);
+    values.phone_number_sha256 = getPhoneNumbersFromEventData(eventData);
 
-    const externalId = eventData.user_id;
-    if (externalId) {
-      userData.external_id_sha256 = makeString(externalId);
-    }
+    const addresses = getAddressListFromEventData(eventData);
+    values.first_name_sha256 = getFieldListFromAddresses(addresses, 'first_name');
+    values.last_name_sha256 = getFieldListFromAddresses(addresses, 'last_name');
+    values.city = getFieldListFromAddresses(addresses, 'city');
+    values.zip_code = getFieldListFromAddresses(addresses, 'postal_code');
+    values.region = getFieldListFromAddresses(addresses, 'region');
+    values.country = getFieldListFromAddresses(addresses, 'country');
 
-    const address = getAddressFromEventData(eventData);
-    if (address.city) userData.city = address.city;
-    if (address.postalCode) userData.zip_code = address.postalCode;
-    if (address.country) userData.country = address.country;
+    if (eventData.ip_override) values.ip_address = eventData.ip_override;
 
-    if (eventData.ip_override) userData.ip_address = eventData.ip_override;
+    if (eventData.user_agent) values.user_agent = eventData.user_agent;
 
-    if (eventData.user_agent) userData.user_agent = eventData.user_agent;
+    const androidAdvertisingId = getAndroidAdvertisingIdFromEventData(eventData);
+    if (androidAdvertisingId) values.android_advertising_id = androidAdvertisingId;
 
     const browserId = getBrowserId(data, eventData);
-    if (browserId) userData.obref = browserId;
+    if (browserId) values.obref = browserId;
   }
 
   if (data.userDataParametersList) {
+    const listUserDataFields = [
+      'email_sha256',
+      'phone_number_sha256',
+      'external_id_sha256',
+      'first_name_sha256',
+      'last_name_sha256',
+      'city',
+      'zip_code',
+      'region',
+      'country'
+    ];
+
     data.userDataParametersList.forEach((d) => {
       let name = d.name;
-      // Even after UI removal, the 'data' object might still contain it if the user doesn't force update the tag.
-      if (name === 'phone_number_sha256') return;
-      else if (['city_sha256', 'zip_code_sha256', 'country_sha256'].indexOf(name) !== -1) {
-        // Backward compatibility after OpenAI remove _sha256 requirement, but the template UI still contains it.
+      if (['city_sha256', 'zip_code_sha256', 'country_sha256'].indexOf(name) !== -1) {
+        // Backward compatibility after OpenAI removed the _sha256 requirement for geographic fields.
         name = name.replace('_sha256', '');
       } else if (name === 'external_id') {
-        // Backward compatibility after OpenAI remove _sha256 requirement, but the template UI still contains it.
+        // Backward compatibility after OpenAI removed the plain external_id field.
         name = 'external_id_sha256';
       }
-      userData[name] = d.value;
+
+      values[name] = listUserDataFields.indexOf(name) !== -1 ? toValueList(d.value) : d.value;
     });
   }
 
-  event.user = userData;
+  event.user = buildUserData(values);
 
   return event;
+}
+
+function buildUserData(values) {
+  const userData = {};
+
+  const hashedListFields = {
+    email_sha256: 'emails_sha256',
+    phone_number_sha256: 'phone_numbers_sha256',
+    external_id_sha256: 'external_ids_sha256',
+    first_name_sha256: 'first_names_sha256',
+    last_name_sha256: 'last_names_sha256'
+  };
+
+  Object.keys(hashedListFields).forEach((key) => {
+    const list = values[key];
+    if (getType(list) === 'array' && list.length) userData[hashedListFields[key]] = list;
+  });
+
+  const plainListFields = {
+    city: 'cities',
+    zip_code: 'postal_codes',
+    region: 'regions',
+    country: 'countries'
+  };
+
+  Object.keys(plainListFields).forEach((key) => {
+    const list = values[key];
+    if (getType(list) === 'array' && list.length) userData[plainListFields[key]] = list;
+  });
+
+  ['ip_address', 'user_agent', 'obref', 'android_advertising_id'].forEach((key) => {
+    if (values[key]) userData[key] = values[key];
+  });
+
+  return userData;
 }
 
 function getEventParametersType(eventName) {
@@ -259,6 +316,7 @@ function addEventParameters(data, eventData, event) {
       items.forEach((i) => {
         const item = {};
         if (i[itemIdKey]) item.id = makeString(i[itemIdKey]);
+        if (i.item_group_id) item.group_id = makeString(i.item_group_id);
         if (i.item_name) item.name = makeString(i.item_name);
         if (isValidValue(i.quantity)) item.quantity = makeInteger(i.quantity);
         if (isValidValue(i.price)) {
@@ -327,15 +385,18 @@ function hashDataIfNeeded(event) {
   const hasUserData = hasProps(userData);
 
   if (hasUserData) {
-    const userDataKeysToHash = {
-      email_sha256: true,
-      external_id_sha256: true
+    const userDataKeysToNormalize = {
+      emails_sha256: normalizeEmail,
+      phone_numbers_sha256: normalizePhone,
+      external_ids_sha256: trim,
+      first_names_sha256: normalizeName,
+      last_names_sha256: normalizeName
     };
 
-    Object.keys(userDataKeysToHash).forEach((key) => {
-      let value = userData[key];
-      if (!value || isHashed(value)) return;
-      userData[key] = hashData(value);
+    Object.keys(userDataKeysToNormalize).forEach((key) => {
+      const value = userData[key];
+      if (!value) return;
+      userData[key] = hashData(value, userDataKeysToNormalize[key]);
     });
   }
 
@@ -561,7 +622,7 @@ function isHashed(value) {
   return makeString(value).match('^[A-Fa-f0-9]{64}$') !== null;
 }
 
-function hashData(value) {
+function hashData(value, normalize) {
   if (!value) return value;
 
   const type = getType(value);
@@ -569,21 +630,63 @@ function hashData(value) {
   if (value === 'undefined' || value === 'null') return undefined;
 
   if (type === 'array') {
-    return value.map((val) => hashData(val));
+    return value.map((val) => hashData(val, normalize));
   }
 
   if (type === 'object') {
     return Object.keys(value).reduce((acc, val) => {
-      acc[val] = hashData(value[val]);
+      acc[val] = hashData(value[val], normalize);
       return acc;
     }, {});
   }
 
   if (isHashed(value)) return value;
 
-  return sha256Sync(makeString(value).trim().toLowerCase(), {
+  const normalizeFn = normalize || normalizeEmail;
+  return sha256Sync(normalizeFn(makeString(value)), {
     outputEncoding: 'hex'
   });
+}
+
+function trim(value) {
+  return makeString(value).trim();
+}
+
+function normalizeEmail(value) {
+  return trim(value).toLowerCase();
+}
+
+function normalizePhone(value) {
+  const phoneStripRegex = createRegex('[^0-9]', 'g');
+  let phone = makeString(value);
+  if (phoneStripRegex) phone = phone.replace(phoneStripRegex, '');
+  if (phone.charAt(0) === '+') phone = phone.substring(1);
+  while (phone.length && phone.charAt(0) === '0') phone = phone.substring(1);
+  return phone;
+}
+
+function normalizeName(value) {
+  // ASCII whitespace and punctuation to strip; non-ASCII characters are preserved.
+  const charsToStrip = [
+    ' ', '\t', '\n', '\r',
+    '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/',
+    ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'
+  ];
+  let name = makeString(value).toLowerCase();
+  charsToStrip.forEach((char) => {
+    name = name.split(char).join('');
+  });
+  return name;
+}
+
+function toValueList(value) {
+  const type = getType(value);
+
+  if (type === 'array') return value.filter((v) => getType(v) === 'string' && v !== '');
+  if (type === 'string' && value !== '') return [value];
+  if (type === 'number') return [makeString(value)];
+
+  return [];
 }
 
 function isConsentGivenOrNotRequired(data, eventData) {
