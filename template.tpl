@@ -477,7 +477,7 @@ ___TEMPLATE_PARAMETERS___
         "name": "autoMapUserDataParameters",
         "checkboxText": "Automap User Data Parameters",
         "simpleValueType": true,
-        "help": "If enabled, the tag will attempt to automatically map parameters from the Event Data.\n\u003cbr/\u003e\u003cbr/\u003e\nAny value you manually enter in a field below will always override the auto-mapped value.\n\u003cbr/\u003e\u003cbr/\u003e\nDefault mappings:\n\u003cul\u003e\n\u003cli\u003eEmail:\n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eeventData.email\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.email_address\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.email\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.email_address\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.sha256_email_address\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eExternal ID SHA256 Hashed: \u003ci\u003eeventData.user_id\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eCity: \u003ci\u003e eventData.user_data.address.city\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eZIP Code: \u003ci\u003eeventData.user_data.address.postal_code\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eCountry: \u003ci\u003eeventData.user_data.address.country\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eIP Address: \u003ci\u003eeventData.ip_override\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eUser Agent: \u003ci\u003eeventData.user_agent\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eBrowser ID:\n\u003cul\u003e\n\u003cli\u003e\u003ci\u003e__obref\u003c/i\u003e cookie\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.common_cookie.__obref\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.__obref\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.obref\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e",
+        "help": "If enabled, the tag will attempt to automatically map parameters from the Event Data.\n\u003cbr/\u003e\u003cbr/\u003e\nAny value you manually enter in a field below will always override the auto-mapped value.\n\u003cbr/\u003e\u003cbr/\u003e\nDefault mappings:\n\u003cul\u003e\n\u003cli\u003eEmail:\n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eeventData.email\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.email_address\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.email\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.email_address\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.user_data.sha256_email_address\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eExternal ID SHA256 Hashed: \u003ci\u003eeventData.user_id\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003ePhone Number: \u003ci\u003eeventData.phone_number\u003c/i\u003e or \u003ci\u003eeventData.user_data.phone_number\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eFirst Name: \u003ci\u003eeventData.user_data.address.first_name\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eLast Name: \u003ci\u003eeventData.user_data.address.last_name\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eCity: \u003ci\u003e eventData.user_data.address.city\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eZIP Code: \u003ci\u003eeventData.user_data.address.postal_code\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eRegion: \u003ci\u003eeventData.user_data.address.region\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eCountry: \u003ci\u003eeventData.user_data.address.country\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eAndroid Advertising ID: \u003ci\u003eeventData[\u0027x-ga-resettable_device_id\u0027]\u003c/i\u003e when \u003ci\u003eeventData[\u0027x-ga-platform\u0027]\u003c/i\u003e is \u003ci\u003eandroid\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eIP Address: \u003ci\u003eeventData.ip_override\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eUser Agent: \u003ci\u003eeventData.user_agent\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003eBrowser ID:\n\u003cul\u003e\n\u003cli\u003e\u003ci\u003e__obref\u003c/i\u003e cookie\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.common_cookie.__obref\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.__obref\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eeventData.obref\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003c/ul\u003e",
         "defaultValue": true
       },
       {
@@ -498,27 +498,43 @@ ___TEMPLATE_PARAMETERS___
             "selectItems": [
               {
                 "value": "email_sha256",
-                "displayValue": "Email Address"
+                "displayValue": "Email Addresses"
+              },
+              {
+                "value": "phone_number_sha256",
+                "displayValue": "Phone Numbers"
               },
               {
                 "value": "external_id",
-                "displayValue": "External ID (deprecated, use \"External ID SHA256 Hashed\" instead)"
+                "displayValue": "External ID (deprecated, use \"External IDs SHA256 Hashed\" instead)"
               },
               {
                 "value": "external_id_sha256",
-                "displayValue": "External ID SHA256 Hashed"
+                "displayValue": "External IDs SHA256 Hashed"
+              },
+              {
+                "value": "first_name_sha256",
+                "displayValue": "First Names"
+              },
+              {
+                "value": "last_name_sha256",
+                "displayValue": "Last Names"
               },
               {
                 "value": "city_sha256",
-                "displayValue": "City"
+                "displayValue": "Cities"
               },
               {
                 "value": "zip_code_sha256",
-                "displayValue": "ZIP Code"
+                "displayValue": "ZIP Codes"
+              },
+              {
+                "value": "region",
+                "displayValue": "Regions/States"
               },
               {
                 "value": "country_sha256",
-                "displayValue": "Country"
+                "displayValue": "Countries"
               },
               {
                 "value": "ip_address",
@@ -531,6 +547,10 @@ ___TEMPLATE_PARAMETERS___
               {
                 "value": "obref",
                 "displayValue": "Browser ID (\u0027__obref\u0027 Cookie)"
+              },
+              {
+                "value": "android_advertising_id",
+                "displayValue": "Android Advertising ID (GAID)"
               }
             ]
           },
@@ -543,7 +563,7 @@ ___TEMPLATE_PARAMETERS___
           }
         ],
         "newRowButtonText": "Add Parameter",
-        "help": "The tag will automatically hash parameters that need it, pre-hashed data is also accepted. Parameters that require hashing:\n\u003cbr/\u003e\n\u003cul\u003e\n\u003cli\u003eEmail Address\u003c/li\u003e\n\u003cli\u003eExternal ID SHA256 Hashed\u003c/li\u003e\n\u003c/ul\u003e\n\u003cbr/\u003e\nMake sure to normalize their values prior to hashing when passing already hashed values.",
+        "help": "The tag will automatically hash parameters that need it, pre-hashed data is also accepted. Parameters that require hashing:\n\u003cbr/\u003e\n\u003cul\u003e\n\u003cli\u003eEmail Addresses\u003c/li\u003e\n\u003cli\u003ePhone Numbers\u003c/li\u003e\n\u003cli\u003eExternal IDs SHA256 Hashed\u003c/li\u003e\n\u003cli\u003eFirst Names\u003c/li\u003e\n\u003cli\u003eLast Names\u003c/li\u003e\n\u003c/ul\u003e\n\u003cbr/\u003e\nMake sure to normalize their values prior to hashing when passing already hashed values.\n\u003cbr/\u003e\u003cbr/\u003e\nMost fields accept a single value, or an array of values, via a variable bound to \u003ci\u003eParameter Value\u003c/i\u003e. \n\u003cbr/\u003e\n\u003ci\u003eIP Address\u003c/i\u003e, \u003ci\u003eUser Agent\u003c/i\u003e, \u003ci\u003eBrowser ID\u003c/i\u003e, and \u003ci\u003eAndroid Advertising ID\u003c/i\u003e only accept a single value.",
         "displayName": "User Identifiers Parameters"
       }
     ]
@@ -564,7 +584,7 @@ ___TEMPLATE_PARAMETERS___
         "name": "autoMapEventParameters",
         "checkboxText": "Automap Event Parameters",
         "simpleValueType": true,
-        "help": "If enabled, the tag will attempt to automatically map parameters from your event data.\n\u003cbr/\u003e\u003cbr/\u003e\nAny value you manually enter in a field below will always override the auto-mapped value.\n\u003cbr/\u003e\u003cbr/\u003e\nDefault mappings:\n\u003cul\u003e\n\u003cli\u003eAmount (the tag always considers the auto-mapped value to be in the currency regular unit and it converts to the lowest unit according to the currency): \n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eeventData.value\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eSum of eventData.items Price * Quantity\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eCurrency: \n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eeventData.currency\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eCurrency from eventData.items\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eItems: \u003ci\u003eeventData.items\u003c/i\u003e (\u003ci\u003eitem_id\u003c/i\u003e, \u003ci\u003eitem_name\u003c/i\u003e, \u003ci\u003econtent_type\u003c/i\u003e, \u003ci\u003eamount\u003c/i\u003e and \u003ci\u003equantity\u003c/i\u003e)\u003c/li\u003e\n\u003c/ul\u003e",
+        "help": "If enabled, the tag will attempt to automatically map parameters from your event data.\n\u003cbr/\u003e\u003cbr/\u003e\nAny value you manually enter in a field below will always override the auto-mapped value.\n\u003cbr/\u003e\u003cbr/\u003e\nDefault mappings:\n\u003cul\u003e\n\u003cli\u003eAmount (the tag always considers the auto-mapped value to be in the currency regular unit and it converts to the lowest unit according to the currency): \n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eeventData.value\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eSum of eventData.items Price * Quantity\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eCurrency: \n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eeventData.currency\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eCurrency from eventData.items\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eItems: \u003ci\u003eeventData.items\u003c/i\u003e (\u003ci\u003eitem_id\u003c/i\u003e, \u003ci\u003eitem_group_id\u003c/i\u003e, \u003ci\u003eitem_name\u003c/i\u003e, \u003ci\u003econtent_type\u003c/i\u003e, \u003ci\u003eamount\u003c/i\u003e and \u003ci\u003equantity\u003c/i\u003e)\u003c/li\u003e\n\u003c/ul\u003e",
         "defaultValue": true,
         "subParams": [
           {
@@ -704,6 +724,7 @@ ___TEMPLATE_PARAMETERS___
 ___SANDBOXED_JS_FOR_SERVER___
 
 const computeEffectiveTldPlusOne = require('computeEffectiveTldPlusOne');
+const createRegex = require('createRegex');
 const encodeUriComponent = require('encodeUriComponent');
 const generateRandom = require('generateRandom');
 const getAllEventData = require('getAllEventData');
@@ -814,28 +835,36 @@ function getEmailAddressFromEventData(eventData) {
     eventDataUserData.email ||
     eventDataUserData.email_address ||
     eventDataUserData.sha256_email_address;
-  const emailType = getType(email);
 
-  if (emailType === 'string') return email;
-  else if (emailType === 'array' || emailType === 'object') return email[0];
-
-  return;
+  return toValueList(email);
 }
 
-function getAddressFromEventData(eventData) {
+function getPhoneNumbersFromEventData(eventData) {
   const eventDataUserData = eventData.user_data || {};
+  return toValueList(eventData.phone_number || eventDataUserData.phone_number);
+}
 
-  let eventDataUserDataAddress = {};
+function getAddressListFromEventData(eventData) {
+  const eventDataUserData = eventData.user_data || {};
   const addressType = getType(eventDataUserData.address);
-  if (addressType === 'object' || addressType === 'array') {
-    eventDataUserDataAddress = eventDataUserData.address[0] || eventDataUserData.address;
-  }
 
-  return {
-    city: eventDataUserDataAddress.city,
-    postalCode: eventDataUserDataAddress.postal_code,
-    country: eventDataUserDataAddress.country
-  };
+  if (addressType === 'array') return eventDataUserData.address.filter((a) => getType(a) === 'object');
+  if (addressType === 'object') return [eventDataUserData.address];
+
+  return [];
+}
+
+function getFieldListFromAddresses(addresses, fieldName) {
+  return addresses.map((address) => address[fieldName]).filter((v) => getType(v) === 'string' && v !== '');
+}
+
+function getAndroidAdvertisingIdFromEventData(eventData) {
+  const platform = eventData['x-ga-platform'];
+  const aaid = platform === 'android' ? eventData['x-ga-resettable_device_id'] : undefined;
+
+  if (getType(aaid) === 'string' && aaid !== '00000000-0000-0000-0000-000000000000') return aaid;
+
+  return undefined;
 }
 
 function parseClickIdFromUrl(eventData, clickIdName) {
@@ -872,49 +901,97 @@ function getBrowserId(data, eventData) {
 }
 
 function addUserData(data, eventData, event) {
-  const userData = {};
+  const values = {};
 
   if (isUIFieldTrue(data.autoMapUserDataParameters)) {
-    const email = getEmailAddressFromEventData(eventData);
-    if (email) userData.email_sha256 = email;
+    values.email_sha256 = getEmailAddressFromEventData(eventData);
+    values.external_id_sha256 = toValueList(eventData.user_id);
+    values.phone_number_sha256 = getPhoneNumbersFromEventData(eventData);
 
-    const externalId = eventData.user_id;
-    if (externalId) {
-      userData.external_id_sha256 = makeString(externalId);
-    }
+    const addresses = getAddressListFromEventData(eventData);
+    values.first_name_sha256 = getFieldListFromAddresses(addresses, 'first_name');
+    values.last_name_sha256 = getFieldListFromAddresses(addresses, 'last_name');
+    values.city = getFieldListFromAddresses(addresses, 'city');
+    values.zip_code = getFieldListFromAddresses(addresses, 'postal_code');
+    values.region = getFieldListFromAddresses(addresses, 'region');
+    values.country = getFieldListFromAddresses(addresses, 'country');
 
-    const address = getAddressFromEventData(eventData);
-    if (address.city) userData.city = address.city;
-    if (address.postalCode) userData.zip_code = address.postalCode;
-    if (address.country) userData.country = address.country;
+    if (eventData.ip_override) values.ip_address = eventData.ip_override;
 
-    if (eventData.ip_override) userData.ip_address = eventData.ip_override;
+    if (eventData.user_agent) values.user_agent = eventData.user_agent;
 
-    if (eventData.user_agent) userData.user_agent = eventData.user_agent;
+    const androidAdvertisingId = getAndroidAdvertisingIdFromEventData(eventData);
+    if (androidAdvertisingId) values.android_advertising_id = androidAdvertisingId;
 
     const browserId = getBrowserId(data, eventData);
-    if (browserId) userData.obref = browserId;
+    if (browserId) values.obref = browserId;
   }
 
   if (data.userDataParametersList) {
+    const listUserDataFields = [
+      'email_sha256',
+      'phone_number_sha256',
+      'external_id_sha256',
+      'first_name_sha256',
+      'last_name_sha256',
+      'city',
+      'zip_code',
+      'region',
+      'country'
+    ];
+
     data.userDataParametersList.forEach((d) => {
       let name = d.name;
-      // Even after UI removal, the 'data' object might still contain it if the user doesn't force update the tag.
-      if (name === 'phone_number_sha256') return;
-      else if (['city_sha256', 'zip_code_sha256', 'country_sha256'].indexOf(name) !== -1) {
-        // Backward compatibility after OpenAI remove _sha256 requirement, but the template UI still contains it.
+      if (['city_sha256', 'zip_code_sha256', 'country_sha256'].indexOf(name) !== -1) {
+        // Backward compatibility after OpenAI removed the _sha256 requirement for geographic fields.
         name = name.replace('_sha256', '');
       } else if (name === 'external_id') {
-        // Backward compatibility after OpenAI remove _sha256 requirement, but the template UI still contains it.
+        // Backward compatibility after OpenAI removed the plain external_id field.
         name = 'external_id_sha256';
       }
-      userData[name] = d.value;
+
+      values[name] = listUserDataFields.indexOf(name) !== -1 ? toValueList(d.value) : d.value;
     });
   }
 
-  event.user = userData;
+  event.user = buildUserData(values);
 
   return event;
+}
+
+function buildUserData(values) {
+  const userData = {};
+
+  const hashedListFields = {
+    email_sha256: 'emails_sha256',
+    phone_number_sha256: 'phone_numbers_sha256',
+    external_id_sha256: 'external_ids_sha256',
+    first_name_sha256: 'first_names_sha256',
+    last_name_sha256: 'last_names_sha256'
+  };
+
+  Object.keys(hashedListFields).forEach((key) => {
+    const list = values[key];
+    if (getType(list) === 'array' && list.length) userData[hashedListFields[key]] = list;
+  });
+
+  const plainListFields = {
+    city: 'cities',
+    zip_code: 'postal_codes',
+    region: 'regions',
+    country: 'countries'
+  };
+
+  Object.keys(plainListFields).forEach((key) => {
+    const list = values[key];
+    if (getType(list) === 'array' && list.length) userData[plainListFields[key]] = list;
+  });
+
+  ['ip_address', 'user_agent', 'obref', 'android_advertising_id'].forEach((key) => {
+    if (values[key]) userData[key] = values[key];
+  });
+
+  return userData;
 }
 
 function getEventParametersType(eventName) {
@@ -964,6 +1041,7 @@ function addEventParameters(data, eventData, event) {
       items.forEach((i) => {
         const item = {};
         if (i[itemIdKey]) item.id = makeString(i[itemIdKey]);
+        if (i.item_group_id) item.group_id = makeString(i.item_group_id);
         if (i.item_name) item.name = makeString(i.item_name);
         if (isValidValue(i.quantity)) item.quantity = makeInteger(i.quantity);
         if (isValidValue(i.price)) {
@@ -1032,15 +1110,18 @@ function hashDataIfNeeded(event) {
   const hasUserData = hasProps(userData);
 
   if (hasUserData) {
-    const userDataKeysToHash = {
-      email_sha256: true,
-      external_id_sha256: true
+    const userDataKeysToNormalize = {
+      emails_sha256: normalizeEmail,
+      phone_numbers_sha256: normalizePhone,
+      external_ids_sha256: trim,
+      first_names_sha256: normalizeName,
+      last_names_sha256: normalizeName
     };
 
-    Object.keys(userDataKeysToHash).forEach((key) => {
-      let value = userData[key];
-      if (!value || isHashed(value)) return;
-      userData[key] = hashData(value);
+    Object.keys(userDataKeysToNormalize).forEach((key) => {
+      const value = userData[key];
+      if (!value) return;
+      userData[key] = hashData(value, userDataKeysToNormalize[key]);
     });
   }
 
@@ -1160,7 +1241,7 @@ function sendRequest(data, mappedData) {
   const pixelId = makeString(data.pixelId).trim();
   const requestUrl = generateRequestBaseUrl(pixelId);
   const requestOptions = generateRequestOptions(data);
-  
+
   return sendHttpRequest(requestUrl, requestOptions, JSON.stringify(mappedData))
     .then((result) => {
       if (!data.useOptimisticScenario) {
@@ -1266,7 +1347,7 @@ function isHashed(value) {
   return makeString(value).match('^[A-Fa-f0-9]{64}$') !== null;
 }
 
-function hashData(value) {
+function hashData(value, normalize) {
   if (!value) return value;
 
   const type = getType(value);
@@ -1274,21 +1355,63 @@ function hashData(value) {
   if (value === 'undefined' || value === 'null') return undefined;
 
   if (type === 'array') {
-    return value.map((val) => hashData(val));
+    return value.map((val) => hashData(val, normalize));
   }
 
   if (type === 'object') {
     return Object.keys(value).reduce((acc, val) => {
-      acc[val] = hashData(value[val]);
+      acc[val] = hashData(value[val], normalize);
       return acc;
     }, {});
   }
 
   if (isHashed(value)) return value;
 
-  return sha256Sync(makeString(value).trim().toLowerCase(), {
+  const normalizeFn = normalize || normalizeEmail;
+  return sha256Sync(normalizeFn(makeString(value)), {
     outputEncoding: 'hex'
   });
+}
+
+function trim(value) {
+  return makeString(value).trim();
+}
+
+function normalizeEmail(value) {
+  return trim(value).toLowerCase();
+}
+
+function normalizePhone(value) {
+  const phoneStripRegex = createRegex('[^0-9]', 'g');
+  let phone = makeString(value);
+  if (phoneStripRegex) phone = phone.replace(phoneStripRegex, '');
+  if (phone.charAt(0) === '+') phone = phone.substring(1);
+  while (phone.length && phone.charAt(0) === '0') phone = phone.substring(1);
+  return phone;
+}
+
+function normalizeName(value) {
+  // ASCII whitespace and punctuation to strip; non-ASCII characters are preserved.
+  const charsToStrip = [
+    ' ', '\t', '\n', '\r',
+    '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/',
+    ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'
+  ];
+  let name = makeString(value).toLowerCase();
+  charsToStrip.forEach((char) => {
+    name = name.split(char).join('');
+  });
+  return name;
+}
+
+function toValueList(value) {
+  const type = getType(value);
+
+  if (type === 'array') return value.filter((v) => getType(v) === 'string' && v !== '');
+  if (type === 'string' && value !== '') return [value];
+  if (type === 'number') return [makeString(value)];
+
+  return [];
 }
 
 function isConsentGivenOrNotRequired(data, eventData) {
@@ -1302,7 +1425,6 @@ function log(rawDataToLog) {
   rawDataToLog.TraceId = getRequestHeader('trace-id');
   logToConsole(JSON.stringify(rawDataToLog));
 }
-
 
 ___SERVER_PERMISSIONS___
 
@@ -1665,7 +1787,7 @@ scenarios:
       mock('getAllEventData', () => eventDataBase);
 
       mock('sendHttpRequest', () => {
-        return Promise.create((resolve) => resolve({ statusCode: 200 }));
+        return resolveOk();
       });
 
       runCode(mockData);
@@ -1690,15 +1812,12 @@ scenarios:
         const parsed = JSON.parse(body);
         assertThat(parsed.events[0].type).isEqualTo(eventName);
         assertThat(parsed.events[0].custom_event_name).isUndefined();
-        return Promise.create((resolve) => resolve({ statusCode: 200 }));
+        return resolveOk();
       });
 
       runCode(mockData);
 
-      callLater(() => {
-        assertApi('gtmOnSuccess').wasCalled();
-        assertApi('gtmOnFailure').wasNotCalled();
-      });
+      assertSentSuccessfully();
     });
 - name: '[Event Name] Custom mode sends event_type custom and sets custom_event_name'
   code: |-
@@ -1709,15 +1828,12 @@ scenarios:
       const parsed = JSON.parse(body);
       assertThat(parsed.events[0].type).isEqualTo('custom');
       assertThat(parsed.events[0].custom_event_name).isEqualTo('my_custom_event');
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
 
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
+    assertSentSuccessfully();
 - name: '[Event Name] Custom mode falls back to standard type when the custom name
     matches a standard event name'
   code: |-
@@ -1728,15 +1844,12 @@ scenarios:
       const parsed = JSON.parse(body);
       assertThat(parsed.events[0].type).isEqualTo('order_created');
       assertThat(parsed.events[0].custom_event_name).isUndefined();
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
 
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
+    assertSentSuccessfully();
 - name: '[Event Name] Inherit mode maps GA4 event names to OpenAI equivalents'
   code: |-
     mockData.eventNameSetup = 'inherit';
@@ -1762,15 +1875,12 @@ scenarios:
         const parsed = JSON.parse(body);
         assertThat(parsed.events[0].type).isEqualTo(scenario.expected);
         assertThat(parsed.events[0].custom_event_name).isUndefined();
-        return Promise.create((resolve) => resolve({ statusCode: 200 }));
+        return resolveOk();
       });
 
       runCode(mockData);
 
-      callLater(() => {
-        assertApi('gtmOnSuccess').wasCalled();
-        assertApi('gtmOnFailure').wasNotCalled();
-      });
+      assertSentSuccessfully();
     });
 - name: '[Event Name] Inherit mode passes through unknown GA4 events as custom with
     custom_event_name'
@@ -1787,15 +1897,12 @@ scenarios:
       const parsed = JSON.parse(body);
       assertThat(parsed.events[0].type).isEqualTo('custom');
       assertThat(parsed.events[0].custom_event_name).isEqualTo('unknown_ga4_event');
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
 
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
+    assertSentSuccessfully();
 - name: '[Event Name] Inherit mode passes through a GA4 event name that is already
     a standard event name'
   code: |-
@@ -1811,15 +1918,12 @@ scenarios:
       const parsed = JSON.parse(body);
       assertThat(parsed.events[0].type).isEqualTo('trial_started');
       assertThat(parsed.events[0].custom_event_name).isUndefined();
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
 
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
+    assertSentSuccessfully();
 - name: '[Server Event Data] action_source is sent and opt_out is mapped correctly'
   code: |-
     [
@@ -1839,15 +1943,12 @@ scenarios:
         } else {
           assertThat(event.opt_out).isEqualTo(scenario.expectOptOut);
         }
-        return Promise.create((resolve) => resolve({ statusCode: 200 }));
+        return resolveOk();
       });
 
       runCode(mockData);
 
-      callLater(() => {
-        assertApi('gtmOnSuccess').wasCalled();
-        assertApi('gtmOnFailure').wasNotCalled();
-      });
+      assertSentSuccessfully();
     });
 - name: '[Server Event Data] Auto-maps timestamp_ms source_url and event id from event_id'
   code: |-
@@ -1866,15 +1967,12 @@ scenarios:
       assertThat(event.timestamp_ms).isEqualTo(NOW_MILISECONDS);
       assertThat(event.source_url).isEqualTo('https://example.com/test');
       assertThat(event.id).isEqualTo('evt-abc-123');
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
 
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
+    assertSentSuccessfully();
 - name: '[Server Event Data] event id falls back to eventId when event_id is absent'
   code: |-
     mockData.autoMapServerEventDataParameters = true;
@@ -1888,15 +1986,12 @@ scenarios:
     mock('sendHttpRequest', (url, options, body) => {
       const parsed = JSON.parse(body);
       assertThat(parsed.events[0].id).isEqualTo('fallback-id-456');
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
 
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
+    assertSentSuccessfully();
 - name: '[Server Event Data] Manual serverEventDataParametersList entries override
     auto-mapped values'
   code: |-
@@ -1913,15 +2008,12 @@ scenarios:
       assertThat(event.timestamp_ms).isEqualTo(9999);
       assertThat(event.source_url).isEqualTo('https://manual.example.com');
       assertThat(event.id).isEqualTo('manual-event-id');
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
 
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
+    assertSentSuccessfully();
 - name: '[Click ID] oppref source priority URL over cookie over common_cookie over
     eventData'
   code: |-
@@ -1971,15 +2063,12 @@ scenarios:
       mock('sendHttpRequest', (url, options, body) => {
         const parsed = JSON.parse(body);
         assertThat(parsed.events[0].oppref).isEqualTo(scenario.expected);
-        return Promise.create((resolve) => resolve({ statusCode: 200 }));
+        return resolveOk();
       });
 
       runCode(mockData);
 
-      callLater(() => {
-        assertApi('gtmOnSuccess').wasCalled();
-        assertApi('gtmOnFailure').wasNotCalled();
-      });
+      assertSentSuccessfully();
     });
 - name: '[Click ID Cookie] Is set when setClickIdCookie is true and oppref is found'
   code: |-
@@ -2000,7 +2089,7 @@ scenarios:
     });
 
     mock('sendHttpRequest', () => {
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
@@ -2026,15 +2115,12 @@ scenarios:
     });
 
     mock('sendHttpRequest', () => {
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
 
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
+    assertSentSuccessfully();
 - name: '[Click ID Cookie] Cookie options are correctly built from data settings'
   code: |-
     mockData.setClickIdCookie = true;
@@ -2057,7 +2143,7 @@ scenarios:
     });
 
     mock('sendHttpRequest', () => {
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
@@ -2085,7 +2171,7 @@ scenarios:
     mock('getCookieValues', () => []);
 
     mock('sendHttpRequest', () => {
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
@@ -2133,15 +2219,12 @@ scenarios:
       mock('sendHttpRequest', (url, options, body) => {
         const parsed = JSON.parse(body);
         assertThat(parsed.events[0].user.obref).isEqualTo(scenario.expected);
-        return Promise.create((resolve) => resolve({ statusCode: 200 }));
+        return resolveOk();
       });
 
       runCode(mockData);
 
-      callLater(() => {
-        assertApi('gtmOnSuccess').wasCalled();
-        assertApi('gtmOnFailure').wasNotCalled();
-      });
+      assertSentSuccessfully();
     });
 - name: '[Browser ID Cookie] setBrowserIdCookie behavior across cookie/auto-map scenarios'
   code: |-
@@ -2233,7 +2316,7 @@ scenarios:
       });
 
       mock('sendHttpRequest', () => {
-        return Promise.create((resolve) => resolve({ statusCode: 200 }));
+        return resolveOk();
       });
 
       runCode(mockData);
@@ -2257,227 +2340,211 @@ scenarios:
         assertApi('gtmOnFailure').wasNotCalled();
       });
     });
-- name: '[User Data] Email is auto-mapped and stored in email_sha256 from multiple
-    sources'
+- name: '[User Data] Auto-mapped fields are correctly extracted from Event Data'
   code: |-
+    const alreadyHashedEmail = 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3';
+    const validAndroidId = '38400000-8cf0-11bd-b23e-10b96e40000d';
+    const placeholderAndroidId = '00000000-0000-0000-0000-000000000000';
+
     mockData.autoMapUserDataParameters = true;
     mockData.userDataParametersList = undefined;
 
     [
-      { eventDataExtra: { email: 'direct@example.com' },                                  description: 'from eventData.email' },
-      { eventDataExtra: { email_address: 'addr@example.com' },                            description: 'from eventData.email_address' },
-      { eventDataExtra: { user_data: { email: 'ud@example.com' } },                       description: 'from user_data.email' },
-      { eventDataExtra: { user_data: { email_address: 'ud-addr@example.com' } },          description: 'from user_data.email_address' },
-      { eventDataExtra: { user_data: { sha256_email_address: 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3' } }, description: 'from user_data.sha256_email_address' }
+      {
+        eventDataExtra: { email: 'direct@example.com' },
+        assertFn: (user) => {
+          assertThat(user.emails_sha256).isDefined();
+          assertThat(user.emails_sha256.length).isEqualTo(1);
+        }
+      },
+      {
+        eventDataExtra: { email_address: 'addr@example.com' },
+        assertFn: (user) => {
+          assertThat(user.emails_sha256).isDefined();
+          assertThat(user.emails_sha256.length).isEqualTo(1);
+        }
+      },
+      {
+        eventDataExtra: { user_data: { email: 'ud@example.com' } },
+        assertFn: (user) => {
+          assertThat(user.emails_sha256).isDefined();
+          assertThat(user.emails_sha256.length).isEqualTo(1);
+        }
+      },
+      {
+        eventDataExtra: { user_data: { email_address: 'ud-addr@example.com' } },
+        assertFn: (user) => {
+          assertThat(user.emails_sha256).isDefined();
+          assertThat(user.emails_sha256.length).isEqualTo(1);
+        }
+      },
+      {
+        eventDataExtra: { user_data: { sha256_email_address: alreadyHashedEmail } },
+        assertFn: (user) => {
+          assertThat(user.emails_sha256).isDefined();
+          assertThat(user.emails_sha256.length).isEqualTo(1);
+        }
+      },
+      {
+        eventDataExtra: { user_data: { email: ['arr@example.com', 'other@example.com'] } },
+        assertFn: (user) => {
+          assertThat(user.emails_sha256).isDefined();
+          assertThat(user.emails_sha256.length).isEqualTo(2);
+        }
+      },
+      {
+        eventDataExtra: { user_id: 'plain-user-123' },
+        assertFn: (user) => {
+          assertThat(user.external_ids_sha256).isDefined();
+          assertThat(user.external_ids_sha256.length).isEqualTo(1);
+          assertThat(user.external_id_sha256).isUndefined();
+          assertThat(user.external_id).isUndefined();
+        }
+      },
+      {
+        eventDataExtra: { user_id: alreadyHashedEmail },
+        assertFn: (user) => {
+          assertThat(user.external_ids_sha256).isDefined();
+          assertThat(user.external_ids_sha256.length).isEqualTo(1);
+        }
+      },
+      {
+        eventDataExtra: {
+          user_data: {
+            address: { first_name: 'Mary', last_name: 'Jane', city: 'New York', postal_code: '10001', region: 'New York', country: 'us' }
+          }
+        },
+        assertFn: (user) => {
+          assertThat(user.cities).isEqualTo(['New York']);
+          assertThat(user.postal_codes).isEqualTo(['10001']);
+          assertThat(user.regions).isEqualTo(['New York']);
+          assertThat(user.countries).isEqualTo(['us']);
+          assertThat(user.first_names_sha256.length).isEqualTo(1);
+          assertThat(user.last_names_sha256.length).isEqualTo(1);
+        }
+      },
+      {
+        eventDataExtra: {
+          user_data: {
+            address: [
+              { first_name: 'Mary', last_name: 'Jane', city: 'New York', postal_code: '10001', region: 'New York', country: 'us' },
+              { first_name: 'John', last_name: 'Doe', city: 'Chicago', postal_code: '60601', region: 'Illinois', country: 'us' }
+            ]
+          }
+        },
+        assertFn: (user) => {
+          assertThat(user.cities).isEqualTo(['New York', 'Chicago']);
+          assertThat(user.postal_codes).isEqualTo(['10001', '60601']);
+          assertThat(user.regions).isEqualTo(['New York', 'Illinois']);
+          assertThat(user.countries).isEqualTo(['us', 'us']);
+          assertThat(user.first_names_sha256.length).isEqualTo(2);
+          assertThat(user.last_names_sha256.length).isEqualTo(2);
+        }
+      },
+      {
+        eventDataExtra: { 'x-ga-platform': 'android', 'x-ga-resettable_device_id': validAndroidId },
+        assertFn: (user) => assertThat(user.android_advertising_id).isEqualTo(validAndroidId)
+      },
+      {
+        eventDataExtra: { 'x-ga-platform': 'web', 'x-ga-resettable_device_id': validAndroidId },
+        assertFn: (user) => assertThat(user.android_advertising_id).isUndefined()
+      },
+      {
+        eventDataExtra: { 'x-ga-platform': 'android', 'x-ga-resettable_device_id': placeholderAndroidId },
+        assertFn: (user) => assertThat(user.android_advertising_id).isUndefined()
+      },
+      {
+        eventDataExtra: { ip_override: '203.0.113.1', user_agent: 'Mozilla/5.0 Test' },
+        assertFn: (user) => {
+          assertThat(user.ip_address).isEqualTo('203.0.113.1');
+          assertThat(user.user_agent).isEqualTo('Mozilla/5.0 Test');
+        }
+      }
     ].forEach((scenario) => {
       const eventDataBase = { event_name: 'page_view', page_location: 'https://example.com', event_id: '123abc' };
       for (const key in scenario.eventDataExtra) eventDataBase[key] = scenario.eventDataExtra[key];
       mock('getAllEventData', () => eventDataBase);
 
       mock('sendHttpRequest', (url, options, body) => {
-        const parsed = JSON.parse(body);
-        assertThat(parsed.events[0].user.email_sha256).isDefined();
-        return Promise.create((resolve) => resolve({ statusCode: 200 }));
+        scenario.assertFn(JSON.parse(body).events[0].user);
+        return resolveOk();
       });
 
       runCode(mockData);
 
-      callLater(() => {
-        assertApi('gtmOnSuccess').wasCalled();
-        assertApi('gtmOnFailure').wasNotCalled();
-      });
+      assertSentSuccessfully();
     });
-- name: '[User Data] external_id key depends on whether user_id is already hashed'
-  code: |-
-    mockData.autoMapUserDataParameters = true;
-    mockData.userDataParametersList = undefined;
-
-    const alreadyHashed = 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3';
-
-    [
-      {
-        userId: 'plain-user-123',
-        expectKey: 'external_id_sha256',
-        notExpectKey: 'external_id'
-      },
-      {
-        userId: alreadyHashed,
-        expectKey: 'external_id_sha256',
-        notExpectKey: 'external_id'
-      }
-    ].forEach((scenario) => {
-      mock('getAllEventData', () => ({
-        event_id: '123abc',
-        event_name: 'page_view',
-        page_location: 'https://example.com',
-        user_id: scenario.userId
-      }));
-
-      mock('sendHttpRequest', (url, options, body) => {
-        const parsed = JSON.parse(body);
-        const user = parsed.events[0].user;
-        assertThat(user[scenario.expectKey]).isDefined();
-        assertThat(user[scenario.notExpectKey]).isUndefined();
-        return Promise.create((resolve) => resolve({ statusCode: 200 }));
-      });
-
-      runCode(mockData);
-
-      callLater(() => {
-        assertApi('gtmOnSuccess').wasCalled();
-        assertApi('gtmOnFailure').wasNotCalled();
-      });
-    });
-- name: '[User Data] Address fields are auto-mapped from user_data address object'
-  code: |-
-    mockData.autoMapUserDataParameters = true;
-    mockData.userDataParametersList = undefined;
-
-    mock('getAllEventData', () => ({
-      event_id: '123abc',
-      event_name: 'page_view',
-      page_location: 'https://example.com',
-      user_data: {
-        address: { city: 'New York', postal_code: '10001', country: 'us' }
-      }
-    }));
-
-    mock('sendHttpRequest', (url, options, body) => {
-      const parsed = JSON.parse(body);
-      const user = parsed.events[0].user;
-      assertThat(user.city).isDefined();
-      assertThat(user.zip_code).isDefined();
-      assertThat(user.country).isDefined();
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
-    });
-
-    runCode(mockData);
-
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
-- name: '[User Data] ip_address and user_agent are auto-mapped without hashing'
-  code: |-
-    mockData.autoMapUserDataParameters = true;
-    mockData.userDataParametersList = undefined;
-
-    mock('getAllEventData', () => ({
-      event_id: '123abc',
-      event_name: 'page_view',
-      page_location: 'https://example.com',
-      ip_override: '203.0.113.1',
-      user_agent: 'Mozilla/5.0 Test'
-    }));
-
-    mock('sendHttpRequest', (url, options, body) => {
-      const parsed = JSON.parse(body);
-      const user = parsed.events[0].user;
-      assertThat(user.ip_address).isEqualTo('203.0.113.1');
-      assertThat(user.user_agent).isEqualTo('Mozilla/5.0 Test');
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
-    });
-
-    runCode(mockData);
-
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
-- name: '[User Data] Hashing - unhashed values are hashed and pre-hashed values are
-    not re-hashed'
+- name: '[User Data] Manual entries are correctly normalized hashed and passed through'
   code: |-
     const alreadyHashed = 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3';
     const emailHash = '973dfe463ec85785f5f95af5ba3906eedb2d931c24e69824a89ea65dba4e813b';
+    const phoneHash = '758fbf68945f21c416814c539ab578876c8d98fb69e6da692def92cd52417fe0';
+    const nameHash = 'f08f448a5e7a9dc3619bb7c129f6a7d5fc6af002cea17ad71dfdc1c68f4d4e0e';
+    const externalIdCaseHash = 'ec6001b9526337968f17221aa25e04e1e57a9ae947d207091317186e1b29e5c2';
+
+    mockData.autoMapUserDataParameters = false;
 
     [
       {
         params: [{ name: 'email_sha256', value: 'test@example.com' }],
-        assertFn: (user) => assertThat(user.email_sha256).isEqualTo(emailHash)
+        assertFn: (user) => assertThat(user.emails_sha256).isEqualTo([emailHash])
       },
       {
         params: [{ name: 'email_sha256', value: alreadyHashed }],
-        assertFn: (user) => assertThat(user.email_sha256).isEqualTo(alreadyHashed)
+        assertFn: (user) => assertThat(user.emails_sha256).isEqualTo([alreadyHashed])
+      },
+      {
+        params: [{ name: 'phone_number_sha256', value: '+1 (415) 555-2671' }],
+        assertFn: (user) => assertThat(user.phone_numbers_sha256).isEqualTo([phoneHash])
+      },
+      {
+        params: [{ name: 'first_name_sha256', value: 'Mary Jane' }],
+        assertFn: (user) => assertThat(user.first_names_sha256).isEqualTo([nameHash])
+      },
+      {
+        params: [{ name: 'last_name_sha256', value: 'Mary Jane' }],
+        assertFn: (user) => assertThat(user.last_names_sha256).isEqualTo([nameHash])
+      },
+      {
+        // Case must be preserved for external IDs, unlike email/name which are lowercased.
+        params: [{ name: 'external_id_sha256', value: 'User-ABC' }],
+        assertFn: (user) => assertThat(user.external_ids_sha256).isEqualTo([externalIdCaseHash])
       },
       {
         params: [{ name: 'city', value: 'New York' }],
         assertFn: (user) => {
-          assertThat(user.city).isEqualTo('New York');
-          assertThat(user.city.match('^[A-Fa-f0-9]{64}$')).isNull();
+          assertThat(user.cities).isEqualTo(['New York']);
+          assertThat(user.cities[0].match('^[A-Fa-f0-9]{64}$')).isNull();
+        }
+      },
+      {
+        params: [
+          { name: 'email_sha256',        value: alreadyHashed },
+          { name: 'external_id',         value: 'User-ABC' },
+          { name: 'phone_number_sha256', value: '+1 (415) 555-2671' },
+          { name: 'ip_address',          value: '1.2.3.4' },
+          { name: 'user_agent',          value: 'TestAgent/1.0' }
+        ],
+        assertFn: (user) => {
+          assertThat(user.emails_sha256).isEqualTo([alreadyHashed]);
+          assertThat(user.external_ids_sha256).isNotEqualTo(['User-ABC']);
+          assertThat(user.external_ids_sha256).isDefined();
+          assertThat(user.phone_numbers_sha256).isEqualTo([phoneHash]);
+          assertThat(user.ip_address).isEqualTo('1.2.3.4');
+          assertThat(user.user_agent).isEqualTo('TestAgent/1.0');
         }
       }
     ].forEach((scenario) => {
-      mockData.autoMapUserDataParameters = false;
       mockData.userDataParametersList = scenario.params;
 
       mock('sendHttpRequest', (url, options, body) => {
-        const parsed = JSON.parse(body);
-        scenario.assertFn(parsed.events[0].user);
-        return Promise.create((resolve) => resolve({ statusCode: 200 }));
+        scenario.assertFn(JSON.parse(body).events[0].user);
+        return resolveOk();
       });
 
       runCode(mockData);
 
-      callLater(() => {
-        assertApi('gtmOnSuccess').wasCalled();
-        assertApi('gtmOnFailure').wasNotCalled();
-      });
-    });
-- name: '[User Data] Manual userDataParametersList entries are sent correctly'
-  code: |-
-    mockData.autoMapUserDataParameters = false;
-    const hash64 = 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3';
-    mockData.userDataParametersList = [
-      { name: 'email_sha256',        value: hash64 },
-      { name: 'external_id',         value: 'user-abc' },
-      { name: 'ip_address',          value: '1.2.3.4' },
-      { name: 'user_agent',          value: 'TestAgent/1.0' }
-    ];
-
-    mock('sendHttpRequest', (url, options, body) => {
-      const parsed = JSON.parse(body);
-      const user = parsed.events[0].user;
-      assertThat(user.email_sha256).isEqualTo(hash64);
-      assertThat(user.external_id_sha256).isNotEqualTo('user-abc');
-      assertThat(user.external_id_sha256).isDefined();
-      assertThat(user.ip_address).isEqualTo('1.2.3.4');
-      assertThat(user.user_agent).isEqualTo('TestAgent/1.0');
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
-    });
-
-    runCode(mockData);
-
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
-- name: '[User Data] Email from array source return first element'
-  code: |-
-    mockData.autoMapUserDataParameters = true;
-    mockData.userDataParametersList = undefined;
-
-    [
-      {
-        eventDataExtra: { user_data: { email: ['arr@example.com', 'other@example.com'] } },
-        field: 'email_sha256'
-      }
-    ].forEach((scenario) => {
-      const eventDataBase = { event_name: 'page_view', page_location: 'https://example.com', event_id: '123abc' };
-      for (const key in scenario.eventDataExtra) eventDataBase[key] = scenario.eventDataExtra[key];
-      mock('getAllEventData', () => eventDataBase);
-
-      mock('sendHttpRequest', (url, options, body) => {
-        const parsed = JSON.parse(body);
-        assertThat(parsed.events[0].user[scenario.field]).isDefined();
-        return Promise.create((resolve) => resolve({ statusCode: 200 }));
-      });
-
-      runCode(mockData);
-
-      callLater(() => {
-        assertApi('gtmOnSuccess').wasCalled();
-        assertApi('gtmOnFailure').wasNotCalled();
-      });
+      assertSentSuccessfully();
     });
 - name: '[Event Parameters] data type is correctly mapped for each event name'
   code: |-
@@ -2501,15 +2568,12 @@ scenarios:
       mock('sendHttpRequest', (url, options, body) => {
         const parsed = JSON.parse(body);
         assertThat(parsed.events[0].data.type).isEqualTo(scenario.expectedType);
-        return Promise.create((resolve) => resolve({ statusCode: 200 }));
+        return resolveOk();
       });
 
       runCode(mockData);
 
-      callLater(() => {
-        assertApi('gtmOnSuccess').wasCalled();
-        assertApi('gtmOnFailure').wasNotCalled();
-      });
+      assertSentSuccessfully();
     });
 - name: '[Event Parameters] Amount and currency are auto-mapped from eventData value
     and currency'
@@ -2529,15 +2593,12 @@ scenarios:
       const parsed = JSON.parse(body);
       assertThat(parsed.events[0].data.amount).isEqualTo(9999);
       assertThat(parsed.events[0].data.currency).isEqualTo('USD');
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
 
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
+    assertSentSuccessfully();
 - name: '[Event Parameters] Contents are auto-mapped from eventData items with computed
     amount sum'
   code: |-
@@ -2551,7 +2612,7 @@ scenarios:
       event_name: 'purchase',
       page_location: 'https://example.com',
       items: [
-        { item_id: 'SKU_001', item_name: 'Product A', price: 10, quantity: 2, content_type: 'product', currency: 'USD' },
+        { item_id: 'SKU_001', item_group_id: 'GROUP_1', item_name: 'Product A', price: 10, quantity: 2, content_type: 'product', currency: 'USD' },
         { item_id: 'SKU_002', item_name: 'Product B', price: 5,  quantity: 3, content_type: 'digital' }
       ]
     }));
@@ -2563,20 +2624,19 @@ scenarios:
       assertThat(data.amount).isEqualTo(3500);
       assertThat(data.contents).hasLength(2);
       assertThat(data.contents[0].id).isEqualTo('SKU_001');
+      assertThat(data.contents[0].group_id).isEqualTo('GROUP_1');
       assertThat(data.contents[0].name).isEqualTo('Product A');
       assertThat(data.contents[0].quantity).isEqualTo(2);
       assertThat(data.contents[0].amount).isEqualTo(1000);
       assertThat(data.contents[0].content_type).isEqualTo('product');
+      assertThat(data.contents[1].group_id).isUndefined();
       assertThat(data.contents[1].content_type).isEqualTo('digital');
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
 
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
+    assertSentSuccessfully();
 - name: '[Event Parameters] Contents fallback to eventData ecommerce items when items
     is absent'
   code: |-
@@ -2598,15 +2658,12 @@ scenarios:
       const parsed = JSON.parse(body);
       assertThat(parsed.events[0].data.contents).hasLength(1);
       assertThat(parsed.events[0].data.contents[0].id).isEqualTo('ECOMM_001');
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
 
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
+    assertSentSuccessfully();
 - name: '[Event Parameters] eventData value takes precedence over computed items sum
     for amount'
   code: |-
@@ -2626,15 +2683,12 @@ scenarios:
       const parsed = JSON.parse(body);
       // value from eventData wins over items sum
       assertThat(parsed.events[0].data.amount).isEqualTo(99900);
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
 
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
+    assertSentSuccessfully();
 - name: '[Event Parameters] Manual eventParametersList entries are sent and amount
     is rounded'
   code: |-
@@ -2648,15 +2702,12 @@ scenarios:
       const parsed = JSON.parse(body);
       assertThat(parsed.events[0].data.amount).isEqualTo(15056);
       assertThat(parsed.events[0].data.currency).isEqualTo('EUR');
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
 
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
+    assertSentSuccessfully();
 - name: '[Event Custom Parameters] Entries are added to the payload and override matching
     Event Parameters keys'
   code: |-
@@ -2681,15 +2732,12 @@ scenarios:
       assertThat(parsed.events[0].data.is_first_purchase).isTrue();
       assertThat(parsed.events[0].data.items_count).isEqualTo(3);
       assertThat(parsed.events[0].data.metadata).isEqualTo({ source: 'app' });
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
 
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
+    assertSentSuccessfully();
 - name: '[Event Custom Parameters] Not sent when list is not provided'
   code: |-
     mockData.eventNameSetup = 'custom';
@@ -2699,15 +2747,12 @@ scenarios:
     mock('sendHttpRequest', (url, options, body) => {
       const parsed = JSON.parse(body);
       assertThat(parsed.events[0].data.loyalty_tier).isUndefined();
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
 
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
+    assertSentSuccessfully();
 - name: '[Event Parameters] Custom itemIdKey is used as item id field when configured'
   code: |-
     mockData.autoMapEventParameters = true;
@@ -2727,15 +2772,12 @@ scenarios:
     mock('sendHttpRequest', (url, options, body) => {
       const parsed = JSON.parse(body);
       assertThat(parsed.events[0].data.contents[0].id).isEqualTo('SKU-ABC');
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
 
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
+    assertSentSuccessfully();
 - name: '[Event Parameters] Item without price is excluded from amount computation'
   code: |-
     mockData.autoMapEventParameters = true;
@@ -2758,15 +2800,12 @@ scenarios:
       assertThat(evData.amount).isEqualTo(5000);
       assertThat(evData.contents).hasLength(2);
       assertThat(evData.contents[1].amount).isUndefined();
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
 
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
+    assertSentSuccessfully();
 - name: '[Event Parameters] amount is passed as-is and amount_regular_unit is converted
     and renamed to amount'
   code: |-
@@ -2788,15 +2827,12 @@ scenarios:
             const evData = parsed.events[0].data;
             assertThat(evData.amount).isEqualTo(scenario.expectedAmount);
             assertThat(evData.amount_regular_unit).isUndefined();
-            return Promise.create((resolve) => resolve({ statusCode: 200 }));
+            return resolveOk();
           });
 
           runCode(mockData);
 
-          callLater(() => {
-            assertApi('gtmOnSuccess').wasCalled();
-            assertApi('gtmOnFailure').wasNotCalled();
-          });
+          assertSentSuccessfully();
         });
 - name: '[Validation] Calls gtmOnFailure across required-field and content validation
     scenarios'
@@ -2879,7 +2915,7 @@ scenarios:
       let sendHttpRequestCalled = false;
       mock('sendHttpRequest', () => {
         sendHttpRequestCalled = true;
-        return Promise.create((resolve) => resolve({ statusCode: 200 }));
+        return resolveOk();
       });
 
       runCode(mockData);
@@ -2899,7 +2935,7 @@ scenarios:
     ];
 
     mock('sendHttpRequest', () => {
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
@@ -2919,7 +2955,7 @@ scenarios:
       assertThat(options.method).isEqualTo('POST');
       assertThat(options.headers['Content-Type']).isEqualTo('application/json');
       assertThat(options.headers['Authorization']).isEqualTo('Bearer my-api-key-xyz');
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
@@ -2941,15 +2977,12 @@ scenarios:
       mock('sendHttpRequest', (url, options, body) => {
         const parsed = JSON.parse(body);
         assertThat(parsed.validate_only).isEqualTo(scenario.expected);
-        return Promise.create((resolve) => resolve({ statusCode: 200 }));
+        return resolveOk();
       });
 
       runCode(mockData);
 
-      callLater(() => {
-        assertApi('gtmOnSuccess').wasCalled();
-        assertApi('gtmOnFailure').wasNotCalled();
-      });
+      assertSentSuccessfully();
     });
 - name: '[Request] Full body structure contains events array with correct fields'
   code: |-
@@ -2970,15 +3003,12 @@ scenarios:
       assertThat(parsed.events[0].type).isEqualTo('page_viewed');
       assertThat(parsed.events[0].timestamp_ms).isEqualTo(NOW_MILISECONDS);
       assertThat(parsed.events[0].user.ip_address).isEqualTo('1.2.3.4');
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
 
-    callLater(() => {
-      assertApi('gtmOnSuccess').wasCalled();
-      assertApi('gtmOnFailure').wasNotCalled();
-    });
+    assertSentSuccessfully();
 - name: '[Optimistic Scenario] Calls gtmOnSuccess immediately without waiting for
     API response'
   code: |-
@@ -3004,10 +3034,7 @@ scenarios:
 
       runCode(mockData);
 
-      callLater(() => {
-        assertApi('gtmOnSuccess').wasCalled();
-        assertApi('gtmOnFailure').wasNotCalled();
-      });
+      assertSentSuccessfully();
     });
 - name: '[Response] Calls gtmOnFailure for non-2xx status codes'
   code: |-
@@ -3055,7 +3082,7 @@ scenarios:
     });
 
     mock('sendHttpRequest', () => {
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
@@ -3086,7 +3113,7 @@ scenarios:
     });
 
     mock('sendHttpRequest', () => {
-      return Promise.create((resolve) => resolve({ statusCode: 200 }));
+      return resolveOk();
     });
 
     runCode(mockData);
@@ -3123,8 +3150,19 @@ setup: |-
 
   mock('getCookieValues', () => []);
 
-  mock('sendHttpRequest', () => {
+  function resolveOk() {
     return Promise.create((resolve) => resolve({ statusCode: 200 }));
+  }
+
+  function assertSentSuccessfully() {
+    callLater(() => {
+      assertApi('gtmOnSuccess').wasCalled();
+      assertApi('gtmOnFailure').wasNotCalled();
+    });
+  }
+
+  mock('sendHttpRequest', () => {
+    return resolveOk();
   });
 
   const NOW_MILISECONDS = 1747945830456;
@@ -3159,6 +3197,13 @@ setup: |-
 
 
 ___NOTES___
+
+2026-09-09 - Change Notes:
+  - Migrate user data to OpenAI's current Conversions API schema: emails_sha256, phone_numbers_sha256, external_ids_sha256, first_names_sha256, last_names_sha256, cities, postal_codes, regions and countries now send as lists, with every value preserved when Event Data provides more than one (e.g. multiple user_data.address records)
+  - Restore Phone Number support (removed in June, now back in the API as phone_numbers_sha256) and add First Name, Last Name and Region auto-mapping and manual entry
+  - Add Android Advertising ID auto-mapping from x-ga-platform/x-ga-resettable_device_id, and manual entry support
+  - Add contents[].group_id auto-mapping from eventData items item_group_id
+  - Fix external ID hashing to preserve case instead of lowercasing, matching the documented normalization rule
 
 2026-08-19 - Change Notes:
   - Add Event Custom Parameters support for custom events
