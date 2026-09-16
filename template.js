@@ -95,6 +95,13 @@ function addServerEventData(data, eventData, event) {
     if (clickId) event.oppref = clickId;
   }
 
+  const autoGenerateEventId = data.hasOwnProperty('autoGenerateEventId')
+    ? data.autoGenerateEventId
+    : true;
+  if (autoGenerateEventId && !event.id) {
+    event.id = getTimestampMillis() + '_' + random() + '_' + random();
+  }
+
   if (data.serverEventDataParametersList) {
     data.serverEventDataParametersList.forEach((d) => (event[d.name] = d.value));
   }
@@ -123,14 +130,17 @@ function getAddressListFromEventData(eventData) {
   const eventDataUserData = eventData.user_data || {};
   const addressType = getType(eventDataUserData.address);
 
-  if (addressType === 'array') return eventDataUserData.address.filter((a) => getType(a) === 'object');
+  if (addressType === 'array')
+    return eventDataUserData.address.filter((a) => getType(a) === 'object');
   if (addressType === 'object') return [eventDataUserData.address];
 
   return [];
 }
 
 function getFieldListFromAddresses(addresses, fieldName) {
-  return addresses.map((address) => address[fieldName]).filter((v) => getType(v) === 'string' && v !== '');
+  return addresses
+    .map((address) => address[fieldName])
+    .filter((v) => getType(v) === 'string' && v !== '');
 }
 
 function getAndroidAdvertisingIdFromEventData(eventData) {
@@ -668,9 +678,42 @@ function normalizePhone(value) {
 function normalizeName(value) {
   // ASCII whitespace and punctuation to strip; non-ASCII characters are preserved.
   const charsToStrip = [
-    ' ', '\t', '\n', '\r',
-    '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/',
-    ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'
+    ' ',
+    '\t',
+    '\n',
+    '\r',
+    '!',
+    '"',
+    '#',
+    '$',
+    '%',
+    '&',
+    "'",
+    '(',
+    ')',
+    '*',
+    '+',
+    ',',
+    '-',
+    '.',
+    '/',
+    ':',
+    ';',
+    '<',
+    '=',
+    '>',
+    '?',
+    '@',
+    '[',
+    '\\',
+    ']',
+    '^',
+    '_',
+    '`',
+    '{',
+    '|',
+    '}',
+    '~'
   ];
   let name = makeString(value).toLowerCase();
   charsToStrip.forEach((char) => {
