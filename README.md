@@ -105,9 +105,10 @@ The Click ID (`oppref`) is sourced in the following priority order:
 | :--- | :--- |
 | **Opt Out** | When `true`, the event is marked as opted out. |
 | **Automap Server Event Data Parameters** | If enabled, automatically sets `Event Timestamp` (Unix timestamp in ms), `Source URL` (from `eventData.page_location`), `Event ID` (from `eventData.event_id` or `eventData.eventId`), and `Click ID` (from `oppref` sources). |
+| **Autogenerate an Event ID if none is found** | Enabled by default. Unlike Meta/TikTok, OpenAI's Conversions API requires an Event ID on every request; if none is found in Event Data, the tag generates a random one so CAPI-only events aren't rejected. Applies independently of **Automap Server Event Data Parameters** and never overrides a real Event ID. If you're also sending events via Pixel, either disable this option, or leave it enabled and pass your own Event ID manually or via Event Data to keep Pixel/CAPI deduplication working. |
 | **Server Event Data Parameters** | Manually override or add `Event Timestamp`, `Event ID`, `Click ID`, and `Source URL`. Manual values always take precedence over auto-mapped ones. |
 
-> **Note:** `Timestamp` cannot be more than 7 days in the past or 10 minutes into the future. `Source URL` is **required** when **Action Source** is set to `Web`.
+> **Note:** `Timestamp` cannot be more than 7 days in the past or 10 minutes into the future. `Source URL` is **required** when **Action Source** is set to `Web`. `Event ID` is always **required** — the request fails validation if none is available and **Autogenerate an Event ID if none is found** is disabled.
 
 ### User Data Parameters
 
