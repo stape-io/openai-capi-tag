@@ -592,7 +592,7 @@ ___TEMPLATE_PARAMETERS___
         "name": "autoMapEventParameters",
         "checkboxText": "Automap Event Parameters",
         "simpleValueType": true,
-        "help": "If enabled, the tag will attempt to automatically map parameters from your event data.\n\u003cbr/\u003e\u003cbr/\u003e\nAny value you manually enter in a field below will always override the auto-mapped value.\n\u003cbr/\u003e\u003cbr/\u003e\nDefault mappings:\n\u003cul\u003e\n\u003cli\u003eAmount (the tag always considers the auto-mapped value to be in the currency regular unit and it converts to the lowest unit according to the currency): \n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eeventData.value\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eSum of eventData.items Price * Quantity\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eCurrency: \n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eeventData.currency\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eCurrency from eventData.items\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eItems: \u003ci\u003eeventData.items\u003c/i\u003e (\u003ci\u003eitem_id\u003c/i\u003e, \u003ci\u003eitem_group_id\u003c/i\u003e, \u003ci\u003eitem_name\u003c/i\u003e, \u003ci\u003econtent_type\u003c/i\u003e, \u003ci\u003eamount\u003c/i\u003e and \u003ci\u003equantity\u003c/i\u003e)\u003c/li\u003e\n\u003c/ul\u003e",
+        "help": "If enabled, the tag will attempt to automatically map parameters from your event data.\n\u003cbr/\u003e\u003cbr/\u003e\nAny value you manually enter in a field below will always override the auto-mapped value.\n\u003cbr/\u003e\u003cbr/\u003e\nDefault mappings:\n\u003cul\u003e\n\u003cli\u003eAmount (the tag always considers the auto-mapped value to be in the currency regular unit and it converts to the lowest unit according to the currency): \n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eeventData.value\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eSum of eventData.items Price * Quantity\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eCurrency: \n\u003cul\u003e\n\u003cli\u003e\u003ci\u003eeventData.currency\u003c/i\u003e\u003c/li\u003e\n\u003cli\u003e\u003ci\u003eCurrency from eventData.items\u003c/i\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/li\u003e\n\u003cli\u003eContents: \u003ci\u003eeventData.items\u003c/i\u003e (\u003ci\u003eitem_id\u003c/i\u003e, \u003ci\u003eitem_group_id\u003c/i\u003e, \u003ci\u003eitem_name\u003c/i\u003e, \u003ci\u003econtent_type\u003c/i\u003e (defaults to \u003ci\u003eproduct\u003c/i\u003e), \u003ci\u003eprice\u003c/i\u003e and \u003ci\u003equantity\u003c/i\u003e)\u003c/li\u003e\n\u003c/ul\u003e\n\u003cbr/\u003e\nIf \u003ci\u003eeventData.items\u003c/i\u003e is not present, \u003ci\u003eeventData.ecommerce.items\u003c/i\u003e is used instead.",
         "defaultValue": true,
         "subParams": [
           {
@@ -608,7 +608,7 @@ ___TEMPLATE_PARAMETERS___
                 "type": "EQUALS"
               }
             ],
-            "help": "Optional.\n\u003cbr/\u003e\u003cbr/\u003e\nYou can specify a custom key, which will be used to set the content Item ID, by default \u003ci\u003eitem_id\u003c/i\u003e will be used. This may be useful if you are using WooCommerce extensions."
+            "help": "Optional.\n\u003cbr/\u003e\u003cbr/\u003e\nYou can specify a custom key, which will be used to set the content ID, by default \u003ci\u003eitem_id\u003c/i\u003e will be used. This may be useful if you are using WooCommerce extensions."
           }
         ]
       },
@@ -660,7 +660,7 @@ ___TEMPLATE_PARAMETERS___
         ],
         "newRowButtonText": "Add Parameter",
         "displayName": "Event Parameters",
-        "help": "Only use one of the available Amount parameters. If both are set, \u003cb\u003eAmount (in the currency\u0027s lowest unit)\u003c/b\u003e will have preference.\n\u003cbr/\u003e\n\u003cb\u003eAmount (in the currency\u0027s lowest unit)\u003c/b\u003e must be an integer in the currency\u0027s lowest denomination (e.g. cents). Example: \u003ci\u003e12999\u003c/i\u003e for \u003ci\u003e$129.99\u003c/i\u003e.\n\u003cbr/\u003e\n\u003cb\u003eAmount (in the currency\u0027s regular unit)\u003c/b\u003e must be a number in the currency\u0027s regular denomination. Example: \u003ci\u003e129.99\u003c/i\u003e for \u003ci\u003e$129.99\u003c/i\u003e.\n\u003cbr/\u003e\u003cbr/\u003e\n\u003cb\u003eCurrency\u003c/b\u003e is required if \u003cb\u003eAmount\u003c/b\u003e is used.\n\u003cbr/\u003e\u003cbr/\u003e\n\u003cb\u003eContents\u003c/b\u003e expects an array of content objects. Each object can have the properties: \u003cb\u003eid\u003c/b\u003e, \u003cb\u003ename\u003c/b\u003e, \u003cb\u003eamount\u003c/b\u003e, \u003cb\u003ecurrency\u003c/b\u003e (required if \u003ci\u003eamount\u003c/i\u003e is present in the content object and \u003ci\u003ecurrency\u003c/i\u003e is not present in top level field), \u003cb\u003equantity\u003c/b\u003e and \u003cb\u003econtent_type\u003c/b\u003e (required)."
+        "help": "Only use one of the available Amount parameters. If both are set, \u003cb\u003eAmount (in the currency\u0027s lowest unit)\u003c/b\u003e will have preference.\n\u003cbr/\u003e\n\u003cb\u003eAmount (in the currency\u0027s lowest unit)\u003c/b\u003e must be an integer in the currency\u0027s lowest denomination (e.g. cents). Example: \u003ci\u003e12999\u003c/i\u003e for \u003ci\u003e$129.99\u003c/i\u003e.\n\u003cbr/\u003e\n\u003cb\u003eAmount (in the currency\u0027s regular unit)\u003c/b\u003e must be a number in the currency\u0027s regular denomination. Example: \u003ci\u003e129.99\u003c/i\u003e for \u003ci\u003e$129.99\u003c/i\u003e.\n\u003cbr/\u003e\u003cbr/\u003e\n\u003cb\u003eCurrency\u003c/b\u003e is required if \u003cb\u003eAmount\u003c/b\u003e is used.\n\u003cbr/\u003e\u003cbr/\u003e\n\u003cb\u003eContents\u003c/b\u003e expects an array of content objects. Each object can have the properties: \u003cb\u003eid\u003c/b\u003e, \u003cb\u003egroup_id\u003c/b\u003e, \u003cb\u003ename\u003c/b\u003e, \u003cb\u003eamount\u003c/b\u003e, \u003cb\u003ecurrency\u003c/b\u003e (required if \u003ci\u003eamount\u003c/i\u003e is present in the content object and \u003ci\u003ecurrency\u003c/i\u003e is not present in top level field), \u003cb\u003equantity\u003c/b\u003e and \u003cb\u003econtent_type\u003c/b\u003e (required)."
       },
       {
         "type": "SIMPLE_TABLE",
@@ -1225,7 +1225,7 @@ function validateMappedData(data, mappedData) {
     getType(event.data.contents) === 'array' &&
     event.data.contents.some((i) => getType(i.content_type) !== 'string')
   )
-    return 'Each item in contents must have content_type defined as a string.';
+    return 'Each content in contents must have content_type defined as a string.';
 
   if (isValidValue(event.data.amount) && !event.data.currency)
     return 'Currency must be set when Amount is set.';
@@ -1236,7 +1236,7 @@ function validateMappedData(data, mappedData) {
       (i) => isValidValue(i.amount) && !event.data.currency && !isValidValue(i.currency)
     )
   )
-    return 'Currency must be set at event level or on each item when item Amount is set.';
+    return 'Currency must be set at event level or on each content when content Amount is set.';
 }
 
 function generateRequestBaseUrl(pixelId) {
@@ -3286,6 +3286,11 @@ setup: |-
 
 
 ___NOTES___
+
+2026-10-14 - Change Notes:
+  - Fix the Automap Event Parameters help text: the auto-mapped field is labelled Contents (not Items), and the documented source key is price (not amount), matching what the code actually reads; also document the content_type default (product) and the eventData.ecommerce.items fallback
+  - Add group_id to the documented Contents properties in the Event Parameters help, since the auto-mapper already sends it
+  - Use "content" rather than "item" wording in the Contents validation errors and the Custom Item ID Key help, aligning with the Conversions API field naming
 
 2026-09-15 - Change Notes:
   - Add "Autogenerate an Event ID if none is found" option (enabled by default): unlike Meta/TikTok, OpenAI's Conversions API requires an Event ID, so CAPI-only setups no longer fail the mandatory validation when Event Data has no `event_id`/`eventId`; applies independently of the Automap Server Event Data Parameters toggle and never overrides a real event id

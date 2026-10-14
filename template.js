@@ -492,7 +492,7 @@ function validateMappedData(data, mappedData) {
     getType(event.data.contents) === 'array' &&
     event.data.contents.some((i) => getType(i.content_type) !== 'string')
   )
-    return 'Each item in contents must have content_type defined as a string.';
+    return 'Each content in contents must have content_type defined as a string.';
 
   if (isValidValue(event.data.amount) && !event.data.currency)
     return 'Currency must be set when Amount is set.';
@@ -503,7 +503,7 @@ function validateMappedData(data, mappedData) {
       (i) => isValidValue(i.amount) && !event.data.currency && !isValidValue(i.currency)
     )
   )
-    return 'Currency must be set at event level or on each item when item Amount is set.';
+    return 'Currency must be set at event level or on each content when content Amount is set.';
 }
 
 function generateRequestBaseUrl(pixelId) {
