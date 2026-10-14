@@ -154,7 +154,7 @@ sent as plain values, not hashed.
 | **Custom Item ID Key** | Optional. Override the item ID field key used when mapping items. Defaults to `item_id`. Useful for WooCommerce setups. |
 | **Event Parameters** | Manually specify `Amount`, `Currency`, `Contents`, and `Plan ID`. |
 
-> **Note:** `Currency` is required when `Amount` is used. Each item in `Contents` must have `content_type` defined.
+> **Note:** `Currency` is required when `Amount` is used. Each content in `Contents` must have `content_type` defined.
 
 ## Useful Resources
 
